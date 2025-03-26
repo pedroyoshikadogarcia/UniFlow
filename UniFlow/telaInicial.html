@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="telaInicial.css">
+    <title>UniFlow - Tela Inicial</title>
+</head>
+
+<body>
+    <nav id="sidebar"> <!--barra lateral-->
+        <div id="sidebar-content">
+            <div id="user">
+                <img src="img/avatar.png" id="user_avatar" alt="avatar"> <!--avatar do perfil-->
+    
+                <p id="user_info">
+                    <span class="item-description"> <!--nome da pessoa-->
+                        Fulaninho
+                    </span>
+    
+                    <span item-description> <!--descrição da pessoa / sobrenome-->
+                    
+                    </span>
+                </p>
+            </div>
+    
+            <ul id="side-items"> <!--links-->
+                <li class="side-items"> <!--colocar active se quiser que fique azul-->
+                    <a href="#">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <span class="item-description">
+                            Calendário <!--Diciplinas e horário das aulas-->
+                        </span>
+                    </a>
+                </li>
+    
+                <li class="side-items">
+                    <a href="#">
+                        <i class="fa-solid fa-book"></i>
+                        <span class="item-description">
+                            Diciplinas <!--Aréa onde terá: Matriculas, Cursos, atvividades e notas-->
+                        </span>
+                    </a>
+                </li>
+    
+                <li class="side-items">
+                    <a href="#">
+                        <i class="fa-solid fa-splotch"></i>
+                        <span class="item-description">
+                            Novidades <!--Notificações de palestras, eventos gerais e tralala-->
+                        </span>
+                    </a>
+                </li>
+    
+                <li class="side-items">
+                    <a href="#">
+                        <i class="fa-solid fa-chart-simple"></i>
+                        <span class="item-description">
+                            Curso  <!--Gráfico que mostra processo para conclusão do curso: % diciplinas obrigatórias concluidas, % restam a cumprir-->
+                        </span>
+                    </a>
+                </li>
+    
+                <li class="side-items">
+                    <a href="#">
+                        <i class="fa-solid fa-address-card"></i>
+                        <span class="item-description">
+                            Carteirinha <!-- carteirinha normal com os dados-->
+                        </span>
+                    </a>
+                </li>
+    
+                <li class="side-items">
+                    <a href="#">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <span class="item-description">
+                            Frequência <!--Área de faltas-->
+                        </span>
+                    </a>
+                </li>
+    
+                <li class="side-items">
+                    <a href="#">
+                        <i class="fa-solid fa-gear"></i>
+                        <span class="item-description">
+                            Configurações <!--config e tralala-->
+                        </span>
+                    </a>
+                </li>
+            </ul>
+    
+            <button id="open-btn">
+                <i id="open-btn-icon" class="fa-solid fa-chevron-right"></i>  <!--botão pra abrir e fechar o menu-->
+            </button>
+        </div>
+       
+        <div id="logout">
+            <button id="sair-btn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span class="item-description">
+                    Sair <!-- botão de sair-->
+                </span>
+            </button>
+        </div>
+    </nav>
+    <main>
+        <h1>Teste</h1>
+    </main>
+    <script src="telaInicial.js"></script>
+</body>
+
+</html>

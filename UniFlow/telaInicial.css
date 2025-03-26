@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Trazendo a fonte "Poppins" do Google Fonts para usar no site */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Resetando as margens e o padding de tudo e aplicando a fonte padrão do site */
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color: #e3e9f7;
+}
+
+/* Usando flexbox para o layout da página e deixando o fundo com uma cor mais clarinha */
+
+main {
+    padding: 20px;
+}
+
+/* Dando um espaço de 20px ao redor do conteúdo principal */
+
+h1 {
+    position: relative; /* Deixa o título fixo porem quando scrola ele acompanha a página */
+    top: 0px; /* Ajusta a posição vertical do título */
+    left: 110px; /* Ajusta a posição horizontal do título */
+    z-index: 0; /* Garante que o título fique por trás da sidebar //Pedro: aqui q tava faltando ó*/
+}
+
+/* O título "Teste" vai ficar fixo no topo, mas atrás da sidebar por causa do z-index */
+
+#sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    position: fixed;
+    height: 100vh;
+    border-radius: 0px 18px 18px 0px;
+    transition: all .5s;
+    min-width: 82px;
+    z-index: 2; /* Coloca a sidebar sobre o título */
+}
+
+/* A sidebar é posicionada de forma fixa na tela (não vai mexer com o scroll),
+   tem um fundo branco, bordas arredondadas e vai ter uma transição suave quando abrir/fechar */
+
+#sidebar-content {
+    padding: 10px;
+}
+
+/* Ajusta o espaço dentro da sidebar para o conteúdo dela */
+
+#user_avatar {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+/* Estiliza a imagem do perfil do usuário para ela ser redonda e não esticar a imagem */
+
+#user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+/* Faz o layout do perfil do usuário com os itens (imagem e nome) se alinhando na horizontal */
+
+#user_info {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Coloca as informações do usuário em uma coluna */
+
+#user_info span:last-child {
+    color: #6b6b6b;
+    font-size: 12px;
+}
+
+/* Deixa o texto do perfil mais clarinho e com um tamanho menor */
+
+#side-items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+}
+
+/* Faz a lista dos itens da sidebar ficarem em uma coluna e sem pontos ou números na frente */
+
+.side-items {
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+/* Adiciona um pouco de espaço nos itens da sidebar, deixa com o cursor em forma de mãozinha 
+   e arredonda as bordas */
+
+.side-items:hover:not(.active), #sair-btn:hover {
+    background-color: #059bfb;
+}
+
+/* Quando passa o mouse por cima dos itens da sidebar (ou do botão de sair), a cor de fundo muda */
+
+.side-items a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+
+/* Deixa os links dentro da sidebar sem sublinhado e ajusta os itens para ficarem centralizados */
+
+.side-items.active a {
+    color: black;
+}
+
+/* Se o item da sidebar estiver ativo, a cor do texto vai ser preta */
+
+.side-items a i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+}
+
+/* Dá um tamanho fixo e centraliza os ícones dentro dos itens da sidebar */
+
+#logout {
+    border-top: 1px solid white;
+    padding: 12px;
+}
+
+/* Adiciona uma linha separando a área de logout da parte de cima da sidebar e coloca um padding */
+
+#sair-btn {
+    border: none;
+    padding: 12px;
+    font-size: 14px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    border-radius: 8px;
+    text-align: left;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+/* Estiliza o botão de sair:
+   - Sem borda, com espaçamento entre os itens;
+   - Cor de fundo transparente, mas o cursor fica como uma mãozinha quando passa por cima */
+
+#open-btn {
+    position: absolute;
+    top: 30px;
+    right: -10px;
+    background-color: #059bfb;
+    color: white;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* O botão de abrir/fechar a sidebar fica com o formato de círculo, cor azul e posição absoluta no topo */
+
+#open-btn-icon {
+    transition: transform 0.3s ease;
+}
+
+/* Transição suave para girar o ícone da seta quando abrir/fechar a sidebar */
+
+.open-sidebar #open-btn-icon {
+    transform: rotate(180deg);
+}
+
+/* Quando a sidebar estiver aberta, o ícone da seta vai girar 180 graus */
+
+.item-description {
+    width: 0px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    transition: width .6s;
+}
+
+/* As descrições dos itens da sidebar começam com largura 0 (invisíveis),
+   e ao abrir a sidebar, elas ganham largura com uma transição suave */
+
+#sidebar.open-sidebar {
+    min-width: 15%;
+}
+
+/* Quando a sidebar está aberta, ela expande para 15% da largura da tela */
+
+#sidebar.open-sidebar .item-description {
+    width: 150px;
+}
+
+/* Quando a sidebar está aberta, as descrições dos itens ganham 150px de largura */
+
+#sidebar.open-sidebar .side-items a {
+    justify-content: flex-start;
+    gap: 14px;
+}
+
+/* Quando a sidebar é aberta, os itens são alinhados à esquerda e o espaçamento entre ícones e texto aumenta */
