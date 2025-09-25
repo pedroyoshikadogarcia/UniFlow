@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Perfil do Professor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style_perfil.css" />
+    <link rel="stylesheet" href="global.css" />
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="img/logopreta2.png" alt="Logotipo" />
+            </a>
+        </div>
+
+        <a href="turmas.html">
+            <i class="fas fa-book"></i> Turmas
+        </a>
+        <a href="alunos.html">
+            <i class="fas fa-graduation-cap"></i> Alunos
+        </a>
+        <a href="atividades.html">
+            <i class="fas fa-tasks"></i> Atividades
+        </a>
+        <a href="notas.html">
+            <i class="fas fa-clipboard-list"></i> Notas
+        </a>
+        <a href="chamada.html">
+            <i class="fas fa-user-check"></i> Chamada
+        </a>
+        <a href="calendario.html">
+            <i class="fas fa-calendar-alt"></i> Calendário
+        </a>
+        <a href="mensagem.html">
+            <i class="fas fa-envelope"></i> Mensagens
+        </a>
+        <a href="config.html">
+            <i class="fas fa-cog"></i> Configurações
+        </a>
+    </div>
+
+    <!-- Principal -->
+    <div class="content">
+
+        <!-- Barra superior -->
+        <div class="top-nav">
+            <button id="theme-toggle" class="theme-button">
+                <i class="fas fa-sun"></i> 
+            </button>
+            <div class="right-items">
+                <!-- Ícone de notificações -->
+                <a href="#" class="notification-link">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                </a>
+                <!-- Informações -->
+                <div class="user-info">
+                    <img src="img/Usuario1.jpg" alt="Foto do Professor" />
+                    <a href="perfil.html" class="user-profile-link">
+                        <span>Nome do Professor</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Container do perfil com dados principais -->
+        <div class="profile-container">
+            <div class="profile-card">
+                
+                <!-- Cabeçalho do perfil -->
+                <div class="profile-header">
+                    <img src="img/Usuario1.jpg" alt="Foto do Professor" class="profile-pic" />
+                    <div class="profile-details">
+                        <h2>Professor(a) de Tal</h2>
+                        <p>professor.tal@etec.sp.gov.br</p>
+                        <p class="matricula-prof">Matrícula: 123456789</p>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="btn-edit-profile" id="openEditProfile"><i class="fas fa-edit"></i> Editar perfil</button>
+                        <!-- Botão de configurações opcional -->
+                        <!-- <button class="btn-settings"><i class="fas fa-cog"></i> Configurações</button> -->
+                    </div>
+                </div>
+
+                <!-- Informações profissionais detalhadas do professor -->
+                <div class="academic-info">
+                    <h3>Informações Profissionais</h3>
+                    <p><strong>Cargo:</strong> Professor(a) Técnico(a)</p>
+                    <p><strong>Departamento:</strong> Análise e Desenvolvimento de Sistemas</p>
+                    <p><strong>Áreas de Atuação:</strong> Desenvolvimento Web, Banco de Dados, Lógica de Programação</p>
+                    <p><strong>Status:</strong> <span class="status-active">Ativo</span></p>
+                </div>
+
+                <!-- Seção do crachá digital com foto e detalhes para identificação -->
+                <div class="id-card-section">
+                    <h3>Crachá Digital</h3>
+                    <div class="id-card">
+                        <img src="img/Usuario1.jpg" alt="Foto do Professor" class="id-card-pic" />
+                        <div class="id-card-details">
+                            <h4>Professor(a) de Tal</h4>
+                            <p>Matrícula: 123456789</p>
+                            <p>Cargo: Professor(a)</p>
+                            <p>Unidade: Etec Adhemar Batista</p>
+                            <p class="validity">Validade: 31/12/2026</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para edição do perfil com formulário para bio e links -->
+    <div id="editProfileModal" class="modal">
+        <div class="modal-content">
+            <!-- Botão para fechar -->
+            <span class="close-button">&times;</span>
+            <h2>Editar Perfil</h2>
+            <form id="editProfileForm">
+                
+                <!-- descrição pessoal -->
+                <div class="form-group">
+                    <label for="profileBio">Sobre Mim:</label>
+                    <textarea id="profileBio" rows="4" placeholder="Fale um pouco sobre sua experiência e paixões na área de ensino..."></textarea>
+                </div>
+                <!-- Campo para links úteis como Lattes, LinkedIn ou GitHub -->
+                <div class="form-group">
+                    <label for="profileLinks">Links Úteis (ex: Lattes, LinkedIn, GitHub):</label>
+                    <input type="text" id="profileLinks" placeholder="URL do Lattes, URL do LinkedIn..." />
+                </div>
+
+                <!-- Botão para salvar as alterações -->
+                <button type="submit" class="btn-save-profile">Salvar Alterações</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- links js -->
+    <script src="perfil.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

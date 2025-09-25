@@ -1,0 +1,603 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6f8; /* Fundo claro original */
+    display: flex;
+    min-height: 100vh;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme {
+    background-color: #333; /* Fundo escuro original */
+    color: #eee;
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: #ffffff; /* Fundo branco original */
+    width: 200px; /* Largura original */
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme .sidebar {
+    background-color: #444; /* Fundo cinza escuro original */
+    color: #eee;
+}
+
+.sidebar .logo {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar .logo img {
+    max-width: 160px; /* Largura original */
+    height: auto;
+    display: block;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px; /* Preenchimento original */
+    text-decoration: none;
+    color: #333; /* Cor do link original */
+    border-radius: 5px; /* Raio da borda original */
+    margin-bottom: 10px;
+    gap: 10px; /* Espaçamento entre o ícone e o texto */
+    transition: color 0.3s ease, background-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+body.dark-theme .sidebar a {
+    color: #eee;
+}
+
+.sidebar a:hover {
+    transform: translateX(5px);
+    background-color: #cfe0f0;
+    color: white;
+}
+
+body.dark-theme .sidebar a:hover {
+    background-color: DarkSlateBlue;
+    color: white;
+}
+
+.sidebar a.active {
+    background-color: #4956ca;
+    color: white;
+}
+
+.sidebar a.active:hover {
+    background-color: #0056b3;
+}
+
+.sidebar a i {
+    margin-right: 0; /* Removido o espaçamento para usar o 'gap' do flexbox */
+    font-size: 18px; /* Tamanho da fonte original */
+    color: #4956ca; /* Cor do ícone original */
+    transition: color 0.3s ease;
+}
+
+/* Content Area */
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme .content {
+    background-color: #000; /* Fundo escuro original */
+}
+
+/* Top Navigation Bar */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff; /* Fundo branco original */
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s;
+}
+
+body.dark-theme .top-nav {
+    background-color: #444; /* Fundo cinza escuro original */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.theme-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px; /* Tamanho original */
+    color: #555; /* Cor original */
+    transition: color 0.3s;
+}
+
+body.dark-theme .theme-button {
+    color: #eee;
+}
+
+.theme-button:hover {
+    color: #333;
+}
+
+body.dark-theme .theme-button:hover {
+    color: #ccc;
+}
+
+.right-items {
+    display: flex;
+    align-items: center;
+    gap: 50px; /* Espaçamento original */
+}
+
+.notification-link {
+    text-decoration: none;
+    position: relative;
+}
+
+.notifications {
+    font-size: 22px; /* Tamanho original */
+    color: #555; /* Cor original */
+    transition: color 0.3s;
+}
+
+body.dark-theme .notifications {
+    color: #eee;
+}
+
+.notifications i {
+    position: relative;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-info span {
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+body.dark-theme .user-info span {
+    color: #eee;
+}
+
+/* Header with button */
+.header-with-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-with-button h1 {
+    margin: 0;
+    color: #333;
+    transition: color 0.3s;
+}
+
+body.dark-theme .header-with-button h1 {
+    color: #eee;
+}
+
+
+/* Atividades */
+.activities-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 20px;
+}
+
+.activity-section h2 {
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: #333;
+    transition: color 0.3s;
+}
+
+body.dark-theme .activity-section h2 {
+    color: #eee;
+    border-bottom-color: #666;
+}
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.activity-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+
+body.dark-theme .activity-item {
+    background-color: #444; /* Fundo cinza escuro original */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.activity-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.activity-icon {
+    font-size: 2.5em;
+    color: #4956ca; /* Cor original */
+    margin-right: 20px;
+    transition: color 0.3s;
+}
+
+body.dark-theme .activity-icon {
+    color: #eee;
+}
+
+.activity-icon.completed-icon {
+    color: #28a745;
+}
+
+body.dark-theme .activity-icon.completed-icon {
+    color: #4a9e64;
+}
+
+.activity-details {
+    flex-grow: 1;
+}
+
+.activity-details h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
+    transition: color 0.3s;
+}
+
+body.dark-theme .activity-details h3 {
+    color: #eee;
+}
+
+.activity-details p {
+    margin: 5px 0 0;
+    color: #777; /* Cor original */
+    transition: color 0.3s;
+}
+
+body.dark-theme .activity-details p {
+    color: #ccc;
+}
+
+.activity-date {
+    font-weight: bold;
+    color: #555; /* Cor original */
+    transition: color 0.3s;
+}
+
+body.dark-theme .activity-date {
+    color: #eee;
+}
+
+.activity-link.completed .activity-item {
+    opacity: 0.7;
+}
+
+.activity-link.completed .activity-date {
+    color: #6c757d;
+    font-weight: normal;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+}
+
+body.dark-theme .modal-content {
+    background-color: #555; /* Cor original do tema escuro para o modal */
+    color: #eee;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+}
+
+body.dark-theme .modal-content h2 {
+    border-bottom-color: #666;
+    color: #eee;
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 2em;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    color: #555;
+}
+
+/* --- Estilos para Tags de Atividades --- */
+.activity-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.activity-header h3 {
+    margin-bottom: 0;
+}
+
+.activity-tag {
+    font-size: 0.8em;
+    font-weight: bold;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+.activity-tag.prova {
+    background-color: #d9534f; /* Vermelho */
+}
+
+.activity-tag.trabalho {
+    background-color: #5bc0de; /* Azul */
+}
+
+.activity-tag.apresentacao {
+    background-color: #f0ad4e; /* Laranja */
+}
+
+/* Estilo para os botões dentro do modal */
+.modal-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.modal-buttons .modal-action-button {
+    width: auto;
+    flex-grow: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.modal-action-button.complete-button {
+    background-color: #28a745; /* Verde */
+}
+
+.modal-action-button.question-button {
+    background-color: #6c757d; /* Cinza */
+}
+
+.modal-action-button.complete-button:hover {
+    background-color: #218838;
+}
+
+.modal-action-button.question-button:hover {
+    background-color: #5a6268;
+}
+
+/* --- Estilos para o Modal de Upload --- */
+#uploadDialog {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    padding: 2rem;
+    max-width: 450px;
+}
+
+#uploadDialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#uploadDialog h3 {
+    margin: 0 0 1rem;
+    font-size: 1.4rem;
+}
+
+/* Área do 'Clique para enviar' */
+.upload-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 2rem;
+    border: 2px dashed #4956ca;
+    border-radius: 8px;
+    color: #4956ca;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.upload-label:hover {
+    background-color: #f0f4ff;
+}
+
+.upload-label i {
+    font-size: 2rem;
+}
+
+#fileNameDisplay {
+    display: none;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* Botões de Ação do Modal */
+.dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 1.5rem;
+}
+
+.dialog-actions button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#cancelUploadBtn {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+#submitUploadBtn {
+    background-color: #4956ca;
+    color: #fff;
+}
+
+/* --- Estilos para o Dark Mode --- */
+body.dark-theme #uploadDialog {
+    background-color: #333;
+    color: #eee;
+}
+
+body.dark-theme .upload-label {
+    border-color: #7285ff;
+    color: #7285ff;
+    background-color: #2a2a2a;
+}
+
+body.dark-theme .upload-label:hover {
+    background-color: #3d3d3d;
+}
+
+body.dark-theme #cancelUploadBtn {
+    background-color: #444;
+    color: #ccc;
+}
+
+/* --- Estilo de base para os botões do modal --- */
+.dialog-actions button {
+    /* Resetando os estilos padrão do navegador */
+    appearance: none;
+    -webkit-appearance: none; /* Para navegadores Webkit */
+    background: none;
+    border: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    
+    /* Adicionando nossos próprios estilos */
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* --- Estilos específicos para os botões --- */
+#cancelUploadBtn {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+#cancelUploadBtn:hover {
+    background-color: #d1d5db;
+}
+
+#submitUploadBtn {
+    background-color: #4956ca;
+    color: #fff;
+}
+
+#submitUploadBtn:hover {
+    background-color: #3e48b8;
+}
+
+/* --- Estilos para o Dark Mode --- */
+body.dark-theme .dialog-actions button {
+    background-color: #444;
+    color: #ccc;
+}
+
+body.dark-theme #cancelUploadBtn {
+    background-color: #555;
+    color: #ccc;
+}
+
+body.dark-theme #cancelUploadBtn:hover {
+    background-color: #666;
+}
+
+body.dark-theme #submitUploadBtn {
+    background-color: #4956ca;
+    color: #fff;
+}
+
+body.dark-theme #submitUploadBtn:hover {
+    background-color: #3e48b8;
+}

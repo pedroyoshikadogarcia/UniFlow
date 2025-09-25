@@ -1,0 +1,451 @@
+/* style.disciplinas.css */
+
+html {
+    width: 100%;
+    height: 100%; 
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0; /* Garante que não há padding padrão no body */
+    display: flex;
+    min-height: 100vh; /* Garante que o body ocupe no mínimo 100% da altura da viewport */
+    background-color: #f4f6f8; /* Fundo claro padrão */
+    color: #333; /* Cor do texto padrão */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transição para o tema */
+    width: 100%; /* Garante que o body ocupe 100% da largura do HTML */
+}
+
+/* Tema Escuro */
+body.dark-theme {
+    background-color: #333; /* Fundo escuro */
+    color: #eee; /* Cor do texto padrão no tema escuro */
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: #ffffff; /* Fundo branco padrão */
+    width: 200px; /* Largura fixa da sidebar */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme .sidebar {
+    background-color: #444; /* Cinza meio escuro */
+    color: #eee;
+}
+
+.sidebar .logo {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar .logo img {
+    max-width: 160px; /* Seu limite de largura para o logo */
+    height: auto;
+    display: block;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    text-decoration: none;
+    color: #333; /* Cor do link padrão */
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+}
+
+body.dark-theme .sidebar a {
+    color: #eee; /* Cor do link no tema escuro */
+}
+
+.sidebar a.active {
+    background-color: #4956ca;
+    color: white;
+}
+
+.sidebar a:hover {
+    transform: translateX(5px);
+    background-color: #cfe0f0;
+    color: white;
+}
+
+body.dark-theme .sidebar a:hover {
+    background-color: DarkSlateBlue;
+    color: white;
+}
+
+.sidebar a i {
+    font-size: 18px;
+    color: #4956ca;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .sidebar a i {
+    color: #eee;
+}
+
+/*Conteúdo Principal */
+.content {
+    flex-grow: 1; /* Permite que o conteúdo ocupe o espaço restante */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme .content {
+    background-color: #000;
+}
+
+
+.top-nav {
+    background-color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme .top-nav {
+    background-color: #444;
+}
+
+.right-items {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-info span {
+    font-weight: bold;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .user-info span {
+    color: #eee;
+}
+
+.notification-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.notifications {
+    cursor: pointer;
+}
+
+.notifications i {
+    font-size: 22px;
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .notifications i {
+    color: #eee;
+}
+
+
+.dashboard-header {
+    margin-bottom: 25px;
+}
+
+.dashboard-header h1 {
+    color: #333;
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .dashboard-header h1 {
+    color: #eee;
+}
+
+.dashboard-header p {
+    color: #777;
+    font-size: 0.9em;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .dashboard-header p {
+    color: #ccc;
+}
+
+
+.dashboard-cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block; /* Faz o link ocupar toda a área do card no grid */
+    width: auto; /* Deixa o grid controlar a largura */
+}
+
+.dashboard-cards .card {
+    display: inline-block;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    padding: 15px;
+    border-left: 5px solid #4956ca;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease, color 0.3s ease;
+    box-sizing: border-box; /* Inclui padding e border na largura e altura */
+    width: 48%;
+    margin-bottom: 10px;
+}
+
+.dashboard-cards .card:nth-child(2n+2) {
+    margin-right: 2%;
+    
+}
+    
+body.dark-theme .dashboard-cards .card {
+    background-color: #444;
+    color: #eee;
+}
+
+.dashboard-cards .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-cards .card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+    flex-grow: 1; /* Permite que as informações cresçam e ocupem o espaço disponível */
+}
+
+.dashboard-cards .card-info span {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+    transition: color 0.3s ease;
+    margin-bottom: 5px;
+    display: block;
+}
+
+body.dark-theme .dashboard-cards .card-info span {
+    color: #eee;
+}
+
+.dashboard-cards .card-info p {
+    font-size: 0.9em;
+    color: #666;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .dashboard-cards .card-info p {
+    color: #ccc;
+}
+
+.dashboard-cards .card-info p i {
+    color: #777;
+    font-size: 0.9em;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .dashboard-cards .card-info p i {
+    color: #eee;
+}
+
+/* Botão "Ver Detalhes" */
+.card-details {
+    margin-top: 15px;
+    text-align: right;
+}
+
+.card-details .button {
+    display: inline-block;
+    background-color: #4956ca;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.card-details .button:hover {
+    background-color: #3b45b0;
+}
+
+body.dark-theme .card-details .button {
+    background-color: DarkSlateBlue;
+}
+
+body.dark-theme .card-details .button:hover {
+    background-color: #5d6edb;
+}
+
+
+.next-activities h2 {
+    color: #333;
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .next-activities h2 {
+    color: #eee;
+}
+
+.activity-item {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme .next-activities .activity-item {
+    background-color: #444;
+    color: #eee;
+}
+
+.activity-icon {
+    background-color: #f0f0f0;
+    color: #777;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme .next-activities .activity-icon {
+    background-color: #555;
+    color: #eee;
+}
+
+.activity-details h3 {
+    color: #333;
+    font-size: 1em;
+    margin-bottom: 3px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .next-activities .activity-details h3 {
+    color: #eee;
+}
+
+.activity-details p {
+    color: #777;
+    font-size: 0.85em;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .next-activities .activity-details p {
+    color: #ccc;
+}
+
+.activity-date {
+    color: #555;
+    font-size: 0.9em;
+    margin-left: auto;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .next-activities .activity-date {
+    color: #eee;
+}
+
+.activity-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+    position: relative;
+}
+
+/* Botão de Tema */
+.theme-button {
+    background: none;
+    color: #555;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+    margin-right: 20px;
+    outline: none;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .theme-button {
+    color: #eee;
+}
+
+.theme-button:hover {
+    color: #333;
+}
+
+body.dark-theme .theme-button:hover {
+    color: #ccc;
+}
+
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme p,
+body.dark-theme span {
+    color: #eee;
+}
+
+body.dark-theme i {
+    color: #eee;
+}
+
+/* Cores específicas para texto do card info no tema claro (para garantir) */
+.dashboard-cards .card-info p {
+    color: #666;
+}
+.dashboard-cards .card-info p i {
+    color: #777;
+}

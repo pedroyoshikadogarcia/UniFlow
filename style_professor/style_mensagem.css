@@ -1,0 +1,666 @@
+/* Definição de Variáveis CSS para cores */
+:root {
+    /* Cores do tema claro */
+    --background-color-light: #f4f6f8;
+    --card-bg-light: #ffffff;
+    --text-color-light: #333;
+    --border-color-light: #e0e0e0;
+    --input-bg-light: #f9f9f9;
+    --link-color-light: #4956ca;
+    
+    /* Cores do tema escuro */
+    --background-color-dark: #222;
+    --card-bg-dark: #333;
+    --text-color-dark: #eee;
+    --border-color-dark: #555;
+    --input-bg-dark: #444;
+    --link-color-dark: #a7b1ff;
+
+    /* Cores de destaque */
+    --purple-primary: #4956ca;
+    --purple-darker: #3a47b5;
+    --green-sent: #d1ffd1;
+    --green-border: #a4e3a4;
+    --blue-received: #e0e0ff;
+    --blue-border: #b0b0e0;
+}
+
+body {
+    background-color: var(--background-color-light);
+    color: var(--text-color-light);
+}
+
+body.dark-theme {
+    background-color: var(--background-color-dark);
+    color: var(--text-color-dark);
+}
+
+
+
+
+
+/*conf da parte normal site*/
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f6f8; /* Fundo claro padrão */
+    color: #333; /* Cor do texto padrão */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 16px; /* Tamanho base, equivalente a 1em. Ajuste se quiser maior ou menor no geral. */
+}
+
+body.dark-theme {
+    background-color: #333; /* Fundo escuro */
+    color: #eee; /* Cor do texto padrão no tema escuro */
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+    background-color: #ffffff; /* Fundo branco padrão */
+    width: 200px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme .sidebar {
+    background-color: #444; /* Cinza meio escuro */
+    color: #eee;
+}
+
+.sidebar .logo {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar .logo img {
+    max-width: 160px;
+    height: auto;
+    display: block;
+}
+
+/* Remover roxo do hover na logotipo do site */
+.sidebar .logo a:hover {
+    background-color: transparent; /* Remove o fundo roxo */
+    color: inherit; /* Mantém a cor original do texto/ícone, se houver */
+    transform: none; /* Remove a translação se existir */
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    text-decoration: none;
+    color: #333; /* Cor do link padrão */
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease; /* Adicionado transform para transição suave do hover */
+    font-size: 0.95em;
+}
+
+body.dark-theme .sidebar a {
+    color: #eee; /* Cor do link no tema escuro */
+}
+
+/* ESTILO ATIVO: Corrigido o hover para o estado ativo */
+.sidebar a.active {
+    background-color: #4956ca;
+    color: white;
+}
+
+/* HOVER: Ajustado para que o hover funcione corretamente com o active */
+.sidebar a:not(.active):hover { /* Aplica hover apenas se não estiver ativo */
+    transform: translateX(5px);
+    background-color: #cfe0f0;
+    color: #333; /* Mudado para uma cor que funcione bem no hover do tema claro */
+}
+
+body.dark-theme .sidebar a:not(.active):hover {
+    background-color: #6d7aff; /* Roxo mais claro para hover no tema escuro */
+    color: white; /* Garante que o texto fique branco */
+    transform: translateX(5px); /* Mantém a translação */
+}
+
+.sidebar a i {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    color: #4956ca; /* Cor roxa original para os ícones */
+    transition: color 0.3s ease;
+}
+
+/* MODIFICAÇÃO: Cor do ícone na sidebar no tema escuro */
+body.dark-theme .sidebar a i {
+    color: #a7b1ff; /* Roxo mais claro para ícones no tema escuro */
+}
+
+/* MODIFICAÇÃO: Cor do ícone quando o link está ativo (tanto claro quanto escuro) */
+.sidebar a.active i {
+    color: white; /* Ícones brancos quando o link está ativo */
+}
+
+/* --- CONTEÚDO PRINCIPAL --- */
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme .content {
+    background-color: #000; /* Fundo escuro */
+}
+
+/* --- NAVEGAÇÃO SUPERIOR (TOP-NAV) --- */
+.top-nav {
+    background-color: white; /* Fundo branco padrão */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme .top-nav {
+    background-color: #444; /* Cinza meio escuro */
+}
+
+.right-items {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Remover sublinhado do link no nome e na foto do professor */
+.user-info a {
+    text-decoration: none;
+    color: inherit; /* Garante que a cor do texto seja herdada, não a cor padrão do link */
+}
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-info span {
+    font-weight: bold;
+    color: #333; /* Cor do texto padrão */
+    transition: color 0.3s ease;
+    font-size: 1em; /* Mantido como tamanho padrão, equivalente ao corpo do texto */
+}
+
+body.dark-theme .user-info span {
+    color: #eee; /* Cor do texto no tema escuro */
+}
+
+.notification-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.notifications {
+    cursor: pointer;
+}
+
+.notifications i {
+    font-size: 22px;
+    color: #555; /* Cor do ícone padrão */
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .notifications i {
+    color: #eee; /* Cor do ícone no tema escuro */
+}
+
+/* --- CABEÇALHO DO DASHBOARD (A "PARTE INICIAL" DO CONTEÚDO) --- */
+.dashboard-header {
+    margin-bottom: 25px;
+}
+
+/* GARANTINDO QUE ESTEJA CLARO E CONSISTENTE */
+.dashboard-header h1 {
+    font-size: 2.2em; /* Tamanho maior para o H1 */
+    font-weight: bold; /* Garante que seja negrito */
+    color: #333; /* Cor do texto padrão */
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .dashboard-header h1 {
+    color: #eee; /* Cor do texto no tema escuro */
+}
+
+/* GARANTINDO QUE ESTEJA CLARO E CONSISTENTE */
+.dashboard-header p {
+    font-size: 0.9em; /* Tamanho do parágrafo */
+    line-height: 1.4; /* Espaçamento entre linhas */
+    color: #777; /* Cor do texto padrão */
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .dashboard-header p {
+    color: #ccc; /* Cor do texto no tema escuro */
+}
+
+/* --- NO TOP-NAV --- */
+.theme-button {
+    background: none;
+    color: #555; /* Cor do ícone padrão */
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+    margin-right: 20px;
+    outline: none;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .theme-button {
+    color: #eee;
+}
+
+.theme-button:hover {
+    color: #333;
+}
+
+body.dark-theme .theme-button:hover {
+    color: #ccc;
+}
+
+
+
+
+
+
+
+/* --- CHAT --- */
+
+.chat-container {
+    display: flex;
+    position: relative; /* Adicionado para posicionamento absoluto */
+    background-color: var(--card-bg-light);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    height: 70vh; /* Altura do chat na tela */
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme .chat-container {
+    background-color: var(--card-bg-dark);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* ------------------------------------ */
+/* --- CHAT: Lista de Alunos Lateral --- */
+/* ------------------------------------ */
+
+.student-list {
+    min-width: 280px;
+    max-width: 350px;
+    flex-basis: 30%; /* Ocupa 30% do espaço disponível */
+    border-right: 1px solid var(--border-color-light);
+    overflow-y: auto;
+    padding: 10px 0;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-theme .student-list {
+    background-color: var(--card-bg-dark);
+    border-color: var(--border-color-dark);
+}
+
+.student-list h3 {
+    padding: 10px 20px;
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--text-color-light);
+}
+body.dark-theme .student-list h3 {
+    color: var(--text-color-dark);
+}
+
+.student-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border-color-light);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+body.dark-theme .student-item {
+    border-color: var(--border-color-dark);
+}
+
+.student-item:hover {
+    background-color: var(--input-bg-light);
+    transform: translateX(3px);
+}
+body.dark-theme .student-item:hover {
+    background-color: var(--input-bg-dark);
+}
+
+.student-item.active {
+    background-color: #e6f2ff; /* Azul claro para item ativo */
+}
+body.dark-theme .student-item.active {
+    background-color: #5a64a6; /* Roxo escuro para tema ativo */
+}
+
+.student-photo {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.student-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.student-name {
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.student-last-msg {
+    font-size: 0.85em;
+    color: #777;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+body.dark-theme .student-last-msg {
+    color: #ccc;
+}
+
+/* ------------------------------------ */
+/* --- CHAT: Área de Conversa --- */
+/* ------------------------------------ */
+
+.chat-area {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    
+    /* Posição absoluta para transição suave */
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateX(100%); /* Começa fora da tela, à direita */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Move o chat para dentro da tela quando ativo */
+.chat-container[data-mode="chat"] .chat-area {
+    transform: translateX(0);
+}
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: var(--card-bg-light);
+    border-bottom: 1px solid var(--border-color-light);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+body.dark-theme .chat-header {
+    background-color: var(--card-bg-dark);
+    border-color: var(--border-color-dark);
+}
+
+#chat-student-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+#chat-student-name {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+/* --- Mensagens --- */
+.chat-messages {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message {
+    max-width: 75%;
+    padding: 10px 15px;
+    border-radius: 18px;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.message.sent {
+    align-self: flex-end;
+    background-color: var(--green-sent);
+    color: #333;
+}
+
+.message.received {
+    align-self: flex-start;
+    background-color: var(--blue-received);
+    color: #333;
+}
+
+body.dark-theme .message.sent {
+    background-color: #557755;
+    color: #eee;
+}
+
+body.dark-theme .message.received {
+    background-color: #555577;
+    color: #eee;
+}
+
+.chat-placeholder {
+    color: #999;
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* --- Área de Input --- */
+.chat-input-area {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-top: 1px solid var(--border-color-light);
+    background-color: var(--card-bg-light);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+body.dark-theme .chat-input-area {
+    background-color: var(--card-bg-dark);
+    border-color: var(--border-color-dark);
+}
+
+#message-input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color-light);
+    border-radius: 20px;
+    background-color: var(--input-bg-light);
+    color: var(--text-color-light);
+    margin-right: 10px;
+    font-size: 1em;
+    transition: border-color 0.2s ease;
+}
+body.dark-theme #message-input {
+    border-color: var(--border-color-dark);
+    background-color: var(--input-bg-dark);
+    color: var(--text-color-dark);
+}
+#message-input:focus {
+    outline: none;
+    border-color: var(--purple-primary);
+}
+
+#send-button {
+    background-color: var(--purple-primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+#send-button:hover {
+    background-color: var(--purple-darker);
+}
+#send-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+body.dark-theme #send-button:disabled {
+    background-color: #555;
+}
+
+/* Estilos para o botão de anexo */
+.hidden-file-input {
+    display: none;
+}
+.file-button {
+    background-color: var(--link-color-light);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-right: 10px;
+}
+.file-button:hover {
+    background-color: var(--purple-darker);
+}
+.file-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+body.dark-theme .file-button {
+    background-color: var(--link-color-dark);
+}
+body.dark-theme .file-button:disabled {
+    background-color: #555;
+}
+
+/* Botão voltar (para mobile) */
+.back-button {
+    display: none;
+    background: transparent;
+    border: none;
+    font-size: 1.1em;
+    color: var(--link-color-light);
+    cursor: pointer;
+    margin-right: 10px;
+    transition: color 0.2s ease;
+}
+body.dark-theme .back-button {
+    color: var(--link-color-dark);
+}
+.back-button:hover {
+    color: var(--purple-darker);
+}
+
+/* ------------------------------------ */
+/* --- MEDIA QUERIES PARA RESPONSIVIDADE --- */
+/* ------------------------------------ */
+
+/* Em telas maiores, mostra a lista e o chat lado a lado */
+@media (min-width: 993px) {
+    .chat-area {
+        position: relative; /* Desativa o posicionamento absoluto */
+        transform: translateX(0); /* Garante que o chat esteja sempre visível */
+        border-left: 1px solid var(--border-color-light);
+    }
+    body.dark-theme .chat-area {
+        border-left: 1px solid var(--border-color-dark);
+    }
+    .back-button {
+        display: none !important; /* Esconde o botão de voltar no desktop */
+    }
+}
+
+/* Em telas menores (mobile), mostra apenas uma tela por vez */
+@media (max-width: 992px) {
+    .chat-container {
+        flex-direction: column;
+        height: 85vh;
+        overflow: hidden;
+    }
+    .student-list {
+        min-width: 100%;
+        max-width: 100%;
+        flex-basis: 100%;
+        border-right: none;
+    }
+    .chat-area {
+        flex-basis: 100%;
+    }
+    .back-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 1em;
+    }
+    .chat-container[data-mode="list"] .student-list {
+        transform: translateX(0);
+    }
+    .chat-container[data-mode="list"] .chat-area {
+        transform: translateX(100%);
+    }
+    .chat-container[data-mode="chat"] .student-list {
+        transform: translateX(-100%);
+    }
+    .chat-container[data-mode="chat"] .chat-area {
+        transform: translateX(0);
+    }
+}

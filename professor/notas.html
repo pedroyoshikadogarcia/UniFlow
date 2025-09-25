@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Página Principal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style_notas.css" />
+    <link rel="stylesheet" href="global.css" />
+</head>
+<body>
+
+    <!-- Barra lateral -->
+    <div class="sidebar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="img/logopreta2.png" alt="Logotipo" />
+            </a>
+        </div>
+        <a href="turmas.html">
+            <i class="fas fa-book"></i> Turmas
+        </a>
+        <a href="alunos.html">
+            <i class="fas fa-graduation-cap"></i> Alunos
+        </a>
+        <a href="atividades.html">
+            <i class="fas fa-tasks"></i> Atividades
+        </a>
+        <a href="notas.html">
+            <i class="fas fa-clipboard-list"></i> Notas
+        </a>
+        <a href="chamada.html">
+            <i class="fas fa-user-check"></i> Chamada
+        </a>
+        <a href="calendario.html">
+            <i class="fas fa-calendar-alt"></i> Calendário
+        </a>
+        <a href="mensagem.html">
+            <i class="fas fa-envelope"></i> Mensagens
+        </a>
+        <a href="config.html">
+            <i class="fas fa-cog"></i> Configurações
+        </a>
+    </div>
+
+    <!-- Principal -->
+    <div class="content">
+        <!-- Barra superior com icons -->
+        <div class="top-nav">
+            <button id="theme-toggle" class="theme-button">
+                <i class="fas fa-sun"></i>
+            </button>
+            <div class="right-items">
+                <a href="#" class="notification-link">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                </a>
+               <div class="user-info">
+                    <a href="perfil.html" class="user-profile-link">
+                        <img src="img/Usuario1.jpg" alt="Foto do Professor" />
+                        <span>Nome do Professor</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cabeçalho -->
+        <div class="dashboard-header">
+            <h1>Lançamento de Notas</h1>
+            <p>Data: 30/04/2025</p>
+        </div>
+
+        <!-- lançamento e edição das notas dos alunos -->
+        <div class="notes-section">
+            <h2>Lançamento de Notas</h2>
+
+            <!-- Tabela contendo os alunos, suas notas, observações e status -->
+            <div class="notes-table-container">
+                <div class="notes-table-header">
+                    <div class="header-item">MATRÍCULA</div>
+                    <div class="header-item">NOME DO ALUNO</div>
+                    <div class="header-item">NOTA</div>
+                    <div class="header-item">OBSERVAÇÕES</div>
+                    <div class="header-item">STATUS</div>
+                    <div class="header-item">SALVAR</div>
+                </div>
+
+                <!-- Linhas da tabela com dados de cada aluno -->
+                <div class="notes-table-body">
+                    <div class="notes-row" data-matricula="ADS2024001">
+                        <div class="row-item">ADS2024001</div>
+                        <div class="row-item">Carolina Costa Silva</div>
+                        <div class="row-item"><input type="number" step="0.1" min="0" max="10" value="7.5" class="note-input"></div>
+                        <div class="row-item"><textarea class="observations-input" placeholder="Observações..."></textarea></div>
+                        <div class="row-item"><span class="status approved">APROVADO</span></div>
+                        <div class="row-item action-buttons-group">
+                            <button class="action-button save-individual-button"><i class="fas fa-floppy-disk"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="notes-row" data-matricula="ADS2024002">
+                        <div class="row-item">ADS2024002</div>
+                        <div class="row-item">Bruno Santos Oliveira</div>
+                        <div class="row-item"><input type="number" step="0.1" min="0" max="10" value="6" class="note-input"></div>
+                        <div class="row-item"><textarea class="observations-input" placeholder="Observações..."></textarea></div>
+                        <div class="row-item"><span class="status recovery">RECUPERAÇÃO</span></div>
+                        <div class="row-item action-buttons-group">
+                            <button class="action-button save-individual-button"><i class="fas fa-floppy-disk"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="notes-row" data-matricula="ADS2024003">
+                        <div class="row-item">ADS2024003</div>
+                        <div class="row-item">Carlos Eduardo Costa</div>
+                        <div class="row-item"><input type="number" step="0.1" min="0" max="10" value="7" class="note-input"></div>
+                        <div class="row-item"><textarea class="observations-input" placeholder="Observações..."></textarea></div>
+                        <div class="row-item"><span class="status approved">APROVADO</span></div>
+                        <div class="row-item action-buttons-group">
+                            <button class="action-button save-individual-button"><i class="fas fa-floppy-disk"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="notes-row" data-matricula="ADS2024004">
+                        <div class="row-item">ADS2024004</div>
+                        <div class="row-item">Daniela Ferreira Lima</div>
+                        <div class="row-item"><input type="number" step="0.1" min="0" max="10" value="9.3" class="note-input"></div>
+                        <div class="row-item"><textarea class="observations-input" placeholder="Observações..."></textarea></div>
+                        <div class="row-item"><span class="status approved">APROVADO</span></div>
+                        <div class="row-item action-buttons-group">
+                            <button class="action-button save-individual-button"><i class="fas fa-floppy-disk"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="notes-row" data-matricula="ADS2024005">
+                        <div class="row-item">ADS2024005</div>
+                        <div class="row-item">Eduardo Henrique Souza</div>
+                        <div class="row-item"><input type="number" step="0.1" min="0" max="10" value="0.7" class="note-input"></div>
+                        <div class="row-item"><textarea class="observations-input" placeholder="Observações..."></textarea></div>
+                        <div class="row-item"><span class="status disapproved">REPROVADO</span></div>
+                        <div class="row-item action-buttons-group">
+                            <button class="action-button save-individual-button"><i class="fas fa-floppy-disk"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botões para salvar todas as notas ou exportá-las -->
+            <div class="notes-actions">
+                <button class="save-button"><i class="fas fa-save"></i> Salvar Notas</button>
+                <button class="export-button"><i class="fas fa-download"></i> Exportar Notas</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!--link js-->
+    <script src="main.js"></script>
+
+</body>
+</html>

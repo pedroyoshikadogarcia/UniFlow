@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Configurações - Seu Site Acadêmico</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    
+    <link rel="stylesheet" href="style_config.css" />
+
+</head>
+<body>
+    <!--SIDEBAR-->
+    <div class="sidebar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="img/logopreta2.png" alt="Logotipo" />
+            </a>
+        </div>
+        <a href="turmas.html">
+            <i class="fas fa-book"></i> Turmas
+        </a>
+        <a href="alunos.html">
+            <i class="fas fa-graduation-cap"></i> Alunos
+        </a>
+        <a href="atividades.html">
+            <i class="fas fa-tasks"></i> Atividades
+        </a>
+        <a href="notas.html">
+            <i class="fas fa-clipboard-list"></i> Notas
+        </a>
+        <a href="chamada.html">
+            <i class="fas fa-user-check"></i> Chamada
+        </a>
+        <a href="calendario.html">
+            <i class="fas fa-calendar-alt"></i> Calendário
+        </a>
+        <a href="mensagem.html">
+            <i class="fas fa-envelope"></i> Mensagens
+        </a>
+        <a href="config.html">
+            <i class="fas fa-cog"></i> Configurações
+        </a>
+    </div>
+
+    <!--NAVBAR PARTE DE CIMA-->
+    <div class="content">
+        
+        <div class="top-nav">
+            <button id="theme-toggle" class="theme-button">
+                <i class="fas fa-sun"></i>
+            </button>
+            <div class="right-items">
+                <a href="#" class="notification-link">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                </a>
+                <div class="user-info">
+                    <img src="img/Usuario1.jpg" alt="Foto do Professor" />
+                    <a href="perfil.html" class="user-profile-link">
+                        <span>Nome do Professor</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!--PARTE PADRAOZINHA INICIAL-->
+        <div class="dashboard-header">
+            <h1>Configurações</h1>
+            <p>Gerencie as preferências e opções do seu site acadêmico.</p>
+        </div>
+
+        <!--COMEÇAM OS CARDS-->
+        <div class="config-container">
+            <div class="settings-list">
+                <div class="setting-item" data-modal-id="appearance-modal">
+                    <i class="fas fa-palette"></i>
+                    <h3>Aparência</h3>
+                    <p>Altere o tema, tamanho da fonte e esquema de cores.</p>
+                </div>
+
+                <div class="setting-item" data-modal-id="notifications-modal">
+                    <i class="fas fa-bell"></i>
+                    <h3>Notificações</h3>
+                    <p>Configure alertas e avisos do sistema.</p>
+                </div>
+
+                <div class="setting-item" data-modal-id="privacy-modal">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>Privacidade e Segurança</h3>
+                    <p>Gerencie suas informações e segurança da conta.</p>
+                </div>
+
+                <div class="setting-item" data-modal-id="language-modal">
+                    <i class="fas fa-language"></i>
+                    <h3>Idioma</h3>
+                    <p>Defina o idioma de exibição do site.</p>
+                </div>
+
+                <div class="setting-item" data-modal-id="accessibility-modal">
+                    <i class="fas fa-universal-access"></i>
+                    <h3>Acessibilidade</h3>
+                    <p>Ajustes para melhor navegação e uso.</p>
+                </div>
+
+                <div class="setting-item" data-modal-id="about-modal">
+                    <i class="fas fa-info-circle"></i>
+                    <h3>Sobre</h3>
+                    <p>Informações sobre a versão e termos de uso.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--COISAS DENTRO DOS CARDS DENTROOO!-->
+
+    <!--CARD APARENCIA-->
+    <div id="modal-overlay"></div>
+    
+    <div class="modal" id="appearance-modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="card-header">
+                <h2><i class="fas fa-palette"></i> Aparência</h2>
+            </div>
+            <div class="card-body">
+                <div class="card-section">
+                    <h4>Tema</h4>
+                    <div class="theme-options">
+                        <button id="light-mode-btn" class="theme-btn active-theme">
+                            <i class="fas fa-sun"></i> Claro
+                        </button>
+                        <button id="dark-mode-btn" class="theme-btn">
+                            <i class="fas fa-moon"></i> Escuro
+                        </button>
+                    </div>
+                </div>
+                <div class="card-section">
+                    <h4>Tamanho da Fonte</h4>
+                    <select id="font-size-selector">
+                        <option value="small">Pequeno</option>
+                        <option value="medium" selected>Médio</option>
+                        <option value="large">Grande</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--CARD NOTIFICAÇÕES-->
+    <div class="modal" id="notifications-modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="card-header">
+                <h2><i class="fas fa-bell"></i> Notificações</h2>
+            </div>
+            <div class="card-body">
+                <p>Aqui você pode gerenciar suas preferências de notificação.</p>
+            </div>
+        </div>
+    </div>
+
+    <!--PRIVACIDADE E SEGURANÇA-->
+    <div class="modal" id="privacy-modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="card-header">
+                <h2><i class="fas fa-user-shield"></i> Privacidade e Segurança</h2>
+            </div>
+            <div class="card-body">
+                <p>Controle suas informações e a segurança da conta.</p>
+                <button id="change-password-btn" class="action-btn">Alterar Senha</button>
+                <button id="delete-account-btn" class="action-btn danger-btn">Excluir Conta</button>
+            </div>
+        </div>
+    </div>
+
+    <!--IDIOMA *DETALHE: N SEI COMO MUDA O IDIOMA-->
+    <div class="modal" id="language-modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="card-header">
+                <h2><i class="fas fa-language"></i> Idioma</h2>
+            </div>
+            <div class="card-body">
+                <h4>Selecione seu idioma</h4>
+                <select id="language-selector">
+                    <option value="pt-br" selected>Português (Brasil)</option>
+                    <option value="en-us">English (EUA)</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!--ACESSIBILIDADE-->
+    <div class="modal" id="accessibility-modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="card-header">
+                <h2><i class="fas fa-universal-access"></i> Acessibilidade</h2>
+            </div>
+            
+            <!--ATO CONTRASTE SI OU NO-->
+               <!--<div class="card-body">
+                <div class="card-section toggle-option">
+                    <label for="high-contrast">Alto Contraste</label>
+                    <input type="checkbox" id="high-contrast">
+                </div>--> 
+
+                <div class="card-section toggle-option">
+                    <label for="disable-animations">Desativar Animações</label>
+                    <input type="checkbox" id="disable-animations">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--SOBRE KKJKJKJ-->
+    <div class="modal" id="about-modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="card-header">
+                <h2><i class="fas fa-info-circle"></i> Sobre</h2>
+            </div>
+            <div class="card-body">
+                <p>Versão do Sistema: 1.0.0</p>
+                <p>Esta plataforma acadêmica foi desenvolvida para...</p>
+            </div>
+        </div>
+    </div>
+
+    <!--AQUI É A PARTE TAMBÉM DE PRIVACIDADE E SEGURANÇA MAS É A PARTE DE MUDAR SENHA-->
+    <div id="changePasswordModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h4>Alterar Senha</h4>
+            <div class="form-group">
+                <label for="current-password">Senha Atual</label>
+                <input type="password" id="current-password" placeholder="Digite sua senha atual">
+            </div>
+            <div class="form-group">
+                <label for="new-password">Nova Senha</label>
+                <input type="password" id="new-password" placeholder="Digite a nova senha">
+            </div>
+            <div class="form-group">
+                <label for="confirm-new-password">Confirmar Nova Senha</label>
+                <input type="password" id="confirm-new-password" placeholder="Confirme a nova senha">
+            </div>
+            <div id="password-message" class="message-text hidden"></div>
+            <button id="save-password-btn" class="primary-btn">Salvar</button>
+        </div>
+    </div>
+    
+    <!--TAMBÉM DE PRIVACIDADE E SEGURANÇA PARTE DE EXCLUIR CONTA-->
+    <div id="confirmDeleteAccountModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h4>Confirmar Exclusão de Conta</h4>
+            <p>Tem certeza que deseja excluir sua conta? Esta ação não pode ser desfeita.</p>
+            <div class="modal-actions">
+                <button id="cancel-delete-btn" class="action-btn">Cancelar</button>
+                <button id="confirm-delete-btn" class="action-btn danger-btn">Excluir</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+
+</body>
+</html>

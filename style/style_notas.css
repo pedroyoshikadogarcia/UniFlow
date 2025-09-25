@@ -1,0 +1,445 @@
+/* style.disciplinas.css */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f6f8; /* Fundo claro padrão */
+    color: #333; /* Cor do texto padrão */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme {
+    background-color: #333; /* Fundo escuro */
+    color: #eee; /* Cor do texto padrão no tema escuro */
+}
+
+.sidebar .logo {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar .logo img {
+    max-width: 160px;
+    height: auto;
+    display: block;
+}
+
+.sidebar {
+    background-color: #ffffff; /* Fundo branco padrão */
+    width: 200px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* MODIFICAÇÃO: Fundo cinza meio escuro na sidebar SOMENTE no tema escuro */
+body.dark-theme .sidebar {
+    background-color: #444; /* Cinza meio escuro */
+    color: #eee;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    text-decoration: none;
+    color: #333; /* Cor do link padrão */
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+body.dark-theme .sidebar a {
+    color: #eee; /* Cor do link no tema escuro */
+}
+
+.sidebar a.active {
+    background-color: #4956ca;
+    color: white;
+}
+
+.sidebar a:hover {
+    transform: translateX(5px);
+    background-color: #cfe0f0;
+    color: white;
+}
+
+body.dark-theme .sidebar a:hover {
+    background-color: DarkSlateBlue;
+    color: white;
+}
+
+.sidebar a i {
+    display: none; /* Esconde os ícones da sidebar */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    color: #4956ca;
+    transition: color 0.3s ease;
+}
+
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme .content {
+    background-color: #000; /* Fundo escuro */
+}
+
+.top-nav {
+    background-color: white; /* Fundo branco padrão */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
+}
+
+/* MODIFICAÇÃO: Fundo cinza meio escuro no top-nav SOMENTE no tema escuro */
+body.dark-theme .top-nav {
+    background-color: #444; /* Cinza meio escuro */
+}
+
+.right-items {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-info span {
+    font-weight: bold;
+    color: #333; /* Cor do texto padrão */
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .user-info span {
+    color: #eee; /* Cor do texto no tema escuro */
+}
+
+.notification-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.notifications {
+    cursor: pointer;
+}
+
+.notifications i {
+    font-size: 22px;
+    color: #555; /* Cor do ícone padrão */
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .notifications i {
+    color: #eee; /* Cor do ícone no tema escuro */
+}
+
+.dashboard-header {
+    margin-bottom: 25px;
+}
+
+.dashboard-header h1 {
+    color: #333; /* Cor do texto padrão */
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .dashboard-header h1 {
+    color: #eee; /* Cor do texto no tema escuro */
+}
+
+.dashboard-header p {
+    color: #777; /* Cor do texto padrão */
+    font-size: 0.9em;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .dashboard-header p {
+    color: #ccc; /* Cor do texto no tema escuro */
+}
+
+.dashboard-cards {
+    display: flex; /* Flexbox para alinhar os cards */
+    flex-wrap: wrap; /* Permite que os cards quebrem para a linha de baixo quando necessário */
+    gap: 20px; /* Espaçamento entre os cards */
+    margin-bottom: 30px;
+    justify-content: flex-start; /* Alinha os cards à esquerda */
+    flex-direction: column;
+    align-items: flex-start;
+     
+}
+
+
+
+.dashboard-cards .card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border-left: 5px solid #4956ca;
+    transition: transform 0.3s ease-in-out;
+    width: calc(25% - 10000px); /* 4 cards por linha (25% da largura cada) */
+    min-width: 250px; /* Evita que o card fique muito pequeno em telas menores */
+}
+
+
+body.dark-theme .dashboard-cards .card {
+    background-color: #444; /* Cinza meio escuro */
+    color: #eee;
+}
+
+.dashboard-cards .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-cards .card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%; /* Garante que a informação ocupe a largura total */
+}
+
+.dashboard-cards .card-info span {
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .dashboard-cards .card-info span {
+    color: #eee;
+}
+
+.dashboard-cards .card-info p {
+    font-size: 0.9em;
+    color: #666;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .dashboard-cards .card-info p {
+    color: #ccc;
+}
+
+.dashboard-cards .card-info p i {
+    color: #777;
+    font-size: 0.9em;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .dashboard-cards .card-info p i {
+    color: #eee;
+}
+
+.dashboard-cards .card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    border-radius: 8px; /* Garante que o link ocupe o mesmo formato do card */
+    height: 100%; /* Faz o link ocupar toda a altura do card */
+    width: 100%; /* Faz o link ocupar toda a largura do card */
+}
+
+.dashboard-cards .card > .card-info > * {
+    pointer-events: none; /* Evita que os elementos internos capturem eventos de clique */
+}
+
+.dashboard-cards .card > .card-info {
+    pointer-events: none;
+}
+
+.dashboard-cards .card > * {
+    pointer-events: none;
+}
+
+.dashboard-cards a.card-link {
+    display: flex;
+    flex-direction: column; /* Garante que o conteúdo interno do link seja coluna */
+    height: auto; /* Remove a altura forçada para se ajustar ao conteúdo */
+}
+
+.dashboard-cards a.card-link > div.card {
+    flex-grow: 1; /* Faz o div.card crescer para preencher o link */
+    display: flex;
+    flex-direction: column; /* Garante que o conteúdo do card seja coluna */
+}
+
+.dashboard-cards a.card-link > div.card > div.card-info {
+    flex-grow: 1; /* Faz o div.card-info crescer para preencher o card */
+}
+
+.dashboard-cards .card .card-info > span {
+    /* Estilos para o título da disciplina */
+    display: block; /* Garante que o span ocupe a linha inteira */
+    margin-bottom: 5px; /* Espaçamento abaixo do título */
+}
+
+.dashboard-cards .card .card-info > p {
+    /* Estilos para as informações detalhadas */
+    display: flex; /* Alinha ícone e texto */
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 3px; /* Menos espaço entre as linhas de informação */
+}
+
+.dashboard-cards .card .card-info > p i {
+    /* Estilos para os ícones dentro das informações */
+    margin-right: 2px; /* Pequeno espaço à direita do ícone */
+}
+
+.next-activities h2 {
+    color: #333; /* Cor do texto padrão */
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .next-activities h2 {
+    color: #eee; /* Cor do texto no tema escuro */
+}
+
+.activity-item {
+    background-color: white; /* Fundo branco padrão */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* MODIFICAÇÃO: Fundo cinza meio escuro nos itens de atividade SOMENTE no tema escuro */
+body.dark-theme .next-activities .activity-item {
+    background-color: #444; /* Cinza meio escuro */
+    color: #eee;
+}
+
+.activity-icon {
+    background-color: #f0f0f0;
+    color: #777; /* Cor do ícone padrão */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme .next-activities .activity-icon {
+    background-color: #555; /* Um pouco mais escuro para diferenciar */
+    color: #eee; /* Ícone branco */
+}
+
+.activity-details h3 {
+    color: #333; /* Cor do texto padrão */
+    font-size: 1em;
+    margin-bottom: 3px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .next-activities .activity-details h3 {
+    color: #eee; /* Cor do texto no tema escuro */
+}
+
+.activity-details p {
+    color: #777; /* Cor do texto padrão */
+    font-size: 0.85em;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .next-activities .activity-details p {
+    color: #ccc; /* Um tom de cinza mais claro para detalhes */
+}
+
+.activity-date {
+    color: #555; /* Cor do texto padrão */
+    font-size: 0.9em;
+    margin-left: auto;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .next-activities .activity-date {
+    color: #eee; /* Cor do texto no tema escuro */
+}
+
+.activity-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+    position: relative;
+}
+
+.activity-item > * {
+    pointer-events: none;
+}
+
+.theme-button {
+    background: none;
+    color: #555; /* Cor do ícone padrão */
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+    margin-right: 20px;
+    outline: none;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .theme-button {
+    color: #eee; /* Cor do ícone no tema escuro */
+}
+
+.theme-button:hover {
+    color: #333;
+}
+
+body.dark-theme .theme-button:hover {
+    color: #ccc;
+}
+.card-details a{
+    text-decoration: none;
+    color: inherit;
+}

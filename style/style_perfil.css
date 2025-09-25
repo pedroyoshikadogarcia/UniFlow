@@ -1,0 +1,487 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f6f8;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-theme {
+    background-color: #333;
+    color: #eee;
+}
+
+.dark-theme .sidebar {
+    background-color: #444;
+    color: #eee;
+}
+
+.dark-theme .sidebar a {
+    color: #eee;
+}
+
+.dark-theme .sidebar a:hover {
+    background-color: DarkSlateBlue;
+    color: white;
+}
+
+.dark-theme .top-nav {
+    background-color: #444;
+}
+
+.dark-theme .top-nav .theme-button {
+    color: #eee;
+}
+
+.dark-theme .top-nav .notifications i,
+.dark-theme .top-nav .user-info span {
+    color: #eee;
+}
+
+.dark-theme .profile-container {
+    background-color: #000000;
+    
+}
+
+.dark-theme .profile-card {
+    background: linear-gradient(135deg, #4a148c, #2e75b6);
+    color: #eee;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .profile-card h2,
+.dark-theme .profile-card p,
+.dark-theme .profile-card .info-item strong {
+    color: #eee;
+}
+
+.dark-theme .profile-card .info-item strong {
+    opacity: 0.9;
+}
+
+.sidebar {
+    background-color: #ffffff;
+    width: 200px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar .logo {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar .logo img {
+    max-width: 160px;
+    height: auto;
+    display: block;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+}
+
+.sidebar a i {
+    font-size: 18px;
+    color: #4956ca;
+    transition: color 0.3s ease;
+}
+
+.sidebar a:hover {
+    transform: translateX(5px);
+    background-color: #cfe0f0;
+    color: white;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease;
+}
+
+.top-nav {
+    background-color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.right-items {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-info span {
+    font-weight: bold;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.notification-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.notifications {
+    cursor: pointer;
+}
+
+.notifications i {
+    font-size: 22px;
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+.theme-button {
+    background: none;
+    color: #555;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+    margin-right: 20px;
+    outline: none;
+    transition: color 0.3s ease;
+}
+
+.theme-button:hover {
+    color: #333;
+}
+
+.profile-container {
+    display: flex;
+   
+    align-items: center;
+    flex-grow: 1;
+    padding: 20px;
+    transition: background-color 0.3s ease;
+    max-width: 100%;
+
+    margin-left: 2px;
+}
+
+.profile-card {
+    background: linear-gradient(135deg, #673ab7, #2196f3);
+    color: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    width: 350px;
+    text-align: center;
+    position: relative;
+}
+
+.profile-image-container {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 20px;
+    border: 5px solid rgba(255, 255, 255, 0.5);
+}
+
+
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.profile-image-top img {
+    width: 100px; 
+    height: auto; 
+    border-radius: 50%; 
+    object-fit: cover;  
+    
+}
+
+.profile-card h2 {
+    margin-bottom: 10px;
+    font-size: 2em;
+    font-weight: bold;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.profile-card p {
+    margin-bottom: 8px;
+    font-size: 1em;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.profile-card .info-item {
+    margin-bottom: 15px;
+    text-align: left;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.profile-card .info-item strong {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.profile-name-top h2 {
+    color: #333; /* Cor padrão para o nome */
+    transition: color 0.3s ease;
+}
+
+.profile-name-top p {
+    color: #555; /* Cor padrão para o email */
+    transition: color 0.3s ease;
+}
+
+.profile-actions button {
+    margin-right: 2px;
+  padding: 6px 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+    
+}
+.profile-actions button:last-child{
+    margin-right: 0;
+}
+    .profile-actions button i{
+        margin-right: 2px;
+    }
+
+.academic-info h3 {
+    color: #333; /* Cor padrão para o título de informações acadêmicas */
+    transition: color 0.3s ease;
+    width: 20px;
+}
+
+.academic-info p {
+    color: #555; /* Cor padrão para os detalhes acadêmicos */
+    transition: color 0.3s ease;
+}
+
+.academic-info p strong {
+    color: #333; /* Cor padrão para o texto em negrito */
+    transition: color 0.3s ease;
+}
+
+.academic-info p .status {
+    color: rgb(255, 255, 255); /* Cor padrão para o status */
+    transition: color 0.3s ease;
+}
+
+.quick-access h3 {
+    color: #333; /* Cor padrão para o título de acesso rápido */
+    transition: color 0.3s ease;
+}
+
+
+
+/* Estilos para os textos do perfil (HTML fornecido) no tema escuro */
+body.dark-theme .profile-name-top h2 {
+    color: #eee; /* Cor no tema escuro para o nome */
+}
+
+body.dark-theme .profile-name-top p {
+    color: #ccc; /* Cor no tema escuro para o email */
+}
+
+body.dark-theme .profile-actions button {
+    color: #eee; /* Cor no tema escuro para os botões de ação */
+    
+}
+
+
+body.dark-theme .academic-info h3 {
+    color: #eee; /* Cor no tema escuro para o título de informações acadêmicas */
+}
+
+body.dark-theme .academic-info p {
+    color: #ccc; /* Cor no tema escuro para os detalhes acadêmicos */
+}
+
+body.dark-theme .academic-info p strong {
+    color: #eee; /* Cor no tema escuro para o texto em negrito */
+}
+
+body.dark-theme .academic-info p .status {
+    color: lightgreen; /* Cor no tema escuro para o status */
+}
+
+body.dark-theme .quick-access h3 {
+    color: #eee; /* Cor no tema escuro para o título de acesso rápido */
+}
+
+body.dark-theme .quick-access-buttons a {
+    color: #eee; /* Cor no tema escuro para os links de acesso rápido */
+    text-decoration: none;
+}
+
+
+ .student-profile {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+  margin-left: -5px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5px;
+}
+
+.profile-picture {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid #d00;
+  margin-right: 1rem;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.student-name {
+  margin: 0;
+  font-size: 22px;
+}
+
+.student-email {
+  margin: 1px;
+  color: gray;
+  font-size: 14px;
+}
+
+.profile-actions {
+  margin-top: 8px;
+  display: flex;
+  justify-content: flex-end;
+ 
+}
+
+.edit-button,
+.settings-button {
+  margin-right: 2px;
+  padding: 6px 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.edit-button {
+  background-color: #1276db;
+  color: white;
+}
+
+.settings-button {
+  background-color: #e0e0e0;
+}
+
+.academic-info {
+  margin-top: 1px;
+  border-top: 1px solid #ccc;
+  padding-top: 6px;
+  font-size: 0.95rem;
+}
+
+.academic-info h3{
+    white-space: nowrap;
+}
+
+.status.ativo {
+  background-color: #4caf50;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.quick-access {
+  margin-top: 1px;
+}
+
+.quick-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 0.5px;
+}
+
+.quick-buttons i{
+    color: #2e75b6;
+}
+
+.quick-buttons button {
+  padding: 12px;
+  font-size: 20px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  height: 55px;
+  background-color: #673ab7;
+}
+
+
+body.dark-theme .student-profile {
+    background-color: #444;
+    color: #eee;
+    box-shadow: rgba 0 4px 8px (0, 0, 0, 0.2);
+}

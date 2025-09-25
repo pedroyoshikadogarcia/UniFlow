@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mensagens - Professor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style_mensagem.css" />
+    <link rel="stylesheet" href="global.css" />
+</head>
+<body>
+
+    <!--SIDEBAR-->
+    <div class="sidebar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="img/logopreta2.png" alt="Logotipo" />
+            </a>
+        </div>
+        <a href="turmas.html">
+            <i class="fas fa-book"></i> Turmas
+        </a>
+        <a href="alunos.html">
+            <i class="fas fa-graduation-cap"></i> Alunos
+        </a>
+        <a href="atividades.html">
+            <i class="fas fa-tasks"></i> Atividades
+        </a>
+        <a href="notas.html">
+            <i class="fas fa-clipboard-list"></i> Notas
+        </a>
+        <a href="chamada.html">
+            <i class="fas fa-user-check"></i> Chamada
+        </a>
+        <a href="calendario.html">
+            <i class="fas fa-calendar-alt"></i> Calendário
+        </a>
+        <a href="mensagem.html"> <i class="fas fa-envelope"></i> Mensagens
+        </a>
+        <a href="config.html">
+            <i class="fas fa-cog"></i> Configurações
+        </a>
+    </div>
+
+    <!--TOPBAR-->
+    <div class="content">
+        <div class="top-nav">
+            <button id="theme-toggle" class="theme-button">
+                <i class="fas fa-sun"></i>
+            </button>
+            <div class="right-items">
+                <a href="#" class="notification-link">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                </a>
+                <div class="user-info">
+                    <a href="perfil.html" class="user-profile-link">
+                        <img src="img/Usuario1.jpg" alt="Foto do Professor" />
+                        <span>Nome do Professor</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!--INCIAL-->
+        <div class="dashboard-header">
+            <h1>Mensagens</h1>
+            <p>Data: <span id="current-date-display"></span></p>
+        </div>
+
+
+        <!--AQUI COMEÇA O CHAT, JA COM ALGUNS ALUNOS E MENSAGENS-->
+        <div class="chat-container" data-mode="list">
+            
+            <aside class="student-list">
+                <h3>Alunos</h3>
+                <div class="student-item" data-student-id="1">
+                    <img src="img/aluno2.jpg" alt="João Silva" class="student-photo">
+                    <div class="student-info">
+                        <span class="student-name">João Silva</span>
+                        <p class="student-last-msg">Olá, professor! Tenho uma dúvida...</p>
+                    </div>
+                </div>
+                <div class="student-item" data-student-id="2">
+                    <img src="img/aluno3.jpg" alt="Maria Santos" class="student-photo">
+                    <div class="student-info">
+                        <span class="student-name">Maria Santos</span>
+                        <p class="student-last-msg">Gostaria de saber minha nota...</p>
+                    </div>
+                </div>
+                <div class="student-item" data-student-id="3">
+                    <img src="img/aluno4.jpg" alt="Carlos Pereira" class="student-photo">
+                    <div class="student-info">
+                        <span class="student-name">Carlos Pereira</span>
+                        <p class="student-last-msg">Posso entregar o trabalho...</p>
+                    </div>
+                </div>
+                <div class="student-item" data-student-id="4">
+                    <img src="img/aluno5.jpg" alt="Ana Costa" class="student-photo">
+                    <div class="student-info">
+                        <span class="student-name">Ana Costa</span>
+                        <p class="student-last-msg">Quando será a recuperação...</p>
+                    </div>
+                </div>
+            </aside>
+
+            <!--AREA PRA MANDAR MENSAGEM-->
+            <div class="chat-area">
+                <div class="chat-header">
+                    <button id="back-button" class="back-button">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Lista</span>
+                    </button>
+                    <img id="chat-student-img" src="img/aluno-placeholder.jpg" alt="Foto do Aluno" />
+                    <span id="chat-student-name">Selecione um Aluno</span>
+                </div>
+                
+                <div class="chat-messages" id="chat-messages">
+                    <p class="chat-placeholder">Selecione um aluno para iniciar a conversa.</p>
+                </div>
+
+                <div class="chat-input-area">
+                    <input type="file" id="file-input" class="hidden-file-input" />
+                    <button id="file-button" class="file-button" disabled title="Enviar arquivo">
+                        <i class="fas fa-paperclip"></i>
+                    </button>
+                    <input type="text" id="message-input" placeholder="Digite sua mensagem..." disabled />
+                    <button id="send-button" disabled title="Enviar mensagem">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="mensagem.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

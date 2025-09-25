@@ -1,0 +1,1086 @@
+Html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0; /* Garante que não há padding padrão no body */
+    display: flex;
+    min-height: 100vh; /* Garante que o body ocupe no mínimo 100% da altura da viewport */
+    background-color: #f4f6f8; /* Fundo claro padrão */
+    color: #333; /* Cor do texto padrão */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transição para o tema */
+    width: 100%; /* Garante que o body ocupe 100% da largura do HTML */
+}
+
+/* Tema Escuro */
+body.dark-theme {
+    background-color: #333; /* Fundo escuro */
+    color: #eee; /* Cor do texto padrão no tema escuro */
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: #ffffff; /* Fundo branco padrão */
+    width: 200px; /* Largura fixa da sidebar */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme .sidebar {
+    background-color: #444; /* Cinza meio escuro */
+    color: #eee;
+}
+
+.sidebar .logo {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar .logo img {
+    max-width: 160px; /* Seu limite de largura para o logo */
+    height: auto;
+    display: block;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    text-decoration: none;
+    color: #333; /* Cor do link padrão */
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+}
+
+body.dark-theme .sidebar a {
+    color: #eee; /* Cor do link no tema escuro */
+}
+
+.sidebar a.active {
+    background-color: #4956ca;
+    color: white;
+}
+
+.sidebar a:hover {
+    transform: translateX(5px);
+    background-color: #cfe0f0;
+    color: white;
+}
+
+body.dark-theme .sidebar a:hover {
+    background-color: DarkSlateBlue;
+    color: white;
+}
+
+.sidebar a i {
+    font-size: 18px;
+    color: #4956ca;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .sidebar a i {
+    color: #eee;
+}
+
+/*Conteúdo Principal */
+.content {
+    flex-grow: 1; /* Permite que o conteúdo ocupe o espaço restante */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme .content {
+    background-color: #000;
+}
+
+
+.top-nav {
+    background-color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme .top-nav {
+    background-color: #444;
+}
+
+.right-items {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-info span {
+    font-weight: bold;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .user-info span {
+    color: #eee;
+}
+
+.notification-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.notifications {
+    cursor: pointer;
+}
+
+.notifications i {
+    font-size: 22px;
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .notifications i {
+    color: #eee;
+}
+
+
+/* Botão de Tema */
+.theme-button {
+    background: none;
+    color: #555;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+    margin-right: 20px;
+    outline: none;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .theme-button {
+    color: #eee;
+}
+
+.theme-button:hover {
+    color: #333;
+}
+
+body.dark-theme .theme-button:hover {
+    color: #ccc;
+}
+
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme p,
+body.dark-theme span {
+    color: #eee;
+}
+
+body.dark-theme i {
+    color: #eee;
+}
+
+
+.aula-box {
+    display: flex;
+    width: 95%;
+    height: 30%;
+    padding: 15px;
+    margin-top: 10px;
+    margin-left: 10px;
+   border-radius: 20px;
+    background-color: #ffffff;
+    transition: background-color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .aula-box {
+    background-color: #444; /* Cor para dark theme */
+}
+
+.info-aula{
+    display: flex;
+    margin-left: auto;
+    flex-direction: column;
+    padding: 5px;
+    gap: 30px;
+}
+
+.info-item{
+    display: flex;
+    margin-left: auto;
+    justify-content: flex-end;
+
+}
+
+.selecao-info{
+    display: flex;
+    flex-direction: row;
+    gap: 50px; /* Reduzi o gap para as abas */
+    margin-left: 200px; /* Margem da esquerda para não colar na sidebar */
+    margin-top: 20px;
+    font-size: 20px ;
+    font-weight: 600;
+    color: #555; /* Cor padrão para os spans */
+    font-family: 'Roboto', sans-serif;
+    padding-bottom: 10px; /* Espaçamento abaixo para a borda */
+}
+
+body.dark-theme .selecao-info {
+    color: #bbb; /* Cor dos spans no tema escuro */
+    border-bottom-color: #666; /* Cor da linha no tema escuro */
+}
+
+.selecao-info span {
+    padding: 8px 15px; /* Adiciona padding para parecer mais um botão/aba */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
+}
+
+/* Estilo para a aba ativa - ADICIONADO/AJUSTADO */
+.selecao-info span.active-tab {
+    color: #4956ca; /* Cor do texto para a aba ativa */
+    border-bottom: 3px solid #4956ca; /* Linha abaixo da aba ativa */
+    padding-bottom: 7px; /* Ajusta o padding para a linha não ficar colada */
+}
+
+body.dark-theme .selecao-info span.active-tab {
+    color: #8a97e9; /* Cor do texto no tema escuro */
+    border-bottom-color: #8a97e9; /* Cor da linha no tema escuro */
+}
+
+
+.box-modulo{
+    display: flex;
+    margin-left: 14%;
+    margin-top: 2%;
+    background-color: #8a97e9;
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .box-modulo {
+    background-color: #7d8ffc; /* Cor para dark theme */
+}
+
+.geral-info{
+    display: flex;
+    flex-direction: row;
+
+
+}
+
+.geral-modulo{
+    display: flex;
+    margin-left: 18%;
+    margin-top: 2%;
+    justify-content: center;
+    flex-direction: column;
+    color: #f8f9fa;
+    gap: 2px;
+}
+.geral-modulo i{
+    font-size: 50px;
+    margin-left: 15%;
+}
+ .num{
+     margin-left: 45%;
+     font-size: 20px;
+}
+
+.text{
+    font-size: 20px;
+    margin-left: 7%;
+}
+
+
+.box-certificacoes{
+    display: flex;
+    background-color: #509667;
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .box-certificacoes {
+    background-color: #4CAF50; /* Cor para dark theme, ajuste se quiser mais escuro */
+}
+
+.geral-certificacoes{
+    display: flex;
+    margin-left: 18%;
+    margin-top: 2%;
+    justify-content: center;
+    flex-direction: column;
+    color: #f8f9fa;
+    gap: 2px;
+
+}
+
+.geral-certificacoes i{
+    font-size: 50px;
+    margin-left: 19%;
+
+}
+
+.num-certi{
+    margin-left: 32%;
+     font-size: 20px;
+
+}
+
+.text-certi{
+     font-size: 20px;
+     margin-left: -2%;
+}
+
+.box-alunos{
+    display: flex;
+    background-color: #ca83c1;
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .box-alunos {
+    background-color: #9C27B0; /* Cor para dark theme, ajuste se quiser mais escuro */
+}
+
+.geral-alunos{
+    display: flex;
+    margin-left: 18%;
+    margin-top: 2%;
+    justify-content: center;
+    flex-direction: column;
+    color: #faf8f9;
+    gap: 2px;
+}
+
+.geral-alunos i{
+    font-size: 50px;
+    margin-left: 19%;
+}
+.num-aluno{
+     margin-left: 47%;
+     font-size: 20px;
+
+}
+
+.text-aluno{
+    font-size: 20px;
+     margin-left: 15%;
+
+}
+
+.info-obj{
+    display: flex;
+    flex-direction: row;
+    gap: 35%;
+    margin-left: 50px;
+    margin-top: 60px;
+
+}
+
+.geral-obj{
+    width: 500px;
+    height: 200px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .geral-obj {
+    background-color: #444; /* Cor para dark theme */
+    color: #eee;
+}
+
+.geral-obj span{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+
+}
+.geral-obj h2{
+    white-space: nowrap;
+    margin-left: 10px;
+    transition: color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .geral-obj h2 {
+    color: #eee;
+}
+
+
+.info-visao{
+    width: 300px;
+    height: 200px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .info-visao {
+    background-color: #444; /* Cor para dark theme */
+    color: #eee;
+}
+
+.info-visao h2{
+    white-space: nowrap;
+    margin-left: 10px;
+    transition: color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .info-visao h2 {
+    color: #eee;
+}
+
+.info-text{
+    display: flex;
+    margin-left: 10px;
+    flex-direction: column;
+    gap: 20px;
+}
+
+body.dark-theme .info-text {
+    color: #ccc;
+}
+
+
+.bs{
+    margin-left: 50%;
+}
+.info-text span{
+    flex-direction: row;
+    gap: 100%;
+}
+
+.atv-prox{
+    width: 95%;
+    height: 400px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    margin-top: 50px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .atv-prox {
+    background-color: #444; /* Cor para dark theme */
+    color: #eee;
+}
+
+.atv-prox h1{
+    font-size: 26px;
+    margin-left: 10px;
+    transition: color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .atv-prox h1 {
+    color: #eee;
+}
+
+.projeto{
+    width: 95%;
+    height: 30%;
+    background-color: #bd7171;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-left: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .projeto {
+    background-color: #8B0000; /* Cor para dark theme, ajuste se quiser mais escuro */
+    color: #eee;
+}
+
+.projeto h2{
+    margin-left: 10px;
+    margin-top: 15px;
+    font-size: 20px;
+    transition: color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .projeto h2 {
+    color: #eee;
+}
+
+.projeto span{
+    font-size: 16px;
+    margin-left: 10px;
+    margin-top: 2px;
+    transition: color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .projeto span {
+    color: #ccc;
+}
+
+.prova{
+    width: 95%;
+    height: 30%;
+    background-color: #795caf;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-left: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .prova {
+    background-color: #4B0082; /* Cor para dark theme, ajuste se quiser mais escuro */
+    color: #eee;
+}
+
+.prova h2{
+    margin-left: 10px;
+    margin-top: 15px;
+    font-size: 20px;
+    transition: color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .prova h2 {
+    color: #eee;
+}
+
+.prova span{
+    font-size: 16px;
+    margin-left: 10px;
+    margin-top: 2px;
+    transition: color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .prova span {
+    color: #ccc;
+}
+
+/* Esconde todo o conteúdo da aba por padrão */
+.tab-content {
+    display: none;
+    padding: 20px 0; /* Adiciona um padding vertical ao conteúdo das abas */
+    margin-left: 10px; /* Alinha com o inicio do box-aula */
+}
+
+/* Mostra apenas o conteúdo da aba ativa */
+.tab-content.active {
+    display: block;
+}
+
+/* Ajustes para o layout do conteudo-geral dentro da nova estrutura */
+.conteudo-abas {
+    flex-grow: 1; /* Permite que o container de abas ocupe o espaço restante */
+    padding: 0 10px; /* Padding horizontal */
+}
+
+/* Cor padrão branca para todos os ícones dentro de .conteudo-abas - ADICIONADO/AJUSTADO */
+.conteudo-abas i {
+    color: #333;
+}
+
+body.dark-theme .conteudo-abas i {
+    color: #eee; /* Uma cor clara para os ícones no tema escuro, se não for branco puro */
+}
+
+
+/* Ajustes para alinhar o geral-info */
+.geral-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around; /* Distribui os itens uniformemente */
+    gap: 20px; /* Espaço entre as caixas de módulos/certificações/alunos */
+    margin-top: 20px;
+    margin-left: 0; /* Remove a margem esquerda anterior */
+    margin-right: 0;
+    width: 100%; /* Garante que ocupe a largura disponível */
+}
+
+.box-modulo, .box-certificacoes, .box-alunos {
+    flex-shrink: 0; /* Não permite que as caixas encolham */
+    width: 150px; /* Largura fixa para as caixas */
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.geral-modulo, .geral-certificacoes, .geral-alunos {
+    margin: 0; /* Remove as margens internas para centralizar */
+    text-align: center; /* Centraliza o texto e ícones */
+}
+
+.geral-modulo i, .geral-certificacoes i, .geral-alunos i {
+    margin-left: 0; /* Remove margens do ícone */
+    /* A cor já será definida pela regra .conteudo-abas i, ou sobrescrita abaixo */
+}
+.num, .num-certi, .num-aluno {
+    margin-left: 0; /* Remove margens dos números */
+}
+.text, .text-certi, .text-aluno {
+    margin-left: 0; /* Remove margens do texto */
+}
+
+
+.info-obj {
+    display: flex;
+    flex-direction: row;
+    gap: 30px; /* Reduz o gap entre os blocos */
+    margin-left: 0;
+    margin-top: 40px;
+    justify-content: space-between; /* Distribui os itens */
+    width: 100%;
+}
+
+.geral-obj, .info-visao {
+    flex: 1; /* Permite que cresçam e ocupem o espaço */
+    padding: 15px; /* Aumenta um pouco o padding interno */
+    box-sizing: border-box; /* Inclui padding na largura */
+}
+
+.geral-obj {
+    margin-right: 15px; /* Espaço entre os dois blocos */
+}
+.info-visao {
+    margin-left: 15px;
+}
+
+
+/* Ajustes para atv-prox */
+.atv-prox {
+    width: calc(100% - 20px); /* Ocupa 100% menos o padding do container pai */
+    margin-left: 10px; /* Alinha com o conteúdo */
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+
+.projeto, .prova {
+
+    width: calc(100% - 20px); /* Ocupa a largura total menos o padding */
+    margin-left: 10px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+
+/* Cores no tema escuro para as novas seções */
+body.dark-theme .geral-obj,
+body.dark-theme .info-visao,
+body.dark-theme .atv-prox {
+    background-color: #444; /* Fundo escuro para os blocos */
+}
+
+body.dark-theme .selecao-info span {
+    color: #bbb;
+}
+
+
+.modulo1, .modulo2 { /* Aplica a ambos os módulos */
+    background-color: #ffffff;
+    width: 95%;
+    height: 30%;
+    border-radius: 20px; /* Adicionado para consistência */
+    margin-left: 10px; /* Adicionado para consistência */
+    transition: background-color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .modulo1,
+body.dark-theme .modulo2 {
+    background-color: #444; /* Fundo escuro para os módulos */
+}
+
+.modulo-main{
+    display: flex;
+    justify-items: flex-start;
+    flex-direction: row;
+    gap:5px;
+}
+.modulo-main h2{
+    margin-top: 27px;
+    transition: color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .modulo-main h2 {
+    color: #eee;
+}
+
+.modulo-main i{
+    /* Removido color: #509667; pois a cor principal será definida abaixo */
+    margin-top: 28px;
+    margin-left: 10px;
+    font-size: 30px;
+    transition: color 0.3s ease;
+}
+
+/* Ícone de módulo CONCLUÍDO (fa-circle-check) - MANTER VERDE - AJUSTADO */
+.modulo-main i.fa-circle-check {
+    color: #509667; /* Verde original para módulo concluído */
+}
+
+body.dark-theme .modulo-main i.fa-circle-check {
+    color: #90EE90; /* Verde claro no dark theme */
+}
+
+
+.modulo-horario{
+    display: flex;
+    margin-left: 50px;
+    font-weight: 500;
+    transition: color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .modulo-horario {
+    color: #ccc;
+}
+
+.modulo2{
+    margin-top: 20px;
+}
+
+.modulo-main2{
+    display: flex;
+    justify-items: flex-start;
+    flex-direction: row;
+    gap:5px;
+}
+.modulo-main2 h2{
+    margin-top: 27px;
+    transition: color 0.3s ease; /* Adicionado para dark theme */
+}
+body.dark-theme .modulo-main2 h2 {
+    color: #eee;
+}
+
+/* Ícone de módulo NÃO CONCLUÍDO (fa-circle-xmark) - DEFINIR PARA VERMELHO - AJUSTADO */
+.modulo-main2 i.fa-circle-xmark { /* Adicionada a classe específica do ícone */
+    margin-top: 28px;
+    margin-left: 10px;
+    color: red; /* Definido como vermelho */
+    font-size: 30px;
+    border-radius: 50px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .modulo-main2 i.fa-circle-xmark {
+    color: #FF6347; /* Vermelho mais suave no dark theme */
+}
+
+
+.atividade1, .atividade2 { /* Aplica a ambas as atividades */
+    background-color: #ffffff;
+    width: 95%;
+    height: 30%;
+    border-radius: 20px; /* Adicionado para consistência */
+    margin-left: 10px; /* Adicionado para consistência */
+    transition: background-color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .atividade1,
+body.dark-theme .atividade2 {
+    background-color: #444; /* Fundo escuro para as atividades */
+}
+
+.atividade-main{
+    display: flex;
+    justify-items: flex-start;
+    flex-direction: row;
+    gap:5px;
+}
+.atividade-main h2{
+    margin-top: 27px;
+    transition: color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .atividade-main h2 {
+    color: #eee;
+}
+
+.atividade-main i{
+    /* Removido color: #509667; pois a cor principal será definida abaixo */
+    margin-top: 28px;
+    margin-left: 10px;
+    font-size: 30px;
+    transition: color 0.3s ease;
+}
+
+/* Ícone de atividade CONCLUÍDA - MANTER VERDE - AJUSTADO */
+.atividade-main i.fa-file-lines {
+    color: #509667; /* Verde original para atividade concluída */
+}
+
+body.dark-theme .atividade-main i.fa-file-lines {
+    color: #90EE90; /* Cor do ícone no dark theme */
+}
+
+.atividade-data{
+    display: flex;
+    margin-left: 50px;
+    font-weight: 500;
+    overflow-wrap: break-word;
+    transition: color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .atividade-data {
+    color: #ccc;
+}
+
+.atividade2{
+    margin-top: 20px;
+}
+
+.atividade-main2{
+    display: flex;
+    justify-items: flex-start;
+    flex-direction: row;
+    gap:5px;
+}
+.atividade-main2 h2{
+    margin-top: 27px;
+    transition: color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .atividade-main2 h2 {
+    color: #eee;
+}
+
+/* Ícone de atividade PENDENTE - DEFINIR PARA PRETO - AJUSTADO */
+.atividade-main2 i.fa-file-lines { /* Adicionada a classe específica do ícone */
+    margin-top: 28px;
+    margin-left: 10px;
+    color: #000000; /* Definido como preto para atividade pendente */
+    font-size: 30px;
+    border-radius: 50px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .atividade-main2 i.fa-file-lines {
+    color: #ccc; /* Uma cor clara no dark theme */
+}
+
+
+.status-atividade-entregue{
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: -10%;
+    margin-left: 70%;
+    background-color: #509667;
+    vertical-align: middle;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .status-atividade-entregue {
+    background-color: #4CAF50; /* Cor para dark theme */
+    color: #eee;
+}
+
+.status-atividade-pendente{
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15px;
+    color: red;
+    border: 1px  solid red;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: -10%;
+    margin-left: 70%;
+    background-color: #ffffff;
+    vertical-align: middle;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .status-atividade-pendente {
+    background-color: #444; /* Fundo no dark theme */
+    color: #FF6347; /* Vermelho mais suave no dark theme */
+    border-color: #FF6347;
+}
+
+.nota-atividade{
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15px;
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: -17%;
+    margin-left: 90%;
+    vertical-align: middle;
+    transition: color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .nota-atividade {
+    color: #eee;
+}
+
+.detalhes-atividade{
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: -12%;
+    margin-left: 88%;
+    vertical-align: middle;
+    text-decoration: none;
+    background-color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .detalhes-atividade {
+    background-color: #555;
+    color: #eee;
+}
+
+.entregar-atividade{
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: -14%;
+    margin-left: 85%;
+    vertical-align: middle;
+    text-decoration: none;
+    background-color: #4956ca;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .entregar-atividade {
+    background-color: DarkSlateBlue;
+}
+
+#progresso-content {
+    padding: 20px;
+    background-color: #f8f9fa; /* Fundo claro para a seção de progresso */
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-top: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme #progresso-content {
+    background-color: #444; /* Fundo escuro para a seção de progresso no tema escuro */
+    color: #eee;
+}
+
+#progresso-content h2 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    transition: color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme #progresso-content h2 {
+    color: #eee;
+}
+
+/* Estilo para cada item de progresso (a linha completa) */
+.progress-item {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espaçamento entre os elementos da linha */
+    margin-bottom: 20px; /* Espaçamento entre as linhas de progresso */
+    padding: 10px 0;
+}
+
+.progress-item span:first-child { /* O texto como "Progresso geral" */
+    flex-basis: 150px; /* Largura fixa para o texto descritivo */
+    flex-shrink: 0; /* Impede que o texto encolha */
+    font-weight: bold;
+    color: #555;
+    transition: color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .progress-item span:first-child {
+    color: #ccc;
+}
+
+
+/* Estilo para o container da barra de progresso (o fundo cinza) */
+.progress-bar-container {
+    flex-grow: 1; /* Faz com que a barra ocupe o máximo de espaço disponível */
+    height: 10px; /* Altura da barra */
+    background-color: #e0e0e0; /* Cor de fundo da barra vazia */
+    border-radius: 5px; /* Bordas arredondadas */
+    overflow: hidden; /* Garante que o preenchimento não saia das bordas */
+    transition: background-color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .progress-bar-container {
+    background-color: #666; /* Cor de fundo da barra vazia no tema escuro */
+}
+
+/* Estilo para a barra de preenchimento (a parte colorida) */
+.progress-bar-fill {
+    height: 100%; /* Ocupa toda a altura do container */
+    background-color: #8a97e9; /* Cor do preenchimento (seu azul/roxo) */
+    border-radius: 5px; /* Para manter as bordas arredondadas */
+    transition: width 0.5s ease-in-out, background-color 0.3s ease; /* Animação suave ao mudar a largura, adicionado para dark theme */
+}
+
+body.dark-theme .progress-bar-fill {
+    background-color: #7d8ffc; /* Cor do preenchimento no tema escuro */
+}
+
+/* Estilo para o valor/porcentagem no final */
+.progress-value {
+    flex-basis: 50px; /* Largura fixa para o valor */
+    flex-shrink: 0;
+    text-align: right;
+    font-weight: bold;
+    color: #333;
+    transition: color 0.3s ease; /* Adicionado para dark theme */
+}
+
+body.dark-theme .progress-value {
+    color: #eee;
+}

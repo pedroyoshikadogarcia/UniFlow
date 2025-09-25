@@ -1,0 +1,1397 @@
+/*conf da parte normal site*/
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f6f8; /* Fundo claro padrão */
+    color: #333; /* Cor do texto padrão */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 16px; /* Tamanho base, equivalente a 1em. Ajuste se quiser maior ou menor no geral. */
+}
+
+body.dark-theme {
+    background-color: #333; /* Fundo escuro */
+    color: #eee; /* Cor do texto padrão no tema escuro */
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+    background-color: #ffffff; /* Fundo branco padrão */
+    width: 200px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme .sidebar {
+    background-color: #444; /* Cinza meio escuro */
+    color: #eee;
+}
+
+.sidebar .logo {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar .logo img {
+    max-width: 160px;
+    height: auto;
+    display: block;
+}
+
+/* Remover roxo do hover na logotipo do site */
+.sidebar .logo a:hover {
+    background-color: transparent; /* Remove o fundo roxo */
+    color: inherit; /* Mantém a cor original do texto/ícone, se houver */
+    transform: none; /* Remove a translação se existir */
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    text-decoration: none;
+    color: #333; /* Cor do link padrão */
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease; /* Adicionado transform para transição suave do hover */
+    font-size: 0.95em;
+}
+
+body.dark-theme .sidebar a {
+    color: #eee; /* Cor do link no tema escuro */
+}
+
+/* ESTILO ATIVO: Corrigido o hover para o estado ativo */
+.sidebar a.active {
+    background-color: #4956ca;
+    color: white;
+}
+
+/* HOVER: Ajustado para que o hover funcione corretamente com o active */
+.sidebar a:not(.active):hover { /* Aplica hover apenas se não estiver ativo */
+    transform: translateX(5px);
+    background-color: #cfe0f0;
+    color: #333; /* Mudado para uma cor que funcione bem no hover do tema claro */
+}
+
+body.dark-theme .sidebar a:not(.active):hover {
+    background-color: #6d7aff; /* Roxo mais claro para hover no tema escuro */
+    color: white; /* Garante que o texto fique branco */
+    transform: translateX(5px); /* Mantém a translação */
+}
+
+.sidebar a i {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    color: #4956ca; /* Cor roxa original para os ícones */
+    transition: color 0.3s ease;
+}
+
+/* MODIFICAÇÃO: Cor do ícone na sidebar no tema escuro */
+body.dark-theme .sidebar a i {
+    color: #a7b1ff; /* Roxo mais claro para ícones no tema escuro */
+}
+
+/* MODIFICAÇÃO: Cor do ícone quando o link está ativo (tanto claro quanto escuro) */
+.sidebar a.active i {
+    color: white; /* Ícones brancos quando o link está ativo */
+}
+
+/* --- CONTEÚDO PRINCIPAL --- */
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme .content {
+    background-color: #000; /* Fundo escuro */
+}
+
+/* --- NAVEGAÇÃO SUPERIOR (TOP-NAV) --- */
+.top-nav {
+    background-color: white; /* Fundo branco padrão */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme .top-nav {
+    background-color: #444; /* Cinza meio escuro */
+}
+
+.right-items {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Remover sublinhado do link no nome e na foto do professor */
+.user-info a {
+    text-decoration: none;
+    color: inherit; /* Garante que a cor do texto seja herdada, não a cor padrão do link */
+}
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-info span {
+    font-weight: bold;
+    color: #333; /* Cor do texto padrão */
+    transition: color 0.3s ease;
+    font-size: 1em; /* Mantido como tamanho padrão, equivalente ao corpo do texto */
+}
+
+body.dark-theme .user-info span {
+    color: #eee; /* Cor do texto no tema escuro */
+}
+
+.notification-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.notifications {
+    cursor: pointer;
+}
+
+.notifications i {
+    font-size: 22px;
+    color: #555; /* Cor do ícone padrão */
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .notifications i {
+    color: #eee; /* Cor do ícone no tema escuro */
+}
+
+/* --- CABEÇALHO DO DASHBOARD (A "PARTE INICIAL" DO CONTEÚDO) --- */
+.dashboard-header {
+    margin-bottom: 25px;
+}
+
+/* GARANTINDO QUE ESTEJA CLARO E CONSISTENTE */
+.dashboard-header h1 {
+    font-size: 2.2em; /* Tamanho maior para o H1 */
+    font-weight: bold; /* Garante que seja negrito */
+    color: #333; /* Cor do texto padrão */
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .dashboard-header h1 {
+    color: #eee; /* Cor do texto no tema escuro */
+}
+
+/* GARANTINDO QUE ESTEJA CLARO E CONSISTENTE */
+.dashboard-header p {
+    font-size: 0.9em; /* Tamanho do parágrafo */
+    line-height: 1.4; /* Espaçamento entre linhas */
+    color: #777; /* Cor do texto padrão */
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .dashboard-header p {
+    color: #ccc; /* Cor do texto no tema escuro */
+}
+
+/* --- BOTÃO DE ALTERNAR TEMA (NO TOP-NAV) --- */
+.theme-button {
+    background: none;
+    color: #555; /* Cor do ícone padrão */
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+    margin-right: 20px;
+    outline: none;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .theme-button {
+    color: #eee;
+}
+
+.theme-button:hover {
+    color: #333;
+}
+
+body.dark-theme .theme-button:hover {
+    color: #ccc;
+}
+
+
+/* --- INÍCIO DO CSS PARA AS CONFIGURAÇÕES (ADICIONE ABAIXO DO SEU CSS EXISTENTE) --- */
+
+.settings-container {
+    flex-grow: 1;
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme .settings-container {
+    background-color: #2b2b2b;
+    color: #eee;
+}
+
+.settings-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.setting-item {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+body.dark-theme .setting-item {
+    background-color: #3a3a3a;
+    border-color: #555;
+}
+
+.setting-item:hover {
+    background-color: #e6eefa;
+    border-color: #cfe0f0;
+    transform: translateY(-3px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme .setting-item:hover {
+    background-color: #4956ca;
+    border-color: #4956ca;
+    color: white;
+}
+
+body.dark-theme .setting-item:hover h3,
+body.dark-theme .setting-item:hover p,
+body.dark-theme .setting-item:hover i {
+    color: white;
+}
+
+.setting-item i {
+    font-size: 40px;
+    color: #4956ca;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .setting-item i {
+    color: #a7b1ff;
+}
+
+.setting-item h3 {
+    font-size: 1.3em;
+    color: #333;
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .setting-item h3 {
+    color: #eee;
+}
+
+.setting-item p {
+    font-size: 0.85em;
+    color: #777;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .setting-item p {
+    color: #ccc;
+}
+
+/* Estilos para os Modais */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: auto;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 550px;
+    position: relative;
+    animation: fadeInScale 0.3s ease-out;
+    color: #333;
+}
+
+body.dark-theme .modal-content {
+    background-color: #363636;
+    color: #eee;
+}
+
+.modal-content h2 {
+    color: #4956ca;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.6em;
+}
+
+body.dark-theme .modal-content h2 {
+    color: #a7b1ff;
+}
+
+.close-button {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 1001;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+body.dark-theme .close-button:hover,
+body.dark-theme .close-button:focus {
+    color: #eee;
+}
+
+.modal-body {
+    margin-top: 15px;
+    line-height: 1.5;
+}
+
+.setting-option {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1em;
+}
+
+.setting-option label {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.setting-option input[type="checkbox"] {
+    transform: scale(1.1);
+    margin-right: 3px;
+    accent-color: #4956ca;
+}
+
+.setting-option select {
+    padding: 7px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: #333;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+body.dark-theme .setting-option select {
+    background-color: #4a4a4a;
+    border-color: #666;
+    color: #eee;
+}
+
+.setting-option select:focus {
+    outline: none;
+    border-color: #4956ca;
+    box-shadow: 0 0 0 3px rgba(73, 86, 202, 0.2);
+}
+
+.action-button {
+    background-color: #4956ca;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95em;
+    margin-right: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.action-button:hover {
+    background-color: #3b45a0;
+    transform: translateY(-1px);
+}
+
+.delete-account-button {
+    background-color: #dc3545;
+}
+
+.delete-account-button:hover {
+    background-color: #c82333;
+}
+
+.theme-options {
+    display: flex;
+    gap: 8px;
+}
+
+.theme-choice-btn {
+    background-color: #eee;
+    color: #333;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+body.dark-theme .theme-choice-btn {
+    background-color: #555;
+    color: #eee;
+    border-color: #777;
+}
+
+.theme-choice-btn:hover {
+    background-color: #ddd;
+}
+
+body.dark-theme .theme-choice-btn:hover {
+    background-color: #666;
+}
+
+.theme-choice-btn.active-theme {
+    background-color: #4956ca;
+    color: white;
+    border-color: #4956ca;
+}
+
+body.dark-theme .theme-choice-btn.active-theme {
+    background-color: #6d7aff; /* Um roxo mais claro para o botão ativo no tema escuro */
+    border-color: #6d7aff;
+}
+
+/* Animação para o modal */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeOutScale {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+
+/* --- NOVOS ESTILOS PARA ACESSIBILIDADE --- */
+/* Alto Contraste */
+body.high-contrast {
+    background-color: black !important;
+    color: yellow !important;
+}
+
+body.high-contrast .sidebar,
+body.high-contrast .top-nav,
+body.high-contrast .settings-container,
+body.high-contrast .modal-content,
+body.high-contrast .setting-item {
+    background-color: #000 !important;
+    border-color: #fff !important;
+    color: yellow !important;
+    box-shadow: none !important;
+}
+
+body.high-contrast .sidebar a,
+body.high-contrast .top-nav *,
+body.high-contrast .user-info span,
+body.high-contrast .notifications i,
+body.high-contrast .theme-button,
+body.high-contrast .setting-item h3,
+body.high-contrast .setting-item p,
+body.high-contrast .modal-content h2,
+body.high-contrast .close-button,
+body.high-contrast .setting-option label {
+    color: yellow !important;
+}
+
+body.high-contrast .sidebar a.active,
+body.high-contrast .action-button,
+body.high-contrast .delete-account-button,
+body.high-contrast .theme-choice-btn.active-theme {
+    background-color: white !important;
+    color: black !important;
+    border-color: yellow !important;
+}
+
+body.high-contrast .sidebar a:hover,
+body.high-contrast .theme-choice-btn:hover {
+    background-color: gray !important;
+    color: yellow !important;
+}
+
+body.high-contrast .action-button:hover,
+body.high-contrast .delete-account-button:hover {
+    background-color: #333 !important;
+    color: yellow !important;
+}
+
+body.high-contrast .setting-item i {
+    color: yellow !important;
+}
+
+/* Desativar Animações */
+body.no-animations * {
+    transition: none !important;
+    animation: none !important;
+}
+
+
+/* --- FIM DA PARTE INICIAL --- */
+
+
+/* ---ESTILOS PARA PERFIL DO PROFESSOR --- */
+
+.profile-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinha ao topo para que não fique centralizado verticalmente se for mais curto */
+    padding: 1.5em; /* Ajuste para padding proporcional */
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.profile-card {
+    background-color: #ffffff;
+    padding: 2em; /* Ajuste para padding proporcional */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra mais pronunciada */
+    width: 100%;
+    max-width: 1050px; /* Aumentando significativamente a largura máxima do card para ocupar mais espaço */
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme .profile-card {
+    background-color: #444; /* Fundo cinza escuro para o card no tema escuro */
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2em; /* Espaçamento proporcional */
+    flex-wrap: wrap;
+    gap: 1.5em; /* Espaçamento proporcional entre os itens do cabeçalho */
+}
+
+.profile-pic {
+    width: 100px; /* Ligeiramente menor para proporcionalidade */
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #4956ca; /* Borda roxa, ligeiramente mais fina */
+    box-shadow: 0 0 0 2px rgba(73, 86, 202, 0.3); /* Sombra suave, ligeiramente mais fina */
+}
+
+.profile-details {
+    flex-grow: 1;
+    min-width: 180px; /* Ajuste para evitar que encolha demais */
+}
+
+.profile-details h2 {
+    margin: 0;
+    font-size: 1.6em; /* Tamanho proporcional */
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .profile-details h2 {
+    color: #eee;
+}
+
+/* O user-profile-link agora só envolve o span no HTML, então esta regra é para caso você ainda queira algum estilo específico nele,
+    mas a text-decoration foi movida para a regra .user-info .user-profile-link acima para a barra de navegação. */
+
+
+
+.profile-details p {
+    margin: 0.3em 0; /* Espaçamento proporcional */
+    color: #555;
+    font-size: 0.9em; /* Tamanho proporcional */
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .profile-details p {
+    color: #ccc;
+}
+
+.matricula-prof {
+    font-weight: bold;
+    color: #4956ca;
+}
+
+body.dark-theme .matricula-prof {
+    color: #a7b3ff;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 0.8em; /* Espaçamento proporcional */
+    margin-left: auto;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.btn-edit-profile,
+.btn-settings {
+    background-color: #4956ca;
+    color: white;
+    border: none;
+    padding: 0.6em 1.2em; /* Padding proporcional */
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85em; /* Tamanho proporcional */
+    display: flex;
+    align-items: center;
+    gap: 0.5em; /* Espaçamento proporcional */
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-edit-profile:hover,
+.btn-settings:hover {
+    background-color: #3a47b5;
+    transform: translateY(-2px);
+}
+
+.academic-info,
+.quick-access,
+.id-card-section {
+    background-color: #f9f9f9;
+    padding: 1.8em; /* Padding proporcional */
+    border-radius: 10px;
+    margin-bottom: 1.8em; /* Espaçamento proporcional */
+    border: 1px solid #eee;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-theme .academic-info,
+body.dark-theme .quick-access,
+body.dark-theme .id-card-section {
+    background-color: #555;
+    border-color: #666;
+}
+
+.academic-info h3,
+.quick-access h3,
+.id-card-section h3 {
+    color: #4956ca;
+    margin-top: 0;
+    margin-bottom: 1em; /* Espaçamento proporcional */
+    font-size: 1.2em; /* Tamanho proporcional */
+    border-bottom: 1px solid #e0e6ff; /* Linha de destaque para os títulos, mais sutil */
+    padding-bottom: 0.8em; /* Padding proporcional */
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-theme .academic-info h3,
+body.dark-theme .quick-access h3,
+body.dark-theme .id-card-section h3 {
+    color: #a7b3ff;
+    border-color: #7a88e6;
+}
+
+.academic-info p {
+    margin-bottom: 0.6em; /* Espaçamento proporcional */
+    font-size: 0.9em; /* Tamanho proporcional */
+    color: #333;
+    line-height: 1.6;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .academic-info p {
+    color: #eee;
+}
+
+.academic-info p strong {
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .academic-info p strong {
+    color: #ccc;
+}
+
+.status-active {
+    color: #28a745;
+    font-weight: bold;
+}
+
+body.dark-theme .status-active {
+    color: #a4e4a4;
+}
+
+.disciplines-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Aumentando o min-width para itens de grade */
+    gap: 1em; /* Espaçamento proporcional */
+}
+
+.quick-link-item {
+    background-color: #e0e6ff;
+    padding: 1em; /* Padding proporcional */
+    border-radius: 8px;
+    text-decoration: none;
+    color: #4956ca;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.6em; /* Espaçamento proporcional */
+    transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
+    font-size: 0.85em; /* Tamanho proporcional */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+body.dark-theme .quick-link-item {
+    background-color: #6a71c9;
+    color: #e0e6ff;
+}
+
+.quick-link-item:hover {
+    background-color: #c9d0f4;
+    transform: translateY(-3px);
+    color: #3a47b5;
+}
+
+body.dark-theme .quick-link-item:hover {
+    background-color: #585eaa;
+    color: #fff;
+}
+
+.quick-link-item i {
+    font-size: 1em; /* Tamanho proporcional */
+    color: #4956ca;
+    transition: color 0.2s ease;
+}
+
+body.dark-theme .quick-link-item i {
+    color: #e0e6ff;
+}
+
+.quick-link-item:hover i {
+    color: #3a47b5;
+}
+
+body.dark-theme .quick-link-item:hover i {
+    color: #fff;
+}
+
+
+/* Estilos para o Crachá Digital */
+.id-card {
+    background: linear-gradient(135deg, #4956ca, #6a71c9);
+    color: white;
+    padding: 1.8em; /* Padding proporcional */
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 1.5em; /* Espaçamento proporcional */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    max-width: 500px; /* Aumentado ligeiramente para o crachá */
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+body.dark-theme .id-card {
+    background: linear-gradient(135deg, #3a47b5, #585eaa);
+}
+
+.id-card::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: url('img/pattern-subtle.png') repeat; /* Adicione uma imagem de padrão sutil se tiver */
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.id-card-pic {
+    width: 80px; /* Tamanho proporcional */
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.8); /* Borda mais fina */
+    z-index: 1;
+}
+
+.id-card-details {
+    z-index: 1;
+}
+
+.id-card-details h4 {
+    margin: 0 0 0.5em 0; /* Espaçamento proporcional */
+    font-size: 1.1em; /* Tamanho proporcional */
+    font-weight: bold;
+}
+
+.id-card-details p {
+    margin: 0.3em 0; /* Espaçamento proporcional */
+    font-size: 0.85em; /* Tamanho proporcional */
+    opacity: 0.9;
+}
+
+.id-card-details .validity {
+    font-weight: bold;
+    margin-top: 0.8em; /* Espaçamento proporcional */
+    font-size: 0.9em; /* Tamanho proporcional */
+    color: #e0e6ff;
+}
+
+
+/* --- Estilos para o Modal de Edição --- */
+.modal {
+    display: none; /* Mantém ele escondido por padrão */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* display: flex; REMOVA ESTA LINHA */
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    box-sizing: border-box;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    padding: 2em; /* Padding proporcional */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 90%; /* Mantido como porcentagem para responsividade */
+    max-width: 800px; /* Aumentando a largura máxima do modal consideravelmente */
+    position: relative;
+    animation: fadeInScale 0.3s ease-out;
+    transition: background-color 0.3s ease;
+    margin-left: auto; /* Garante que ele não se corte à esquerda */
+    margin-right: auto; /* Garante que ele não se corte à direita */
+}
+
+body.dark-theme .modal-content {
+    background-color: #555;
+    color: #eee;
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 0.8em; /* Posição proporcional */
+    right: 1.2em; /* Posição proporcional */
+    font-size: 2em; /* Tamanho proporcional */
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+body.dark-theme .close-button:hover,
+body.dark-theme .close-button:focus {
+    color: #eee;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 1.5em; /* Espaçamento proporcional */
+    color: #4956ca;
+    text-align: center;
+    font-size: 1.5em; /* Tamanho proporcional */
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .modal-content h2 {
+    color: #a7b3ff;
+}
+
+.form-group {
+    margin-bottom: 1em; /* Espaçamento proporcional */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5em; /* Espaçamento proporcional */
+    font-weight: bold;
+    color: #333;
+    font-size: 0.9em; /* Tamanho proporcional */
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .form-group label {
+    color: #eee;
+}
+
+.form-group input[type="text"], /* Especificando os tipos para evitar conflitos */
+.form-group input[type="email"],
+.form-group textarea,
+.form-group input[type="file"] { /* Adicionando o input de tipo file aqui também */
+    width: calc(100% - 1.6em); /* Ajuste com 'em' para ser mais proporcional ao padding */
+    padding: 0.8em; /* Padding proporcional */
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9em; /* Tamanho proporcional */
+    background-color: #f0f2f5;
+    color: #333;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme .form-group input[type="text"],
+body.dark-theme .form-group input[type="email"],
+body.dark-theme .form-group textarea,
+body.dark-theme .form-group input[type="file"] {
+    background-color: #666;
+    border-color: #777;
+    color: #eee;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus,
+.form-group input[type="file"]:focus {
+    border-color: #4956ca;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(73, 86, 202, 0.2);
+}
+
+/* Estilo para campos readonly para que fiquem visualmente desabilitados */
+.form-group input[readonly],
+.form-group textarea[readonly] {
+    background-color: #e9ecef; /* Cor de fundo cinza claro */
+    cursor: not-allowed; /* Cursor de "não permitido" */
+    opacity: 0.8; /* Levemente opaco */
+    box-shadow: none; /* Remove a sombra de foco, se houver */
+}
+
+body.dark-theme .form-group input[readonly],
+body.dark-theme .form-group textarea[readonly] {
+    background-color: #4a4a4a; /* Cor de fundo mais escura para o tema escuro */
+    color: #ccc;
+}
+
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 8em; /* Altura mínima proporcional */
+}
+
+.form-group small {
+    display: block;
+    margin-top: 0.3em; /* Espaçamento proporcional */
+    color: #777;
+    font-size: 0.8em; /* Tamanho proporcional */
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .form-group small {
+    color: #ccc;
+}
+
+.btn-save-profile {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 0.8em 1.5em; /* Padding proporcional */
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9em; /* Tamanho proporcional */
+    width: 100%;
+    margin-top: 1.5em; /* Espaçamento proporcional */
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-save-profile:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+/* Animação para o modal */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsividade Básica - Mantida e ligeiramente ajustada */
+@media (max-width: 768px) {
+    .profile-card {
+        padding: 1.5em; /* Ajuste o padding para telas menores */
+        max-width: 100%; /* Permite que ocupe toda a largura em telas menores */
+    }
+
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .profile-actions {
+        width: 100%;
+        justify-content: center;
+        margin-top: 1.2em; /* Ajuste de espaçamento */
+    }
+
+    .profile-details {
+        margin-top: 1em; /* Ajuste de espaçamento */
+    }
+
+    .id-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .id-card-pic {
+        margin-bottom: 1em; /* Ajuste de espaçamento */
+    }
+
+    .disciplines-grid {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    }
+
+    .modal-content {
+        padding: 1.5em; /* Ajuste o padding para telas menores no modal */
+        max-width: 95%; /* Permite que ocupe mais espaço em telas pequenas */
+    }
+}
+
+/* --- FIM: NOVOS ESTILOS PARA PERFIL DO PROFESSOR (AJUSTADO PARA PROPORCIONALIDADE E CORREÇÃO DE CORTE) --- */
+
+
+/* --- Início da nova seção de estilos para Notas --- */
+
+.notes-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme .notes-section {
+    background-color: #444; /* Fundo cinza meio escuro */
+}
+
+.notes-section h2 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.5em; /* Ajustado para ser um título de seção claro */
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .notes-section h2 {
+    color: #eee;
+}
+
+.notes-table-container {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    background-color: #ffffff; /* Fundo branco para todas as linhas no tema claro */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-theme .notes-table-container {
+    background-color: #555;
+    border-color: #666;
+}
+
+.notes-table-header {
+    display: grid;
+    grid-template-columns: 120px 2fr 80px 3fr 120px 60px; /* Ajuste as larguras conforme necessário */
+    background-color: #d8cef1;
+    padding: 10px 15px;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+    color: #6944c7;
+    text-transform: uppercase; /* Adicionado para igualar o cabeçalho de 'Gerenciar Alunos' */
+    font-size: 0.85em; /* Ajustado para ser mais discreto, como os cabeçalhos de tabela */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-theme .notes-table-header {
+    background-color: #666;
+    color: #eee;
+    border-color: #777;
+}
+
+.notes-table-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.notes-row {
+    display: grid;
+    grid-template-columns: 120px 2fr 80px 3fr 120px 60px; /* Mesmas larguras do header */
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-theme .notes-row {
+    border-color: #666;
+}
+
+.notes-row:last-child {
+    border-bottom: none;
+}
+
+/* Regras para fundo uniforme (todas as linhas com a mesma cor do container) */
+.notes-row:nth-child(odd),
+.notes-row:nth-child(even) {
+    background-color: #ffffff; /* Fundo branco para todas as linhas no tema claro */
+}
+
+body.dark-theme .notes-row:nth-child(odd),
+body.dark-theme .notes-row:nth-child(even) {
+    background-color: #555; /* Fundo escuro para todas as linhas no tema escuro */
+}
+
+
+.row-item {
+    padding: 5px;
+    color: #333;
+    font-size: 0.95em; /* Ajustado para ser o tamanho padrão do texto do corpo */
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .row-item {
+    color: #eee;
+}
+
+.note-input {
+    width: 50px;
+    height: 30px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    background-color: #f0f2f5;
+    color: #333;
+    font-size: 0.95em; /* Ajustado para ser o tamanho padrão do texto */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+body.dark-theme .note-input {
+    background-color: #666;
+    border-color: #777;
+    color: #eee;
+}
+
+.observations-input {
+    width: calc(100% - 10px);
+    height: 40px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.95em; /* Ajustado para ser o tamanho padrão do texto */
+    background-color: #f0f2f5;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+body.dark-theme .observations-input {
+    background-color: #666;
+    border-color: #777;
+    color: #eee;
+}
+
+.status {
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.8em; /* Mantido um pouco menor para o status, para destaque visual */
+    text-align: center;
+}
+
+.status.approved {
+    background-color: #e6ffe6; /* Verde claro */
+    color: #28a745; /* Verde escuro */
+}
+
+body.dark-theme .status.approved {
+    background-color: #366c3e; /* Verde mais escuro para tema escuro */
+    color: #a4e4a4;
+}
+
+.status.recovery {
+    background-color: #fff9e6; /* Amarelo claro */
+    color: #ffc107; /* Amarelo escuro */
+}
+
+body.dark-theme .status.recovery {
+    background-color: #7d6b38; /* Amarelo mais escuro para tema escuro */
+    color: #ffe48e;
+}
+
+.status.disapproved {
+    background-color: #ffe6e6; /* Vermelho claro */
+    color: #dc3545; /* Vermelho escuro */
+}
+
+body.dark-theme .status.disapproved {
+    background-color: #753d3d; /* Vermelho mais escuro para tema escuro */
+    color: #ffb6b6;
+}
+
+.action-button {
+    background-color: #4956ca;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em; /* Ajustado para um tamanho de botão comum */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.action-button:hover {
+    background-color: #3a47b5;
+}
+
+.notes-actions {
+    display: flex;
+    justify-content: flex-end; /* Alinha os botões à direita */
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.save-button, .export-button {
+    /* Diminuindo o padding para reduzir o tamanho dos botões */
+    padding: 8px 15px; /* Reduzido de 12px 20px */
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    /* Diminuindo o font-size para o texto dentro dos botões */
+    font-size: 0.85em; /* Reduzido de 0.95em */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.save-button {
+    background-color: #28a745; /* Verde */
+    color: white;
+}
+
+.save-button:hover {
+    background-color: #218838;
+}
+
+.export-button {
+    background-color: #007bff; /* Azul */
+    color: white;
+}
+
+.export-button:hover {
+    background-color: #0056b3;
+}
+
+/* FIM DO CSS ADICIONADO E MODIFICADO */

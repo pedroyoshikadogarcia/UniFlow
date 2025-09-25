@@ -1,0 +1,1347 @@
+/*conf da parte normal site*/
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f6f8; /* Fundo claro padrão */
+    color: #333; /* Cor do texto padrão */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 16px; /* Tamanho base, equivalente a 1em. Ajuste se quiser maior ou menor no geral. */
+}
+
+body.dark-theme {
+    background-color: #333; /* Fundo escuro */
+    color: #eee; /* Cor do texto padrão no tema escuro */
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+    background-color: #ffffff; /* Fundo branco padrão */
+    width: 200px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme .sidebar {
+    background-color: #444; /* Cinza meio escuro */
+    color: #eee;
+}
+
+.sidebar .logo {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar .logo img {
+    max-width: 160px;
+    height: auto;
+    display: block;
+}
+
+/* Remover roxo do hover na logotipo do site */
+.sidebar .logo a:hover {
+    background-color: transparent; /* Remove o fundo roxo */
+    color: inherit; /* Mantém a cor original do texto/ícone, se houver */
+    transform: none; /* Remove a translação se existir */
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    text-decoration: none;
+    color: #333; /* Cor do link padrão */
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease; /* Adicionado transform para transição suave do hover */
+    font-size: 0.95em;
+}
+
+body.dark-theme .sidebar a {
+    color: #eee; /* Cor do link no tema escuro */
+}
+
+/* ESTILO ATIVO: Corrigido o hover para o estado ativo */
+.sidebar a.active {
+    background-color: #4956ca;
+    color: white;
+}
+
+/* HOVER: Ajustado para que o hover funcione corretamente com o active */
+.sidebar a:not(.active):hover { /* Aplica hover apenas se não estiver ativo */
+    transform: translateX(5px);
+    background-color: #cfe0f0;
+    color: #333; /* Mudado para uma cor que funcione bem no hover do tema claro */
+}
+
+body.dark-theme .sidebar a:not(.active):hover {
+    background-color: #6d7aff; /* Roxo mais claro para hover no tema escuro */
+    color: white; /* Garante que o texto fique branco */
+    transform: translateX(5px); /* Mantém a translação */
+}
+
+.sidebar a i {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    color: #4956ca; /* Cor roxa original para os ícones */
+    transition: color 0.3s ease;
+}
+
+/* MODIFICAÇÃO: Cor do ícone na sidebar no tema escuro */
+body.dark-theme .sidebar a i {
+    color: #a7b1ff; /* Roxo mais claro para ícones no tema escuro */
+}
+
+/* MODIFICAÇÃO: Cor do ícone quando o link está ativo (tanto claro quanto escuro) */
+.sidebar a.active i {
+    color: white; /* Ícones brancos quando o link está ativo */
+}
+
+/* --- CONTEÚDO PRINCIPAL --- */
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme .content {
+    background-color: #000; /* Fundo escuro */
+}
+
+/* --- NAVEGAÇÃO SUPERIOR (TOP-NAV) --- */
+.top-nav {
+    background-color: white; /* Fundo branco padrão */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme .top-nav {
+    background-color: #444; /* Cinza meio escuro */
+}
+
+.right-items {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Remover sublinhado do link no nome e na foto do professor */
+.user-info a {
+    text-decoration: none;
+    color: inherit; /* Garante que a cor do texto seja herdada, não a cor padrão do link */
+}
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-info span {
+    font-weight: bold;
+    color: #333; /* Cor do texto padrão */
+    transition: color 0.3s ease;
+    font-size: 1em; /* Mantido como tamanho padrão, equivalente ao corpo do texto */
+}
+
+body.dark-theme .user-info span {
+    color: #eee; /* Cor do texto no tema escuro */
+}
+
+.notification-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.notifications {
+    cursor: pointer;
+}
+
+.notifications i {
+    font-size: 22px;
+    color: #555; /* Cor do ícone padrão */
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .notifications i {
+    color: #eee; /* Cor do ícone no tema escuro */
+}
+
+/* --- CABEÇALHO DO DASHBOARD (A "PARTE INICIAL" DO CONTEÚDO) --- */
+.dashboard-header {
+    margin-bottom: 25px;
+}
+
+/* GARANTINDO QUE ESTEJA CLARO E CONSISTENTE */
+.dashboard-header h1 {
+    font-size: 2.2em; /* Tamanho maior para o H1 */
+    font-weight: bold; /* Garante que seja negrito */
+    color: #333; /* Cor do texto padrão */
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .dashboard-header h1 {
+    color: #eee; /* Cor do texto no tema escuro */
+}
+
+/* GARANTINDO QUE ESTEJA CLARO E CONSISTENTE */
+.dashboard-header p {
+    font-size: 0.9em; /* Tamanho do parágrafo */
+    line-height: 1.4; /* Espaçamento entre linhas */
+    color: #777; /* Cor do texto padrão */
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .dashboard-header p {
+    color: #ccc; /* Cor do texto no tema escuro */
+}
+
+/* --- BOTÃO DE ALTERNAR TEMA (NO TOP-NAV) --- */
+.theme-button {
+    background: none;
+    color: #555; /* Cor do ícone padrão */
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+    margin-right: 20px;
+    outline: none;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .theme-button {
+    color: #eee;
+}
+
+.theme-button:hover {
+    color: #333;
+}
+
+body.dark-theme .theme-button:hover {
+    color: #ccc;
+}
+
+
+/* --- INÍCIO DO CSS PARA AS CONFIGURAÇÕES (ADICIONE ABAIXO DO SEU CSS EXISTENTE) --- */
+
+.settings-container {
+    flex-grow: 1;
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme .settings-container {
+    background-color: #2b2b2b;
+    color: #eee;
+}
+
+.settings-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.setting-item {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+body.dark-theme .setting-item {
+    background-color: #3a3a3a;
+    border-color: #555;
+}
+
+.setting-item:hover {
+    background-color: #e6eefa;
+    border-color: #cfe0f0;
+    transform: translateY(-3px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme .setting-item:hover {
+    background-color: #4956ca;
+    border-color: #4956ca;
+    color: white;
+}
+
+body.dark-theme .setting-item:hover h3,
+body.dark-theme .setting-item:hover p,
+body.dark-theme .setting-item:hover i {
+    color: white;
+}
+
+.setting-item i {
+    font-size: 40px;
+    color: #4956ca;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .setting-item i {
+    color: #a7b1ff;
+}
+
+.setting-item h3 {
+    font-size: 1.3em;
+    color: #333;
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .setting-item h3 {
+    color: #eee;
+}
+
+.setting-item p {
+    font-size: 0.85em;
+    color: #777;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .setting-item p {
+    color: #ccc;
+}
+
+/* Estilos para os Modais */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: auto;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 550px;
+    position: relative;
+    animation: fadeInScale 0.3s ease-out;
+    color: #333;
+}
+
+body.dark-theme .modal-content {
+    background-color: #363636;
+    color: #eee;
+}
+
+.modal-content h2 {
+    color: #4956ca;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.6em;
+}
+
+body.dark-theme .modal-content h2 {
+    color: #a7b1ff;
+}
+
+.close-button {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 1001;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+body.dark-theme .close-button:hover,
+body.dark-theme .close-button:focus {
+    color: #eee;
+}
+
+.modal-body {
+    margin-top: 15px;
+    line-height: 1.5;
+}
+
+.setting-option {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1em;
+}
+
+.setting-option label {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.setting-option input[type="checkbox"] {
+    transform: scale(1.1);
+    margin-right: 3px;
+    accent-color: #4956ca;
+}
+
+.setting-option select {
+    padding: 7px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: #333;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+body.dark-theme .setting-option select {
+    background-color: #4a4a4a;
+    border-color: #666;
+    color: #eee;
+}
+
+.setting-option select:focus {
+    outline: none;
+    border-color: #4956ca;
+    box-shadow: 0 0 0 3px rgba(73, 86, 202, 0.2);
+}
+
+.action-button {
+    background-color: #4956ca;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95em;
+    margin-right: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.action-button:hover {
+    background-color: #3b45a0;
+    transform: translateY(-1px);
+}
+
+.delete-account-button {
+    background-color: #dc3545;
+}
+
+.delete-account-button:hover {
+    background-color: #c82333;
+}
+
+.theme-options {
+    display: flex;
+    gap: 8px;
+}
+
+.theme-choice-btn {
+    background-color: #eee;
+    color: #333;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+body.dark-theme .theme-choice-btn {
+    background-color: #555;
+    color: #eee;
+    border-color: #777;
+}
+
+.theme-choice-btn:hover {
+    background-color: #ddd;
+}
+
+body.dark-theme .theme-choice-btn:hover {
+    background-color: #666;
+}
+
+.theme-choice-btn.active-theme {
+    background-color: #4956ca;
+    color: white;
+    border-color: #4956ca;
+}
+
+body.dark-theme .theme-choice-btn.active-theme {
+    background-color: #6d7aff; /* Um roxo mais claro para o botão ativo no tema escuro */
+    border-color: #6d7aff;
+}
+
+/* Animação para o modal */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeOutScale {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+
+/* --- NOVOS ESTILOS PARA ACESSIBILIDADE --- */
+/* Alto Contraste */
+body.high-contrast {
+    background-color: black !important;
+    color: yellow !important;
+}
+
+body.high-contrast .sidebar,
+body.high-contrast .top-nav,
+body.high-contrast .settings-container,
+body.high-contrast .modal-content,
+body.high-contrast .setting-item {
+    background-color: #000 !important;
+    border-color: #fff !important;
+    color: yellow !important;
+    box-shadow: none !important;
+}
+
+body.high-contrast .sidebar a,
+body.high-contrast .top-nav *,
+body.high-contrast .user-info span,
+body.high-contrast .notifications i,
+body.high-contrast .theme-button,
+body.high-contrast .setting-item h3,
+body.high-contrast .setting-item p,
+body.high-contrast .modal-content h2,
+body.high-contrast .close-button,
+body.high-contrast .setting-option label {
+    color: yellow !important;
+}
+
+body.high-contrast .sidebar a.active,
+body.high-contrast .action-button,
+body.high-contrast .delete-account-button,
+body.high-contrast .theme-choice-btn.active-theme {
+    background-color: white !important;
+    color: black !important;
+    border-color: yellow !important;
+}
+
+body.high-contrast .sidebar a:hover,
+body.high-contrast .theme-choice-btn:hover {
+    background-color: gray !important;
+    color: yellow !important;
+}
+
+body.high-contrast .action-button:hover,
+body.high-contrast .delete-account-button:hover {
+    background-color: #333 !important;
+    color: yellow !important;
+}
+
+body.high-contrast .setting-item i {
+    color: yellow !important;
+}
+
+/* Desativar Animações */
+body.no-animations * {
+    transition: none !important;
+    animation: none !important;
+}
+
+
+/* --- FIM DA PARTE INICIAL --- */
+
+
+/*conteudo*/
+
+/* Seu CSS existente para a estrutura do site (body, sidebar, top-nav, etc.) */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f6f8;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 16px;
+}
+
+body.dark-theme {
+    background-color: #333;
+    color: #eee;
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+    background-color: #ffffff;
+    width: 200px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme .sidebar {
+    background-color: #444;
+    color: #eee;
+}
+
+.sidebar .logo {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar .logo img {
+    max-width: 160px;
+    height: auto;
+    display: block;
+}
+
+.sidebar .logo a:hover {
+    background-color: transparent;
+    color: inherit;
+    transform: none;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+    font-size: 0.95em;
+}
+
+body.dark-theme .sidebar a {
+    color: #eee;
+}
+
+.sidebar a.active {
+    background-color: #4956ca;
+    color: white;
+}
+
+.sidebar a:not(.active):hover {
+    transform: translateX(5px);
+    background-color: #cfe0f0;
+    color: #333;
+}
+
+body.dark-theme .sidebar a:not(.active):hover {
+    background-color: #6d7aff;
+    color: white;
+    transform: translateX(5px);
+}
+
+.sidebar a i {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    color: #4956ca;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .sidebar a i {
+    color: #a7b1ff;
+}
+
+.sidebar a.active i {
+    color: white;
+}
+
+/* --- CONTEÚDO PRINCIPAL --- */
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme .content {
+    background-color: #000;
+}
+
+/* --- NAVEGAÇÃO SUPERIOR (TOP-NAV) --- */
+.top-nav {
+    background-color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme .top-nav {
+    background-color: #444;
+}
+
+.right-items {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-info span {
+    font-weight: bold;
+    color: #333;
+    transition: color 0.3s ease;
+    font-size: 1em;
+}
+
+body.dark-theme .user-info span {
+    color: #eee;
+}
+
+.notification-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.notifications {
+    cursor: pointer;
+}
+
+.notifications i {
+    font-size: 22px;
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .notifications i {
+    color: #eee;
+}
+
+/* --- CABEÇALHO DO DASHBOARD (A "PARTE INICIAL" DO CONTEÚDO) --- */
+.dashboard-header {
+    margin-bottom: 25px;
+}
+
+.dashboard-header h1 {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .dashboard-header h1 {
+    color: #eee;
+}
+
+.dashboard-header p {
+    font-size: 0.9em;
+    line-height: 1.4;
+    color: #777;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .dashboard-header p {
+    color: #ccc;
+}
+
+/* --- BOTÃO DE ALTERNAR TEMA (NO TOP-NAV) --- */
+.theme-button {
+    background: none;
+    color: #555;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+    margin-right: 20px;
+    outline: none;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .theme-button {
+    color: #eee;
+}
+
+.theme-button:hover {
+    color: #333;
+}
+
+body.dark-theme .theme-button:hover {
+    color: #ccc;
+}
+
+
+/* --- INÍCIO DO CSS PARA AS CONFIGURAÇÕES --- */
+
+.settings-container {
+    flex-grow: 1;
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme .settings-container {
+    background-color: #2b2b2b;
+    color: #eee;
+}
+
+.settings-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.setting-item {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+body.dark-theme .setting-item {
+    background-color: #3a3a3a;
+    border-color: #555;
+}
+
+.setting-item:hover {
+    background-color: #e6eefa;
+    border-color: #cfe0f0;
+    transform: translateY(-3px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme .setting-item:hover {
+    background-color: #4956ca;
+    border-color: #4956ca;
+    color: white;
+}
+
+body.dark-theme .setting-item:hover h3,
+body.dark-theme .setting-item:hover p,
+body.dark-theme .setting-item:hover i {
+    color: white;
+}
+
+.setting-item i {
+    font-size: 40px;
+    color: #4956ca;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .setting-item i {
+    color: #a7b1ff;
+}
+
+.setting-item h3 {
+    font-size: 1.3em;
+    color: #333;
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .setting-item h3 {
+    color: #eee;
+}
+
+.setting-item p {
+    font-size: 0.85em;
+    color: #777;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .setting-item p {
+    color: #ccc;
+}
+
+/* Estilos para os Modais */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: auto;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 550px;
+    position: relative;
+    animation: fadeInScale 0.3s ease-out;
+    color: #333;
+}
+
+body.dark-theme .modal-content {
+    background-color: #363636;
+    color: #eee;
+}
+
+.modal-content h2 {
+    color: #4956ca;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.6em;
+}
+
+body.dark-theme .modal-content h2 {
+    color: #a7b1ff;
+}
+
+.close-button {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 1001;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+body.dark-theme .close-button:hover,
+body.dark-theme .close-button:focus {
+    color: #eee;
+}
+
+.modal-body {
+    margin-top: 15px;
+    line-height: 1.5;
+}
+
+.setting-option {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1em;
+}
+
+.setting-option label {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.setting-option input[type="checkbox"] {
+    transform: scale(1.1);
+    margin-right: 3px;
+    accent-color: #4956ca;
+}
+
+.setting-option select {
+    padding: 7px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: #333;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+body.dark-theme .setting-option select {
+    background-color: #4a4a4a;
+    border-color: #666;
+    color: #eee;
+}
+
+.setting-option select:focus {
+    outline: none;
+    border-color: #4956ca;
+    box-shadow: 0 0 0 3px rgba(73, 86, 202, 0.2);
+}
+
+.action-button {
+    background-color: #4956ca;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95em;
+    margin-right: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.action-button:hover {
+    background-color: #3b45a0;
+    transform: translateY(-1px);
+}
+
+.delete-account-button {
+    background-color: #dc3545;
+}
+
+.delete-account-button:hover {
+    background-color: #c82333;
+}
+
+.theme-options {
+    display: flex;
+    gap: 8px;
+}
+
+.theme-choice-btn {
+    background-color: #eee;
+    color: #333;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+body.dark-theme .theme-choice-btn {
+    background-color: #555;
+    color: #eee;
+    border-color: #777;
+}
+
+.theme-choice-btn:hover {
+    background-color: #ddd;
+}
+
+body.dark-theme .theme-choice-btn:hover {
+    background-color: #666;
+}
+
+.theme-choice-btn.active-theme {
+    background-color: #4956ca;
+    color: white;
+    border-color: #4956ca;
+}
+
+body.dark-theme .theme-choice-btn.active-theme {
+    background-color: #6d7aff;
+    border-color: #6d7aff;
+}
+
+/* Animação para o modal */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeOutScale {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+
+/* --- NOVOS ESTILOS PARA ACESSIBILIDADE --- */
+/* Alto Contraste */
+body.high-contrast {
+    background-color: black !important;
+    color: yellow !important;
+}
+
+body.high-contrast .sidebar,
+body.high-contrast .top-nav,
+body.high-contrast .settings-container,
+body.high-contrast .modal-content,
+body.high-contrast .setting-item {
+    background-color: #000 !important;
+    border-color: #fff !important;
+    color: yellow !important;
+    box-shadow: none !important;
+}
+
+body.high-contrast .sidebar a,
+body.high-contrast .top-nav *,
+body.high-contrast .user-info span,
+body.high-contrast .notifications i,
+body.high-contrast .theme-button,
+body.high-contrast .setting-item h3,
+body.high-contrast .setting-item p,
+body.high-contrast .modal-content h2,
+body.high-contrast .close-button,
+body.high-contrast .setting-option label {
+    color: yellow !important;
+}
+
+body.high-contrast .sidebar a.active,
+body.high-contrast .action-button,
+body.high-contrast .delete-account-button,
+body.high-contrast .theme-choice-btn.active-theme {
+    background-color: white !important;
+    color: black !important;
+    border-color: yellow !important;
+}
+
+body.high-contrast .sidebar a:hover,
+body.high-contrast .theme-choice-btn:hover {
+    background-color: gray !important;
+    color: yellow !important;
+}
+
+body.high-contrast .action-button:hover,
+body.high-contrast .delete-account-button:hover {
+    background-color: #333 !important;
+    color: yellow !important;
+}
+
+body.high-contrast .setting-item i {
+    color: yellow !important;
+}
+
+/* Desativar Animações */
+body.no-animations * {
+    transition: none !important;
+    animation: none !important;
+}
+
+
+/* --- FIM DA PARTE INICIAL --- */
+
+
+/*conteudo*/
+
+/* Link que envolve o card para torná-lo clicável por inteiro */
+.turma-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+.turma-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+    padding: 25px 30px;
+    font-family: 'Roboto', sans-serif;
+    color: #4b4f76;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Estilo do card para o tema escuro */
+body.dark-theme .turma-card {
+    background: #2b2b2b; /* Cor de fundo escura */
+    color: #eee; /* Cor do texto no tema escuro */
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1); /* Sombra mais clara para o tema escuro */
+}
+
+/* Efeito de hover aplicado no link que envolve o card */
+.turma-card-link:hover .turma-card {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/*Efeito de hover no tema escuro */
+body.dark-theme .turma-card-link:hover .turma-card {
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+}
+
+.turma-header {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.icon-wrapper {
+    background-color: #5a46d0;
+    color: white;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.turma-text h2 {
+    font-weight: 700;
+    font-size: 1.125em;
+    margin: 0 0 6px 0;
+    color: #5a46d0;
+}
+
+/* Cor do título do card no tema escuro */
+body.dark-theme .turma-text h2 {
+    color: #a7b1ff; /* Um roxo mais claro para o tema escuro */
+}
+
+.turma-text p {
+    font-weight: 400;
+    font-size: 0.875em;
+    color: #7e7e8d;
+    margin: 0;
+}
+
+/* Cor do parágrafo do card no tema escuro */
+body.dark-theme .turma-text p {
+    color: #ccc;
+}
+
+.turma-stats {
+    display: flex;
+    gap: 40px;
+    font-weight: 700;
+    font-size: 1em;
+    color: #5a46d0;
+}
+
+
+body.dark-theme .turma-stats {
+    color: #a7b1ff;
+}
+
+.turma-stats div {
+    text-align: center;
+}
+
+.turma-stats span {
+    display: block;
+    font-weight: 400;
+    font-size: 0.75em;
+    color: #7e7e8d;
+    margin-top: 4px;
+    letter-spacing: 1.2px;
+}
+
+/* MODIFICAÇÃO: Cor do texto "alunos" e "atividades" no tema escuro */
+body.dark-theme .turma-stats span {
+    color: #ccc;
+}

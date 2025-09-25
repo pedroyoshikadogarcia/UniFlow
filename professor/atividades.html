@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gestão de Atividades</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style_atividades.css" />
+    <link rel="stylesheet" href="global.css" />
+</head>
+<body>
+    
+    <!-- navegação lateral -->
+    <div class="sidebar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="img/logopreta2.png" alt="Logotipo" />
+            </a>
+        </div>
+        <!-- Cada item leva para uma página diferente do sistema -->
+        <a href="turmas.html"><i class="fas fa-book"></i> Turmas</a>
+        <a href="alunos.html"><i class="fas fa-graduation-cap"></i> Alunos</a>
+        <a href="#" class="active"><i class="fas fa-tasks"></i> Atividades</a> <!-- Página atual -->
+        <a href="notas.html"><i class="fas fa-clipboard-list"></i> Notas</a>
+        <a href="chamada.html"><i class="fas fa-user-check"></i> Chamada</a>
+        <a href="calendario.html"><i class="fas fa-calendar-alt"></i> Calendário</a>
+        <a href="mensagem.html"><i class="fas fa-envelope"></i> Mensagens</a>
+        <a href="config.html"><i class="fas fa-cog"></i> Configurações</a>
+    </div>
+
+    <!-- conteudo principal -->
+    <div class="content">
+
+        <!-- topo -->
+        <!-- Botão para trocar tema, sino de notificações e perfil do professor -->
+        <div class="top-nav">
+            <button id="theme-toggle" class="theme-button">
+                <i class="fas fa-sun"></i>
+            </button>
+            <div class="right-items">
+                <a href="#" class="notification-link">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                </a>
+                <div class="user-info">
+                    <a href="perfil.html" class="user-profile-link">
+                        <img src="img/Usuario1.jpg" alt="Foto do Professor" />
+                        <span>Nome do Professor</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- principal -->
+        <div id="activitiesSection" class="main-section show">
+            <!-- Cabeçalho da página -->
+            <div class="dashboard-header">
+                <h1>Gestão de Atividades</h1>
+                <p>Data: 30/04/2025</p>
+            </div>
+
+            <!-- Título da turma e botão para adicionar nova atividade -->
+            <div class="section-title-row">
+                <h3>ADS 2 - Análise e Desenvolvimento de Sistemas <span class="activities-count">5 ATIVIDADE(S)</span></h3>
+                <button class="add-activity-button">
+                    <i class="fas fa-plus"></i> Nova Atividade
+                </button>
+            </div>
+
+            <!-- Lista de atividades já cadastradas -->
+            <div class="activities-list-container">
+                
+                <!-- Cartão de cada atividade com informações, status e ações -->
+                <!-- Aqui são exibidas provas, trabalhos, apresentações etc. -->
+
+                <!-- Exemplo de atividade: Prova -->
+                <div class="activity-card" data-activity-id="1" ...>
+                    <div class="activity-header">
+                        <span class="activity-type activity-type-prova">PROVA</span>
+                        <span class="activity-status activity-status-aberto">ABERTO</span>
+                    </div>
+                    <h4>Prova P1 - Fundamentos de Programação</h4>
+                    <p class="activity-description">Avaliação sobre conceitos básicos de programação...</p>
+                    <div class="activity-details">
+                        <p><i class="fas fa-calendar-alt"></i> Prazo: 14/09/2024</p>
+                        <p><i class="fas fa-star"></i> Valor: 10 pontos</p>
+                    </div>
+                    <div class="activity-footer">
+                        <span class="activity-notes-status">Notas lançadas: 30/30 100%</span>
+                        <div class="activity-actions">
+                            <button class="action-button launch-notes-button"><i class="fas fa-file-invoice"></i> Lançar Notas</button>
+                            <button class="action-button delete-button"><i class="fas fa-trash-alt"></i> Excluir</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Outras atividades seguem o mesmo modelo (trabalhos, apresentações...) -->
+
+            </div>
+        </div>
+
+        <!-- seção entregas dos alunos -->
+        <!-- resumo das listas de quem fez ou não -->
+        <div id="submissionsSection" class="main-section">
+            <div class="submissions-content">
+                <div class="modal-header">
+                    <h2 id="activityTitleSubmissions"></h2>
+                    <button id="backToActivitiesButton" class="action-button back-button">
+                        <i class="fas fa-arrow-left"></i> Voltar
+                    </button>
+                </div>
+                <div class="submissions-summary">
+                    <p><strong>Total de Alunos:</strong> <span id="totalStudents"></span></p>
+                    <p><strong>Entregas Recebidas:</strong> <span id="submittedCount"></span></p>
+                    <p><strong>Pendentes:</strong> <span id="pendingCount"></span></p>
+                </div>
+                <div class="students-submissions-list" id="studentsSubmissionsList"></div>
+
+                <div class="overall-actions">
+                    <button class="add-activity-button">Salvar Todas as Notas</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- detalhe das entregas dos alunos -->
+        <div id="studentDetailsSection" class="main-section">
+            <div class="student-details-content">
+                <div class="modal-header">
+                    <h2 id="studentSubmissionTitle"></h2>
+                    <button id="backToSubmissionsButton" class="action-button back-button">
+                        <i class="fas fa-arrow-left"></i> Voltar à Lista
+                    </button>
+                </div>
+
+                <!-- Enunciado da atividade e link do arquivo do professor -->
+                <div class="activity-enunciado-section">
+                    <h3>Enunciado da Atividade</h3>
+                    <p id="activityEnunciadoDetail"></p>
+                    <p id="professorFileLink">
+                        <i class="fas fa-file-alt"></i> <a href="#" target="_blank" id="professorFileLinkHref"></a> (Arquivo do Professor)
+                    </p>
+                </div>
+
+                <!-- Área da entrega do aluno e campo para nota/feedback -->
+                <div class="student-submission-section">
+                    <h3>Entrega do Aluno</h3>
+                    <div id="submissionContent"></div>
+
+                    <div class="grade-and-feedback-section">
+                        <h4>Nota e Feedback</h4>
+                        <div class="grade-input-wrapper">
+                            <label for="studentFinalGrade">Nota Final:</label>
+                            <input type="number" id="studentFinalGrade" min="0" max="10" />
+                        </div>
+                        <div class="feedback-wrapper">
+                            <label for="professorFeedback">Feedback:</label>
+                            <textarea id="professorFeedback" placeholder="Deixe seu feedback aqui..."></textarea>
+                        </div>
+                        <button class="add-activity-button save-student-grade-button">Salvar Nota e Feedback</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- modal: adicionar nova atividade + -->
+        <div id="addActivityModal" class="modal-overlay">
+            <div class="modal-content-new-activity">
+                <div class="modal-header">
+                    <h2>Adicionar Nova Atividade</h2>
+                    <button id="closeAddActivityModal" class="action-button back-button">
+                        <i class="fas fa-times"></i> Fechar
+                    </button>
+                </div>
+
+                <!-- Formulário com título, tipo, data, valor, descrição e anexos -->
+                <form id="newActivityForm">
+                    <div class="form-group">
+                        <label for="newActivityTitle">Título da Atividade:</label>
+                        <input type="text" id="newActivityTitle" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="newActivityType">Tipo de Atividade:</label>
+                        <select id="newActivityType" required>
+                            <option value="">Selecione o Tipo</option>
+                            <option value="trabalho">Trabalho</option>
+                            <option value="atividade">Atividade</option>
+                            <option value="prova">Prova</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="newActivityDeadline">Prazo:</label>
+                        <input type="date" id="newActivityDeadline" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="newActivityValue">Valor (pontos):</label>
+                        <input type="number" id="newActivityValue" min="0" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="newActivityEnunciado">Enunciado / Descrição:</label>
+                        <textarea id="newActivityEnunciado" rows="5" required></textarea>
+                    </div>
+
+                    <!-- Upload de arquivos e ícones explicativos -->
+                    <div class="form-group file-upload-group">
+                        <label for="newActivityFiles">Anexar Arquivos:</label>
+                        <div class="custom-file-input-wrapper">
+                            <input type="file" id="newActivityFiles" multiple />
+                            <label for="newActivityFiles" class="custom-file-upload-button">
+                                <i class="fas fa-paperclip"></i> Escolher Arquivos
+                            </label>
+                        </div>
+                        <div class="file-type-icons">
+                            <span class="file-type-info"><i class="fas fa-image"></i> Mídia</span>
+                            <span class="file-type-info"><i class="fas fa-link"></i> Links</span>
+                            <span class="file-type-info"><i class="fas fa-file-alt"></i> Docs</span>
+                        </div>
+                        <button type="button" class="action-button upload-files-button">
+                            <i class="fas fa-upload"></i> Enviar Anexos
+                        </button>
+                    </div>
+
+                    <!-- Botão para salvar nova atividade -->
+                    <button type="submit" class="add-activity-button save-new-activity-button">
+                        <i class="fas fa-save"></i> Salvar Nova Atividade
+                    </button>
+                </form>
+            </div>
+        </div>
+
+    </div> 
+
+    <!-- links js -->
+    <script src="atividade.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

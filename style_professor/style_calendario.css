@@ -1,0 +1,1186 @@
+/* Definição das variáveis de cor no :root para uso global */
+:root {
+    /* Cores principais */
+    --purple-primary: #4956ca; /* Cor principal do seu site, ajustada para sua preferência */
+    --purple-darker: #3a47b9;
+    --purple-lighter: #5d6edc;
+    --purple-lightest: #7e8ced;
+
+    /* Cores de status/tipo (exemplo do seu CSS original) */
+    --status-aberto-bg: #e6ffed;
+    --status-aberto-text: #38a169;
+    --status-vencida-bg: #ffe0e0;
+    --status-vencida-text: #e53e3e;
+    --status-concluido-bg: #38a169;
+    --status-nao-concluido-bg: #e53e3e;
+
+    --type-prova: #e53e3e; /* Vermelho */
+    --type-trabalho: #6b46c1; /* Roxo */
+    --type-apresentacao: #ecc94b; /* Amarelo */
+    --type-apresentacao-text: #333; /* Texto para amarelo */
+    --type-exercicio: #4299e1; /* Azul */
+
+    /* Variáveis para o tema claro */
+    --bg-color-light: #f4f6f8;
+    --sidebar-bg-light: #ffffff;
+    --card-bg-light: #ffffff;
+    --text-color-light: #333;
+    --text-color-secondary-light: #555;
+    --text-color-tertiary-light: #777;
+    --header-bg-light: #ffffff;
+    --border-color-light: #eee;
+    --shadow-light: rgba(0, 0, 0, 0.05);
+    --shadow-card-light: rgba(0, 0, 0, 0.08);
+    --hover-bg-light: #cfe0f0;
+    --hover-text-light: #4956ca;
+    --button-secondary-bg-light: #e2e8f0;
+    --button-secondary-text-light: #4a5568;
+    --input-bg-light: #fcfcfc;
+    --input-border-light: #ccc;
+    --focus-shadow-light: rgba(73, 86, 202, 0.2); /* Baseado em --purple-primary */
+}
+
+body.dark-theme {
+    /* Variáveis para o tema escuro */
+    --bg-color-dark: #222;
+    --sidebar-bg-dark: #333;
+    --card-bg-dark: #3a3a3a;
+    --text-color-dark: #eee;
+    --text-color-secondary-dark: #ddd;
+    --text-color-tertiary-dark: #bbb;
+    --header-bg-dark: #444;
+    --border-color-dark: #666;
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+    --shadow-card-dark: rgba(0, 0, 0, 0.2);
+    --hover-bg-dark: #5a4bbf; /* Um roxo mais escuro para hover */
+    --hover-text-dark: #ffffff;
+    --button-secondary-bg-dark: #666;
+    --button-secondary-text-dark: #eee;
+    --input-bg-dark: #5a5a5a;
+    --input-border-dark: #777;
+    --focus-shadow-dark: rgba(154, 141, 231, 0.3); /* Baseado em --purple-lighter */
+
+    /* Atribuição de cores do tema escuro */
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+}
+
+/*conf da parte normal site*/
+
+/*conf da parte normal site*/
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f6f8; /* Fundo claro padrão */
+    color: #333; /* Cor do texto padrão */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 16px; /* Tamanho base, equivalente a 1em. Ajuste se quiser maior ou menor no geral. */
+}
+
+body.dark-theme {
+    background-color: #333; /* Fundo escuro */
+    color: #eee; /* Cor do texto padrão no tema escuro */
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+    background-color: #ffffff; /* Fundo branco padrão */
+    width: 200px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme .sidebar {
+    background-color: #444; /* Cinza meio escuro */
+    color: #eee;
+}
+
+.sidebar .logo {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar .logo img {
+    max-width: 160px;
+    height: auto;
+    display: block;
+}
+
+/* Remover roxo do hover na logotipo do site */
+.sidebar .logo a:hover {
+    background-color: transparent; /* Remove o fundo roxo */
+    color: inherit; /* Mantém a cor original do texto/ícone, se houver */
+    transform: none; /* Remove a translação se existir */
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    text-decoration: none;
+    color: #333; /* Cor do link padrão */
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease; /* Adicionado transform para transição suave do hover */
+    font-size: 0.95em;
+}
+
+body.dark-theme .sidebar a {
+    color: #eee; /* Cor do link no tema escuro */
+}
+
+/* ESTILO ATIVO: Corrigido o hover para o estado ativo */
+.sidebar a.active {
+    background-color: #4956ca;
+    color: white;
+}
+
+/* HOVER */
+.sidebar a:not(.active):hover { /* Aplica hover apenas se não estiver ativo */
+    transform: translateX(5px);
+    background-color: #cfe0f0;
+    color: #333; /* Mudado para uma cor que funcione bem no hover do tema claro */
+}
+
+body.dark-theme .sidebar a:not(.active):hover {
+    background-color: #6d7aff; /* Roxo mais claro para hover no tema escuro */
+    color: white; /* Garante que o texto fique branco */
+    transform: translateX(5px); /* Mantém a translação */
+}
+
+.sidebar a i {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    color: #4956ca; /* Cor roxa original para os ícones */
+    transition: color 0.3s ease;
+}
+
+/* MODIFICAÇÃO: Cor do ícone na sidebar no tema escuro */
+body.dark-theme .sidebar a i {
+    color: #a7b1ff; /* Roxo mais claro para ícones no tema escuro */
+}
+
+/* MODIFICAÇÃO: Cor do ícone quando o link está ativo (tanto claro quanto escuro) */
+.sidebar a.active i {
+    color: white; /* Ícones brancos quando o link está ativo */
+}
+
+/* --- CONTEÚDO PRINCIPAL --- */
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme .content {
+    background-color: #000; /* Fundo escuro */
+}
+
+/* --- TOP-NAV --- */
+.top-nav {
+    background-color: white; /* Fundo branco padrão */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme .top-nav {
+    background-color: #444; /* Cinza meio escuro */
+}
+
+.right-items {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Remover sublinhado do link no nome e na foto do professor */
+.user-info a {
+    text-decoration: none;
+    color: inherit; /* Garante que a cor do texto seja herdada, não a cor padrão do link */
+}
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-info span {
+    font-weight: bold;
+    color: #333; /* Cor do texto padrão */
+    transition: color 0.3s ease;
+    font-size: 1em; /* Mantido como tamanho padrão, equivalente ao corpo do texto */
+}
+
+body.dark-theme .user-info span {
+    color: #eee; /* Cor do texto no tema escuro */
+}
+
+.notification-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.notifications {
+    cursor: pointer;
+}
+
+.notifications i {
+    font-size: 22px;
+    color: #555; /* Cor do ícone padrão */
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .notifications i {
+    color: #eee; /* Cor do ícone no tema escuro */
+}
+
+/* --- CABEÇALHO DO DASHBOARD --- */
+.dashboard-header {
+    margin-bottom: 25px;
+}
+
+/* GARANTINDO QUE ESTEJA CLARO E CONSISTENTE */
+.dashboard-header h1 {
+    font-size: 2.2em; /* Tamanho maior para o H1 */
+    font-weight: bold; /* Garante que seja negrito */
+    color: #333; /* Cor do texto padrão */
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .dashboard-header h1 {
+    color: #eee; /* Cor do texto no tema escuro */
+}
+
+/* GARANTINDO QUE ESTEJA CLARO E CONSISTENTE */
+.dashboard-header p {
+    font-size: 0.9em; /* Tamanho do parágrafo */
+    line-height: 1.4; /* Espaçamento entre linhas */
+    color: #777; /* Cor do texto padrão */
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .dashboard-header p {
+    color: #ccc; /* Cor do texto no tema escuro */
+}
+
+/* --- BOTÃO DE ALTERNAR TEMA (NO TOP-NAV) --- */
+.theme-button {
+    background: none;
+    color: #555; /* Cor do ícone padrão */
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+    margin-right: 20px;
+    outline: none;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .theme-button {
+    color: #eee;
+}
+
+.theme-button:hover {
+    color: #333;
+}
+
+body.dark-theme .theme-button:hover {
+    color: #ccc;
+}
+
+
+/* --- INÍCIO DO CSS PARA AS CONFIGURAÇÕES (ADICIONE ABAIXO DO SEU CSS EXISTENTE) --- */
+
+.settings-container {
+    flex-grow: 1;
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme .settings-container {
+    background-color: #2b2b2b;
+    color: #eee;
+}
+
+.settings-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.setting-item {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+body.dark-theme .setting-item {
+    background-color: #3a3a3a;
+    border-color: #555;
+}
+
+.setting-item:hover {
+    background-color: #e6eefa;
+    border-color: #cfe0f0;
+    transform: translateY(-3px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme .setting-item:hover {
+    background-color: #4956ca;
+    border-color: #4956ca;
+    color: white;
+}
+
+body.dark-theme .setting-item:hover h3,
+body.dark-theme .setting-item:hover p,
+body.dark-theme .setting-item:hover i {
+    color: white;
+}
+
+.setting-item i {
+    font-size: 40px;
+    color: #4956ca;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .setting-item i {
+    color: #a7b1ff;
+}
+
+.setting-item h3 {
+    font-size: 1.3em;
+    color: #333;
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .setting-item h3 {
+    color: #eee;
+}
+
+.setting-item p {
+    font-size: 0.85em;
+    color: #777;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .setting-item p {
+    color: #ccc;
+}
+
+/* Estilos para os Modais */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: auto;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 550px;
+    position: relative;
+    animation: fadeInScale 0.3s ease-out;
+    color: #333;
+}
+
+body.dark-theme .modal-content {
+    background-color: #363636;
+    color: #eee;
+}
+
+.modal-content h2 {
+    color: #4956ca;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.6em;
+}
+
+body.dark-theme .modal-content h2 {
+    color: #a7b1ff;
+}
+
+.close-button {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 1001;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+body.dark-theme .close-button:hover,
+body.dark-theme .close-button:focus {
+    color: #eee;
+}
+
+.modal-body {
+    margin-top: 15px;
+    line-height: 1.5;
+}
+
+.setting-option {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1em;
+}
+
+.setting-option label {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.setting-option input[type="checkbox"] {
+    transform: scale(1.1);
+    margin-right: 3px;
+    accent-color: #4956ca;
+}
+
+.setting-option select {
+    padding: 7px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: #333;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+body.dark-theme .setting-option select {
+    background-color: #4a4a4a;
+    border-color: #666;
+    color: #eee;
+}
+
+.setting-option select:focus {
+    outline: none;
+    border-color: #4956ca;
+    box-shadow: 0 0 0 3px rgba(73, 86, 202, 0.2);
+}
+
+.action-button {
+    background-color: #4956ca;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95em;
+    margin-right: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.action-button:hover {
+    background-color: #3b45a0;
+    transform: translateY(-1px);
+}
+
+.delete-account-button {
+    background-color: #dc3545;
+}
+
+.delete-account-button:hover {
+    background-color: #c82333;
+}
+
+.theme-options {
+    display: flex;
+    gap: 8px;
+}
+
+.theme-choice-btn {
+    background-color: #eee;
+    color: #333;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+body.dark-theme .theme-choice-btn {
+    background-color: #555;
+    color: #eee;
+    border-color: #777;
+}
+
+.theme-choice-btn:hover {
+    background-color: #ddd;
+}
+
+body.dark-theme .theme-choice-btn:hover {
+    background-color: #666;
+}
+
+.theme-choice-btn.active-theme {
+    background-color: #4956ca;
+    color: white;
+    border-color: #4956ca;
+}
+
+body.dark-theme .theme-choice-btn.active-theme {
+    background-color: #6d7aff; /* Um roxo mais claro para o botão ativo no tema escuro */
+    border-color: #6d7aff;
+}
+
+/* Animação para o modal */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeOutScale {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+
+/* --- NOVOS ESTILOS PARA ACESSIBILIDADE --- */
+/* Alto Contraste */
+body.high-contrast {
+    background-color: black !important;
+    color: yellow !important;
+}
+
+body.high-contrast .sidebar,
+body.high-contrast .top-nav,
+body.high-contrast .settings-container,
+body.high-contrast .modal-content,
+body.high-contrast .setting-item {
+    background-color: #000 !important;
+    border-color: #fff !important;
+    color: yellow !important;
+    box-shadow: none !important;
+}
+
+body.high-contrast .sidebar a,
+body.high-contrast .top-nav *,
+body.high-contrast .user-info span,
+body.high-contrast .notifications i,
+body.high-contrast .theme-button,
+body.high-contrast .setting-item h3,
+body.high-contrast .setting-item p,
+body.high-contrast .modal-content h2,
+body.high-contrast .close-button,
+body.high-contrast .setting-option label {
+    color: yellow !important;
+}
+
+body.high-contrast .sidebar a.active,
+body.high-contrast .action-button,
+body.high-contrast .delete-account-button,
+body.high-contrast .theme-choice-btn.active-theme {
+    background-color: white !important;
+    color: black !important;
+    border-color: yellow !important;
+}
+
+body.high-contrast .sidebar a:hover,
+body.high-contrast .theme-choice-btn:hover {
+    background-color: gray !important;
+    color: yellow !important;
+}
+
+body.high-contrast .action-button:hover,
+body.high-contrast .delete-account-button:hover {
+    background-color: #333 !important;
+    color: yellow !important;
+}
+
+body.high-contrast .setting-item i {
+    color: yellow !important;
+}
+
+/* Desativar Animações */
+body.no-animations * {
+    transition: none !important;
+    animation: none !important;
+}
+
+/* --- FIM DA PARTE INICIAL --- */
+
+/* calendar.css */
+
+/* Estilos do Calendário */
+.calendar-wrapper {
+    background-color: var(--card-bg-light);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px var(--shadow-light);
+    padding: 25px;
+    margin-top: 20px;
+    /* REMOVIDO: max-width: 900px; - Isso limitava a largura máxima */
+    /* REMOVIDO: margin-left: auto; - Isso centralizava */
+    /* REMOVIDO: margin-right: auto; - Isso centralizava */
+    width: 100%; /* Garante que ocupe 100% da largura disponível do pai */
+    box-sizing: border-box; /* Inclui padding na largura total */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-theme .calendar-wrapper {
+    background-color: var(--card-bg-dark);
+    box-shadow: 0 5px 15px var(--shadow-dark);
+}
+
+.calendar-header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color-light);
+    transition: border-color 0.3s ease;
+}
+
+body.dark-theme .calendar-header-nav {
+    border-bottom: 1px solid var(--border-color-dark);
+}
+
+.calendar-header-nav h2 {
+    font-size: 1.8em;
+    color: var(--text-color-light);
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .calendar-header-nav h2 {
+    color: var(--text-color-dark);
+}
+
+.calendar-nav-button {
+    background-color: var(--button-secondary-bg-light);
+    color: var(--button-secondary-text-light);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+body.dark-theme .calendar-nav-button {
+    background-color: var(--button-secondary-bg-dark);
+    color: var(--button-secondary-text-dark);
+}
+
+.calendar-nav-button:hover {
+    background-color: var(--hover-bg-light);
+    color: var(--hover-text-light);
+}
+
+body.dark-theme .calendar-nav-button:hover {
+    background-color: var(--hover-bg-dark);
+    color: var(--hover-text-dark);
+}
+
+.calendar-nav-button i {
+    color: inherit;
+}
+
+.calendar-grid-weekdays,
+.calendar-grid-dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    text-align: center;
+}
+
+.calendar-grid-weekdays div {
+    font-weight: bold;
+    color: var(--text-color-secondary-light);
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color-light);
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-theme .calendar-grid-weekdays div {
+    color: var(--text-color-secondary-dark);
+    border-bottom: 1px solid var(--border-color-dark);
+}
+
+.calendar-day {
+    background-color: var(--input-bg-light);
+    border: 1px solid var(--border-color-light);
+    border-radius: 8px;
+    padding: 10px;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+}
+
+body.dark-theme .calendar-day {
+    background-color: var(--input-bg-dark);
+    border-color: var(--input-border-dark);
+}
+
+.calendar-day:hover {
+    background-color: var(--hover-bg-light);
+    border-color: var(--purple-primary);
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+body.dark-theme .calendar-day:hover {
+    background-color: var(--border-color-dark);
+    border-color: var(--purple-lighter);
+    box-shadow: 0 2px 8px var(--shadow-dark);
+}
+
+.calendar-day span {
+    font-weight: bold;
+    color: var(--text-color-light);
+    font-size: 1.1em;
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .calendar-day span {
+    color: var(--text-color-dark);
+}
+
+.calendar-day.inactive {
+    background-color: var(--bg-color-light);
+    color: var(--text-color-tertiary-light);
+    border-color: var(--border-color-light);
+    opacity: 0.7;
+    cursor: default;
+}
+
+body.dark-theme .calendar-day.inactive {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-tertiary-dark);
+    border-color: var(--border-color-dark);
+}
+
+.calendar-day.inactive:hover {
+    background-color: var(--bg-color-light);
+    box-shadow: none;
+}
+
+body.dark-theme .calendar-day.inactive:hover {
+    background-color: var(--bg-color-dark);
+}
+
+.calendar-day.current-day {
+    border: 2px solid var(--purple-primary);
+    background-color: var(--purple-primary);
+    color: white;
+    box-shadow: 0 4px 10px var(--focus-shadow-light);
+}
+
+.calendar-day.current-day span {
+    color: white;
+}
+
+body.dark-theme .calendar-day.current-day {
+    border: 2px solid var(--purple-lighter);
+    background-color: var(--purple-lighter);
+    box-shadow: 0 4px 10px var(--focus-shadow-dark);
+}
+
+.calendar-day.current-day:hover {
+    background-color: var(--purple-darker);
+    border-color: var(--purple-darker);
+}
+
+body.dark-theme .calendar-day.current-day:hover {
+    background-color: var(--purple-primary);
+    border-color: var(--purple-primary);
+}
+
+/* Estilos para Eventos dentro do calendário */
+.calendar-event {
+    width: calc(100% - 10px);
+    padding: 3px 5px;
+    border-radius: 4px;
+    font-size: 0.7em;
+    font-weight: 500;
+    color: white;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 3px;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+    line-height: 1.2;
+}
+
+.calendar-event:hover {
+    transform: translateX(3px);
+}
+
+/* Reutilizando as cores de tipo de atividade do seu CSS base */
+.calendar-event.type-prova { background-color: var(--type-prova); }
+.calendar-event.type-trabalho { background-color: var(--type-trabalho); }
+.calendar-event.type-apresentacao { background-color: var(--type-apresentacao); color: var(--type-apresentacao-text); }
+.calendar-event.type-exercicio { background-color: var(--type-exercicio); }
+
+/* Estilos para o Modal de Eventos/Recados */
+.calendar-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.calendar-modal-overlay.show-modal {
+    opacity: 1;
+    visibility: visible;
+}
+
+.calendar-modal-content {
+    background-color: var(--card-bg-light);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px var(--shadow-dark);
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+body.dark-theme .calendar-modal-content {
+    background-color: var(--card-bg-dark);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.calendar-modal-overlay.show-modal .calendar-modal-content {
+    transform: translateY(0);
+}
+
+.calendar-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color-light);
+}
+
+body.dark-theme .calendar-modal-header {
+    border-bottom: 1px solid var(--border-color-dark);
+}
+
+.calendar-modal-header h3 {
+    margin: 0;
+    font-size: 1.5em;
+    color: var(--text-color-light);
+}
+
+body.dark-theme .calendar-modal-header h3 {
+    color: var(--text-color-dark);
+}
+
+.calendar-modal-close-button {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    color: var(--text-color-secondary-light);
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+body.dark-theme .calendar-modal-close-button {
+    color: var(--text-color-secondary-dark);
+}
+
+.calendar-modal-close-button:hover {
+    color: var(--purple-primary);
+}
+
+.calendar-modal-form-group {
+    margin-bottom: 15px;
+}
+
+.calendar-modal-form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-color-secondary-light);
+    font-size: 0.9em;
+}
+
+body.dark-theme .calendar-modal-form-group label {
+    color: var(--text-color-secondary-dark);
+}
+
+.calendar-modal-form-group input,
+.calendar-modal-form-group select,
+.calendar-modal-form-group textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid var(--input-border-light);
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    background-color: var(--input-bg-light);
+    color: var(--text-color-light);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+body.dark-theme .calendar-modal-form-group input,
+body.dark-theme .calendar-modal-form-group select,
+body.dark-theme .calendar-modal-form-group textarea {
+    background-color: var(--input-bg-dark);
+    border-color: var(--input-border-dark);
+    color: var(--text-color-dark);
+}
+
+.calendar-modal-form-group input:focus,
+.calendar-modal-form-group select:focus,
+.calendar-modal-form-group textarea:focus {
+    border-color: var(--purple-primary);
+    outline: none;
+    box-shadow: 0 0 0 3px var(--focus-shadow-light);
+}
+
+body.dark-theme .calendar-modal-form-group input:focus,
+body.dark-theme .calendar-modal-form-group select:focus,
+body.dark-theme .calendar-modal-form-group textarea:focus {
+    box-shadow: 0 0 0 3px var(--focus-shadow-dark);
+}
+
+.calendar-modal-form-group textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.calendar-modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.calendar-modal-button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.calendar-modal-button.primary {
+    background-color: var(--purple-primary);
+    color: white;
+    border: none;
+}
+
+.calendar-modal-button.primary:hover {
+    background-color: var(--purple-darker);
+}
+
+body.dark-theme .calendar-modal-button.primary {
+    background-color: var(--purple-lighter);
+}
+
+body.dark-theme .calendar-modal-button.primary:hover {
+    background-color: var(--purple-primary);
+}
+
+.calendar-modal-button.secondary {
+    background-color: var(--button-secondary-bg-light);
+    color: var(--button-secondary-text-light);
+    border: 1px solid var(--border-color-light);
+}
+
+.calendar-modal-button.secondary:hover {
+    background-color: var(--border-color-light);
+    color: var(--text-color-light);
+}
+
+body.dark-theme .calendar-modal-button.secondary {
+    background-color: var(--button-secondary-bg-dark);
+    color: var(--button-secondary-text-dark);
+    border: 1px solid var(--input-border-dark);
+}
+
+body.dark-theme .calendar-modal-button.secondary:hover {
+    background-color: var(--border-color-dark);
+    color: var(--text-color-dark);
+}
+
+/* Responsividade do calendário */
+@media (max-width: 768px) {
+    .calendar-wrapper {
+        padding: 15px;
+    }
+    .calendar-header-nav h2 {
+        font-size: 1.4em;
+    }
+    .calendar-nav-button {
+        width: 35px;
+        height: 35px;
+        font-size: 1em;
+    }
+    .calendar-grid-weekdays div {
+        font-size: 0.8em;
+    }
+    .calendar-day {
+        min-height: 80px;
+        padding: 5px;
+    }
+    .calendar-day span {
+        font-size: 0.9em;
+    }
+    .calendar-event {
+        font-size: 0.65em;
+        padding: 2px 4px;
+    }
+    .calendar-modal-content {
+        padding: 20px;
+    }
+    .calendar-modal-header h3 {
+        font-size: 1.3em;
+    }
+    .calendar-modal-close-button {
+        font-size: 1.3em;
+    }
+}
+
+@media (max-width: 480px) {
+    .calendar-wrapper {
+        padding: 10px;
+    }
+    .calendar-header-nav h2 {
+        font-size: 1.2em;
+    }
+    .calendar-nav-button {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9em;
+    }
+    .calendar-grid-weekdays div {
+        font-size: 0.7em;
+    }
+    .calendar-day {
+        min-height: 60px;
+        padding: 3px;
+    }
+    .calendar-day span {
+        font-size: 0.8em;
+    }
+    .calendar-event {
+        font-size: 0.6em;
+        padding: 1px 3px;
+    }
+    .calendar-modal-content {
+        padding: 15px;
+    }
+    .calendar-modal-header h3 {
+        font-size: 1.1em;
+    }
+    .calendar-modal-close-button {
+        font-size: 1.1em;
+    }
+}

@@ -1,0 +1,2547 @@
+/* Importação da fonte Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* --- Variáveis CSS para Cores e Tema --- */
+:root {
+    /* Cores Comuns */
+    --purple-primary: #6a5acd;
+    --purple-darker: #5a4bbf;
+    --purple-lighter: #7a6be0; /* Para hover no dark */
+    --purple-lightest: #9a8de7; /* Para ícones no dark */
+
+    /* Status Badges */
+    --status-aberto-bg: #e6ffed;
+    --status-aberto-text: #38a169;
+    --status-vencida-bg: #ffe0e0;
+    --status-vencida-text: #e53e3e;
+    --status-concluido-bg: #38a169; /* Verde para entregue */
+    --status-nao-concluido-bg: #e53e3e; /* Vermelho para pendente */
+
+    /* Activity Types */
+    --type-prova: #e53e3e; /* Vermelho */
+    --type-trabalho: #6b46c1; /* Roxo mais escuro */
+    --type-apresentacao: #ecc94b; /* Amarelo */
+    --type-apresentacao-text: #333; /* Texto escuro para contraste */
+    --type-exercicio: #4299e1; /* Azul claro */
+
+    /* Light Theme */
+    --bg-color-light: #f4f6f8;
+    --sidebar-bg-light: #ffffff;
+    --card-bg-light: #ffffff;
+    --text-color-light: #333;
+    --text-color-secondary-light: #555;
+    --text-color-tertiary-light: #777;
+    --header-bg-light: #ffffff;
+    --border-color-light: #eee;
+    --shadow-light: rgba(0, 0, 0, 0.05);
+    --shadow-card-light: rgba(0, 0, 0, 0.08);
+    --hover-bg-light: #cfe0f0;
+    --hover-text-light: #4956ca;
+    --button-secondary-bg-light: #e2e8f0;
+    --button-secondary-text-light: #4a5568;
+    --input-bg-light: #fcfcfc;
+    --input-border-light: #ccc;
+    --focus-shadow-light: rgba(106, 90, 205, 0.2);
+}
+
+/* Dark Theme */
+body.dark-theme {
+    --bg-color-dark: #222;
+    --sidebar-bg-dark: #333;
+    --card-bg-dark: #3a3a3a;
+    --text-color-dark: #eee;
+    --text-color-secondary-dark: #ddd;
+    --text-color-tertiary-dark: #bbb;
+    --header-bg-dark: #444;
+    --border-color-dark: #666;
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+    --shadow-card-dark: rgba(0, 0, 0, 0.2);
+    --hover-bg-dark: #5a4bbf;
+    --hover-text-dark: #ffffff;
+    --button-secondary-bg-dark: #666;
+    --button-secondary-text-dark: #eee;
+    --input-bg-dark: #5a5a5a;
+    --input-border-dark: #777;
+    --focus-shadow-dark: rgba(154, 141, 231, 0.3); /* Baseado no purple-lightest */
+
+    /* Apply dark theme variables */
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+}
+
+/* --- Estilos Gerais (Parte normal do site) --- */
+/*conf da parte normal site*/
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f6f8; /* Fundo claro padrão */
+    color: #333; /* Cor do texto padrão */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 16px; /* Tamanho base, equivalente a 1em. Ajuste se quiser maior ou menor no geral. */
+}
+
+body.dark-theme {
+    background-color: #333; /* Fundo escuro */
+    color: #eee; /* Cor do texto padrão no tema escuro */
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+    background-color: #ffffff; /* Fundo branco padrão */
+    width: 200px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme .sidebar {
+    background-color: #444; /* Cinza meio escuro */
+    color: #eee;
+}
+
+.sidebar .logo {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar .logo img {
+    max-width: 160px;
+    height: auto;
+    display: block;
+}
+
+/* Remover roxo do hover na logotipo do site */
+.sidebar .logo a:hover {
+    background-color: transparent; /* Remove o fundo roxo */
+    color: inherit; /* Mantém a cor original do texto/ícone, se houver */
+    transform: none; /* Remove a translação se existir */
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    text-decoration: none;
+    color: #333; /* Cor do link padrão */
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease; /* Adicionado transform para transição suave do hover */
+    font-size: 0.95em;
+}
+
+body.dark-theme .sidebar a {
+    color: #eee; /* Cor do link no tema escuro */
+}
+
+/* ESTILO ATIVO: Corrigido o hover para o estado ativo */
+.sidebar a.active {
+    background-color: #4956ca;
+    color: white;
+}
+
+/* HOVER: Ajustado para que o hover funcione corretamente com o active */
+.sidebar a:not(.active):hover { /* Aplica hover apenas se não estiver ativo */
+    transform: translateX(5px);
+    background-color: #cfe0f0;
+    color: #333; /* Mudado para uma cor que funcione bem no hover do tema claro */
+}
+
+body.dark-theme .sidebar a:not(.active):hover {
+    background-color: #6d7aff; /* Roxo mais claro para hover no tema escuro */
+    color: white; /* Garante que o texto fique branco */
+    transform: translateX(5px); /* Mantém a translação */
+}
+
+.sidebar a i {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    color: #4956ca; /* Cor roxa original para os ícones */
+    transition: color 0.3s ease;
+}
+
+/* MODIFICAÇÃO: Cor do ícone na sidebar no tema escuro */
+body.dark-theme .sidebar a i {
+    color: #a7b1ff; /* Roxo mais claro para ícones no tema escuro */
+}
+
+/* MODIFICAÇÃO: Cor do ícone quando o link está ativo (tanto claro quanto escuro) */
+.sidebar a.active i {
+    color: white; /* Ícones brancos quando o link está ativo */
+}
+
+/* --- CONTEÚDO PRINCIPAL --- */
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme .content {
+    background-color: #000; /* Fundo escuro */
+}
+
+/* --- NAVEGAÇÃO SUPERIOR (TOP-NAV) --- */
+.top-nav {
+    background-color: white; /* Fundo branco padrão */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme .top-nav {
+    background-color: #444; /* Cinza meio escuro */
+}
+
+.right-items {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Remover sublinhado do link no nome e na foto do professor */
+.user-info a {
+    text-decoration: none;
+    color: inherit; /* Garante que a cor do texto seja herdada, não a cor padrão do link */
+}
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-info span {
+    font-weight: bold;
+    color: #333; /* Cor do texto padrão */
+    transition: color 0.3s ease;
+    font-size: 1em; /* Mantido como tamanho padrão, equivalente ao corpo do texto */
+}
+
+body.dark-theme .user-info span {
+    color: #eee; /* Cor do texto no tema escuro */
+}
+
+.notification-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.notifications {
+    cursor: pointer;
+}
+
+.notifications i {
+    font-size: 22px;
+    color: #555; /* Cor do ícone padrão */
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .notifications i {
+    color: #eee; /* Cor do ícone no tema escuro */
+}
+
+/* --- CABEÇALHO DO DASHBOARD (A "PARTE INICIAL" DO CONTEÚDO) --- */
+.dashboard-header {
+    margin-bottom: 25px;
+}
+
+/* GARANTINDO QUE ESTEJA CLARO E CONSISTENTE */
+.dashboard-header h1 {
+    font-size: 2.2em; /* Tamanho maior para o H1 */
+    font-weight: bold; /* Garante que seja negrito */
+    color: #333; /* Cor do texto padrão */
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .dashboard-header h1 {
+    color: #eee; /* Cor do texto no tema escuro */
+}
+
+/* GARANTINDO QUE ESTEJA CLARO E CONSISTENTE */
+.dashboard-header p {
+    font-size: 0.9em; /* Tamanho do parágrafo */
+    line-height: 1.4; /* Espaçamento entre linhas */
+    color: #777; /* Cor do texto padrão */
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .dashboard-header p {
+    color: #ccc; /* Cor do texto no tema escuro */
+}
+
+/* --- BOTÃO DE ALTERNAR TEMA (NO TOP-NAV) --- */
+.theme-button {
+    background: none;
+    color: #555; /* Cor do ícone padrão */
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+    margin-right: 20px;
+    outline: none;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .theme-button {
+    color: #eee;
+}
+
+.theme-button:hover {
+    color: #333;
+}
+
+body.dark-theme .theme-button:hover {
+    color: #ccc;
+}
+
+
+/* --- INÍCIO DO CSS PARA AS CONFIGURAÇÕES (ADICIONE ABAIXO DO SEU CSS EXISTENTE) --- */
+
+.settings-container {
+    flex-grow: 1;
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme .settings-container {
+    background-color: #2b2b2b;
+    color: #eee;
+}
+
+.settings-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.setting-item {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+body.dark-theme .setting-item {
+    background-color: #3a3a3a;
+    border-color: #555;
+}
+
+.setting-item:hover {
+    background-color: #e6eefa;
+    border-color: #cfe0f0;
+    transform: translateY(-3px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme .setting-item:hover {
+    background-color: #4956ca;
+    border-color: #4956ca;
+    color: white;
+}
+
+body.dark-theme .setting-item:hover h3,
+body.dark-theme .setting-item:hover p,
+body.dark-theme .setting-item:hover i {
+    color: white;
+}
+
+.setting-item i {
+    font-size: 40px;
+    color: #4956ca;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .setting-item i {
+    color: #a7b1ff;
+}
+
+.setting-item h3 {
+    font-size: 1.3em;
+    color: #333;
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .setting-item h3 {
+    color: #eee;
+}
+
+.setting-item p {
+    font-size: 0.85em;
+    color: #777;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .setting-item p {
+    color: #ccc;
+}
+
+/* Estilos para os Modais */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: auto;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 550px;
+    position: relative;
+    animation: fadeInScale 0.3s ease-out;
+    color: #333;
+}
+
+body.dark-theme .modal-content {
+    background-color: #363636;
+    color: #eee;
+}
+
+.modal-content h2 {
+    color: #4956ca;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.6em;
+}
+
+body.dark-theme .modal-content h2 {
+    color: #a7b1ff;
+}
+
+.close-button {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 1001;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+body.dark-theme .close-button:hover,
+body.dark-theme .close-button:focus {
+    color: #eee;
+}
+
+.modal-body {
+    margin-top: 15px;
+    line-height: 1.5;
+}
+
+.setting-option {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1em;
+}
+
+.setting-option label {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.setting-option input[type="checkbox"] {
+    transform: scale(1.1);
+    margin-right: 3px;
+    accent-color: #4956ca;
+}
+
+.setting-option select {
+    padding: 7px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: #333;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+body.dark-theme .setting-option select {
+    background-color: #4a4a4a;
+    border-color: #666;
+    color: #eee;
+}
+
+.setting-option select:focus {
+    outline: none;
+    border-color: #4956ca;
+    box-shadow: 0 0 0 3px rgba(73, 86, 202, 0.2);
+}
+
+.action-button {
+    background-color: #4956ca;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95em;
+    margin-right: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.action-button:hover {
+    background-color: #3b45a0;
+    transform: translateY(-1px);
+}
+
+.delete-account-button {
+    background-color: #dc3545;
+}
+
+.delete-account-button:hover {
+    background-color: #c82333;
+}
+
+.theme-options {
+    display: flex;
+    gap: 8px;
+}
+
+.theme-choice-btn {
+    background-color: #eee;
+    color: #333;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+body.dark-theme .theme-choice-btn {
+    background-color: #555;
+    color: #eee;
+    border-color: #777;
+}
+
+.theme-choice-btn:hover {
+    background-color: #ddd;
+}
+
+body.dark-theme .theme-choice-btn:hover {
+    background-color: #666;
+}
+
+.theme-choice-btn.active-theme {
+    background-color: #4956ca;
+    color: white;
+    border-color: #4956ca;
+}
+
+body.dark-theme .theme-choice-btn.active-theme {
+    background-color: #6d7aff; /* Um roxo mais claro para o botão ativo no tema escuro */
+    border-color: #6d7aff;
+}
+
+/* Animação para o modal */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeOutScale {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+
+/* --- NOVOS ESTILOS PARA ACESSIBILIDADE --- */
+/* Alto Contraste */
+body.high-contrast {
+    background-color: black !important;
+    color: yellow !important;
+}
+
+body.high-contrast .sidebar,
+body.high-contrast .top-nav,
+body.high-contrast .settings-container,
+body.high-contrast .modal-content,
+body.high-contrast .setting-item {
+    background-color: #000 !important;
+    border-color: #fff !important;
+    color: yellow !important;
+    box-shadow: none !important;
+}
+
+body.high-contrast .sidebar a,
+body.high-contrast .top-nav *,
+body.high-contrast .user-info span,
+body.high-contrast .notifications i,
+body.high-contrast .theme-button,
+body.high-contrast .setting-item h3,
+body.high-contrast .setting-item p,
+body.high-contrast .modal-content h2,
+body.high-contrast .close-button,
+body.high-contrast .setting-option label {
+    color: yellow !important;
+}
+
+body.high-contrast .sidebar a.active,
+body.high-contrast .action-button,
+body.high-contrast .delete-account-button,
+body.high-contrast .theme-choice-btn.active-theme {
+    background-color: white !important;
+    color: black !important;
+    border-color: yellow !important;
+}
+
+body.high-contrast .sidebar a:hover,
+body.high-contrast .theme-choice-btn:hover {
+    background-color: gray !important;
+    color: yellow !important;
+}
+
+body.high-contrast .action-button:hover,
+body.high-contrast .delete-account-button:hover {
+    background-color: #333 !important;
+    color: yellow !important;
+}
+
+body.high-contrast .setting-item i {
+    color: yellow !important;
+}
+
+/* Desativar Animações */
+body.no-animations * {
+    transition: none !important;
+    animation: none !important;
+}
+
+
+
+
+
+/* Conteúdo Principal */
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Garante que os itens dentro de .content se empilhem verticalmente */
+    transition: background-color 0.3s ease;
+    position: relative; /* CRUCIAL para que as main-sections absolutas funcionem */
+}
+
+body.dark-theme .content {
+    background-color: var(--bg-color-dark); /* Fundo mais escuro para o conteúdo principal */
+}
+
+/* Top Navigation */
+.top-nav {
+    background-color: var(--header-bg-light); /* Fundo branco padrão */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px var(--shadow-light);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-theme .top-nav {
+    background-color: var(--header-bg-dark); /* Cinza meio escuro */
+    box-shadow: 0 1px 3px var(--shadow-dark);
+}
+
+.right-items {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* NOVO: Estilos para o link do perfil do professor (foto e nome) */
+.user-info .user-profile-link {
+    text-decoration: none; /* Remove o sublinhado */
+    color: inherit; /* Mantém a cor do texto padrão do pai */
+    display: flex; /* Para alinhar a imagem e o texto se o link envolver ambos */
+    align-items: center;
+    gap: 10px; /* Espaçamento entre foto e nome */
+    background-color: transparent; /* Garante que o fundo não mude no hover */
+    padding: 0; /* Remove padding que possa afetar o hover */
+    transition: none; /* Remove qualquer transição de hover */
+    transform: none; /* Remove qualquer transformação de hover */
+}
+
+.user-info .user-profile-link span {
+    font-weight: bold;
+    color: var(--text-color-light); /* Cor do texto padrão */
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .user-info .user-profile-link span {
+    color: var(--text-color-dark); /* Cor do texto no tema escuro */
+}
+
+.notification-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.notifications {
+    cursor: pointer;
+}
+
+.notifications i {
+    font-size: 22px;
+    color: var(--text-color-secondary-light); /* Cor do ícone padrão */
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .notifications i {
+    color: var(--text-color-dark); /* Cor do ícone no tema escuro */
+}
+
+.dashboard-header {
+    margin-bottom: 25px;
+}
+
+.dashboard-header h1 {
+    color: var(--text-color-light); /* Cor do texto padrão */
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .dashboard-header h1 {
+    color: var(--text-color-dark); /* Cor do texto no tema escuro */
+}
+
+.dashboard-header p {
+    color: var(--text-color-tertiary-light); /* Cor do texto padrão */
+    font-size: 0.9em;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .dashboard-header p {
+    color: var(--text-color-secondary-dark); /* Cor do texto no tema escuro */
+}
+
+.theme-button {
+    background: none;
+    color: var(--text-color-secondary-light); /* Cor do ícone padrão */
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+    margin-right: 20px;
+    outline: none;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .theme-button {
+    color: var(--text-color-dark); /* Cor do ícone no tema escuro */
+}
+
+.theme-button:hover {
+    color: var(--text-color-light);
+}
+
+body.dark-theme .theme-button:hover {
+    color: var(--text-color-secondary-dark);
+}
+
+/* --- Estilos da Seção de Atividades (Lista de Cards) --- */
+.section-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding: 0;
+}
+
+.section-title-row h3 {
+    font-size: 1.1em;
+    color: var(--text-color-light);
+    margin: 0;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+body.dark-theme .section-title-row h3 {
+    color: var(--text-color-dark);
+}
+
+.activities-count {
+    background-color: var(--border-color-light);
+    color: var(--text-color-secondary-light);
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: normal;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme .activities-count {
+    background-color: var(--border-color-dark);
+    color: var(--text-color-dark);
+}
+
+.add-activity-button {
+    background-color: var(--purple-primary); /* Roxo principal */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 0.9em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.add-activity-button:hover {
+    background-color: var(--purple-darker);
+}
+body.dark-theme .add-activity-button {
+    background-color: var(--purple-lighter);
+}
+body.dark-theme .add-activity-button:hover {
+    background-color: var(--purple-primary);
+}
+
+.activities-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0;
+}
+
+/* Estilo do Card Individual de Atividade */
+.activity-card {
+    background-color: var(--card-bg-light);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--shadow-card-light);
+    padding: 15px 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+}
+
+body.dark-theme .activity-card {
+    background-color: var(--card-bg-dark);
+    box-shadow: 0 2px 8px var(--shadow-card-dark);
+}
+
+.activity-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px var(--shadow-card-light);
+}
+body.dark-theme .activity-card:hover {
+    box-shadow: 0 4px 12px var(--shadow-dark);
+}
+
+
+.activity-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.activity-type {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75em;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+}
+
+.activity-type-prova { background-color: var(--type-prova); }
+.activity-type-trabalho { background-color: var(--type-trabalho); }
+.activity-type-apresentacao { background-color: var(--type-apresentacao); color: var(--type-apresentacao-text); } /* Texto escuro para contraste */
+.activity-type-exercicio { background-color: var(--type-exercicio); }
+
+.activity-status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.7em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.activity-status-vencida {
+    color: var(--status-vencida-text);
+    border: 1px solid var(--status-vencida-text);
+    background-color: var(--status-vencida-bg);
+}
+
+.activity-status-aberto,
+.activity-status-em-andamento {
+    color: var(--status-aberto-text);
+    border: 1px solid var(--status-aberto-text);
+    background-color: var(--status-aberto-bg);
+}
+
+.activity-card h4 {
+    font-size: 1.1em;
+    color: var(--text-color-light);
+    margin: 0 0 8px 0;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .activity-card h4 {
+    color: var(--text-color-dark);
+}
+
+.activity-description {
+    font-size: 0.9em;
+    color: var(--text-color-secondary-light);
+    margin-bottom: 12px;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .activity-description {
+    color: var(--text-color-secondary-dark);
+}
+
+.activity-details p {
+    font-size: 0.85em;
+    color: var(--text-color-tertiary-light);
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .activity-details p {
+    color: var(--text-color-tertiary-dark);
+}
+
+.activity-details i {
+    color: var(--purple-primary);
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .activity-details i {
+    color: var(--purple-lightest);
+}
+
+.activity-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color-light);
+    transition: border-color 0.3s ease;
+}
+
+body.dark-theme .activity-footer {
+    border-top: 1px solid var(--border-color-dark);
+}
+
+.activity-notes-status {
+    font-size: 0.8em;
+    font-weight: bold;
+    color: var(--status-aberto-text); /* Cor de sucesso */
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .activity-notes-status {
+    color: var(--status-aberto-text); /* Mantém o verde */
+}
+
+.activity-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-button {
+    background-color: var(--button-secondary-bg-light);
+    color: var(--button-secondary-text-light);
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 0.8em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+body.dark-theme .action-button {
+    background-color: var(--button-secondary-bg-dark);
+    color: var(--button-secondary-text-dark);
+}
+
+.action-button:hover {
+    background-color: var(--border-color-light); /* Um cinza claro */
+    color: var(--text-color-light);
+}
+
+body.dark-theme .action-button:hover {
+    background-color: var(--border-color-dark);
+    color: var(--text-color-dark);
+}
+
+/* Cores específicas para botões de ação */
+.action-button.launch-notes-button {
+    background-color: var(--purple-primary); /* Roxo para "Lançar Notas" */
+    color: white;
+}
+body.dark-theme .action-button.launch-notes-button {
+    background-color: var(--purple-lighter);
+}
+.action-button.launch-notes-button:hover {
+    background-color: var(--purple-darker);
+}
+body.dark-theme .action-button.launch-notes-button:hover {
+    background-color: var(--purple-primary);
+}
+
+.action-button.delete-button {
+    background-color: var(--status-vencida-text); /* Vermelho para "Excluir" */
+    color: white;
+}
+body.dark-theme .action-button.delete-button {
+    background-color: #f56565; /* Vermelho mais claro para dark */
+}
+.action-button.delete-button:hover {
+    background-color: #c53030; /* Vermelho mais escuro para hover */
+}
+body.dark-theme .action-button.delete-button:hover {
+    background-color: #e04a4a;
+}
+
+
+/* --- ESTILOS DAS NOVAS SEÇÕES DINÂMICAS --- */
+.main-section {
+    display: none; /* Todas as seções principais escondidas por padrão */
+    width: 100%;
+    /* Ocupa a altura disponível do .content */
+    min-height: calc(100vh - 120px); /* Ajusta para a altura real do content menos o top-nav e paddings */
+    padding: 0px; /* Removido o padding aqui, o conteúdo interno terá seu próprio padding */
+    box-sizing: border-box;
+    overflow-y: auto; /* Para rolagem se o conteúdo for muito longo */
+    /* Animação */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    position: absolute; /* Permite que se sobreponham e não empurrem o layout */
+    top: 0;
+    left: 0;
+    /* Adicionado para garantir que o scroll funcione dentro da seção */
+    max-height: 100%;
+}
+
+.main-section.show {
+    display: block; /* Apenas a seção com 'show' é visível */
+    opacity: 1;
+    transform: translateY(0);
+    position: relative; /* Volta ao fluxo normal quando visível para ocupar espaço */
+}
+
+/* Estilos para o botão "Voltar" */
+.back-button {
+    background-color: var(--purple-primary); /* Roxo principal */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 0.9em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s ease;
+    text-decoration: none;
+    white-space: nowrap; /* Evita quebra de linha em "Voltar à Lista" */
+}
+
+.back-button:hover {
+    background-color: var(--purple-darker);
+}
+body.dark-theme .back-button {
+    background-color: var(--purple-lighter);
+}
+body.dark-theme .back-button:hover {
+    background-color: var(--purple-primary);
+}
+
+/* Importação da fonte Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* --- Variáveis CSS para Cores e Tema --- */
+:root {
+    /* Cores Comuns */
+    --purple-primary: #6a5acd;
+    --purple-darker: #5a4bbf;
+    --purple-lighter: #7a6be0; /* Para hover no dark */
+    --purple-lightest: #9a8de7; /* Para ícones no dark */
+
+    /* Status Badges */
+    --status-aberto-bg: #e6ffed;
+    --status-aberto-text: #38a169;
+    --status-vencida-bg: #ffe0e0;
+    --status-vencida-text: #e53e3e;
+    --status-concluido-bg: #38a169; /* Verde para entregue */
+    --status-nao-concluido-bg: #e53e3e; /* Vermelho para pendente */
+
+    /* Activity Types */
+    --type-prova: #e53e3e; /* Vermelho */
+    --type-trabalho: #6b46c1; /* Roxo mais escuro */
+    --type-apresentacao: #ecc94b; /* Amarelo */
+    --type-apresentacao-text: #333; /* Texto escuro para contraste */
+    --type-exercicio: #4299e1; /* Azul claro */
+
+    /* Light Theme */
+    --bg-color-light: #f4f6f8;
+    --sidebar-bg-light: #ffffff;
+    --card-bg-light: #ffffff;
+    --text-color-light: #333;
+    --text-color-secondary-light: #555;
+    --text-color-tertiary-light: #777;
+    --header-bg-light: #ffffff;
+    --border-color-light: #eee;
+    --shadow-light: rgba(0, 0, 0, 0.05);
+    --shadow-card-light: rgba(0, 0, 0, 0.08);
+    --hover-bg-light: #cfe0f0;
+    --hover-text-light: #4956ca;
+    --button-secondary-bg-light: #e2e8f0;
+    --button-secondary-text-light: #4a5568;
+    --input-bg-light: #fcfcfc;
+    --input-border-light: #ccc;
+    --focus-shadow-light: rgba(106, 90, 205, 0.2);
+    /* Variável adicionada para o botão de upload, se aplicável */
+    --secondary-color: #6a5acd; /* Ou outra cor que você queira para este botão */
+}
+
+/* Dark Theme */
+body.dark-theme {
+    --bg-color-dark: #222;
+    --sidebar-bg-dark: #333;
+    --card-bg-dark: #3a3a3a;
+    --text-color-dark: #eee;
+    --text-color-secondary-dark: #ddd;
+    --text-color-tertiary-dark: #bbb;
+    --header-bg-dark: #444;
+    --border-color-dark: #666;
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+    --shadow-card-dark: rgba(0, 0, 0, 0.2);
+    --hover-bg-dark: #5a4bbf;
+    --hover-text-dark: #ffffff;
+    --button-secondary-bg-dark: #666;
+    --button-secondary-text-dark: #eee;
+    --input-bg-dark: #5a5a5a;
+    --input-border-dark: #777;
+    --focus-shadow-dark: rgba(154, 141, 231, 0.3); /* Baseado no purple-lightest */
+
+    /* Apply dark theme variables */
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+    /* Variável adicionada para o botão de upload no tema escuro */
+    --secondary-color: #7a6be0; /* Uma cor mais clara para o tema escuro */
+}
+
+/* --- Estilos Gerais (Parte normal do site) --- */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--bg-color-light); /* Fundo claro padrão */
+    color: var(--text-color-light); /* Cor do texto padrão */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: var(--sidebar-bg-light); /* Fundo branco padrão */
+    width: 200px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 0 5px var(--shadow-light);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-theme .sidebar {
+    background-color: var(--sidebar-bg-dark); /* Cinza meio escuro */
+    box-shadow: 2px 0 5px var(--shadow-dark);
+}
+
+.sidebar .logo {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar .logo img {
+    max-width: 160px;
+    height: auto;
+    display: block;
+}
+
+/* NOVO: Estilo para o link da logo na sidebar */
+.sidebar .logo a {
+    text-decoration: none; /* Remove o sublinhado do link da logo */
+    background-color: transparent; /* Garante que o fundo não mude no hover */
+    padding: 0; /* Remove padding que possa afetar o hover */
+    margin-bottom: 0; /* Remove margem que possa afetar o hover */
+    width: auto; /* Ajusta a largura ao conteúdo */
+    transition: none; /* Remove qualquer transição de hover */
+    transform: none; /* Remove qualquer transformação de hover */
+}
+
+body.dark-theme .sidebar .logo a:hover {
+    background-color: transparent; /* Remove o fundo roxo no hover no tema escuro */
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    text-decoration: none;
+    color: var(--text-color-light); /* Cor do link padrão */
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+}
+
+body.dark-theme .sidebar a {
+    color: var(--text-color-dark); /* Cor do link no tema escuro */
+}
+
+.sidebar a:hover {
+    transform: translateX(5px);
+    background-color: var(--hover-bg-light); /* Um tom de azul claro/cinza claro para hover */
+    color: var(--hover-text-light); /* Cor do texto no hover para melhor contraste */
+}
+
+body.dark-theme .sidebar a:hover {
+    background-color: var(--hover-bg-dark); /* Um roxo mais escuro para hover no dark mode */
+    color: var(--hover-text-dark);
+}
+
+.sidebar a i {
+    font-size: 18px;
+    color: var(--purple-primary);
+    transition: color 0.3s ease;
+}
+body.dark-theme .sidebar a i {
+    color: var(--purple-lightest); /* Ícones mais claros no tema escuro */
+}
+
+/* Conteúdo Principal */
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Garante que os itens dentro de .content se empilhem verticalmente */
+    transition: background-color 0.3s ease;
+    position: relative; /* CRUCIAL para que as main-sections absolutas funcionem */
+}
+
+body.dark-theme .content {
+    background-color: var(--bg-color-dark); /* Fundo mais escuro para o conteúdo principal */
+}
+
+/* Top Navigation */
+.top-nav {
+    background-color: var(--header-bg-light); /* Fundo branco padrão */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px var(--shadow-light);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-theme .top-nav {
+    background-color: var(--header-bg-dark); /* Cinza meio escuro */
+    box-shadow: 0 1px 3px var(--shadow-dark);
+}
+
+.right-items {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* NOVO: Estilos para o link do perfil do professor (foto e nome) */
+.user-info .user-profile-link {
+    text-decoration: none; /* Remove o sublinhado */
+    color: inherit; /* Mantém a cor do texto padrão do pai */
+    display: flex; /* Para alinhar a imagem e o texto se o link envolver ambos */
+    align-items: center;
+    gap: 10px; /* Espaçamento entre foto e nome */
+    background-color: transparent; /* Garante que o fundo não mude no hover */
+    padding: 0; /* Remove padding que possa afetar o hover */
+    transition: none; /* Remove qualquer transição de hover */
+    transform: none; /* Remove qualquer transformação de hover */
+}
+
+.user-info .user-profile-link span {
+    font-weight: bold;
+    color: var(--text-color-light); /* Cor do texto padrão */
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .user-info .user-profile-link span {
+    color: var(--text-color-dark); /* Cor do texto no tema escuro */
+}
+
+.notification-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.notifications {
+    cursor: pointer;
+}
+
+.notifications i {
+    font-size: 22px;
+    color: var(--text-color-secondary-light); /* Cor do ícone padrão */
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .notifications i {
+    color: var(--text-color-dark); /* Cor do ícone no tema escuro */
+}
+
+.dashboard-header {
+    margin-bottom: 25px;
+}
+
+.dashboard-header h1 {
+    color: var(--text-color-light); /* Cor do texto padrão */
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .dashboard-header h1 {
+    color: var(--text-color-dark); /* Cor do texto no tema escuro */
+}
+
+.dashboard-header p {
+    color: var(--text-color-tertiary-light); /* Cor do texto padrão */
+    font-size: 0.9em;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .dashboard-header p {
+    color: var(--text-color-secondary-dark); /* Cor do texto no tema escuro */
+}
+
+.theme-button {
+    background: none;
+    color: var(--text-color-secondary-light); /* Cor do ícone padrão */
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+    margin-right: 20px;
+    outline: none;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .theme-button {
+    color: var(--text-color-dark); /* Cor do ícone no tema escuro */
+}
+
+.theme-button:hover {
+    color: var(--text-color-light);
+}
+
+body.dark-theme .theme-button:hover {
+    color: var(--text-color-secondary-dark);
+}
+
+/* --- Estilos da Seção de Atividades (Lista de Cards) --- */
+.section-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding: 0;
+}
+
+.section-title-row h3 {
+    font-size: 1.1em;
+    color: var(--text-color-light);
+    margin: 0;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+body.dark-theme .section-title-row h3 {
+    color: var(--text-color-dark);
+}
+
+.activities-count {
+    background-color: var(--border-color-light);
+    color: var(--text-color-secondary-light);
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: normal;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme .activities-count {
+    background-color: var(--border-color-dark);
+    color: var(--text-color-dark);
+}
+
+.add-activity-button {
+    background-color: var(--purple-primary); /* Roxo principal */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 0.9em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.add-activity-button:hover {
+    background-color: var(--purple-darker);
+}
+body.dark-theme .add-activity-button {
+    background-color: var(--purple-lighter);
+}
+body.dark-theme .add-activity-button:hover {
+    background-color: var(--purple-primary);
+}
+
+.activities-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0;
+}
+
+/* Estilo do Card Individual de Atividade */
+.activity-card {
+    background-color: var(--card-bg-light);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--shadow-card-light);
+    padding: 15px 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+}
+
+body.dark-theme .activity-card {
+    background-color: var(--card-bg-dark);
+    box-shadow: 0 2px 8px var(--shadow-card-dark);
+}
+
+.activity-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px var(--shadow-card-light);
+}
+body.dark-theme .activity-card:hover {
+    box-shadow: 0 4px 12px var(--shadow-dark);
+}
+
+
+.activity-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.activity-type {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75em;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+}
+
+.activity-type-prova { background-color: var(--type-prova); }
+.activity-type-trabalho { background-color: var(--type-trabalho); }
+.activity-type-apresentacao { background-color: var(--type-apresentacao); color: var(--type-apresentacao-text); } /* Texto escuro para contraste */
+.activity-type-exercicio { background-color: var(--type-exercicio); }
+
+.activity-status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.7em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.activity-status-vencida {
+    color: var(--status-vencida-text);
+    border: 1px solid var(--status-vencida-text);
+    background-color: var(--status-vencida-bg);
+}
+
+.activity-status-aberto,
+.activity-status-em-andamento {
+    color: var(--status-aberto-text);
+    border: 1px solid var(--status-aberto-text);
+    background-color: var(--status-aberto-bg);
+}
+
+.activity-card h4 {
+    font-size: 1.1em;
+    color: var(--text-color-light);
+    margin: 0 0 8px 0;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .activity-card h4 {
+    color: var(--text-color-dark);
+}
+
+.activity-description {
+    font-size: 0.9em;
+    color: var(--text-color-secondary-light);
+    margin-bottom: 12px;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .activity-description {
+    color: var(--text-color-secondary-dark);
+}
+
+.activity-details p {
+    font-size: 0.85em;
+    color: var(--text-color-tertiary-light);
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .activity-details p {
+    color: var(--text-color-tertiary-dark);
+}
+
+.activity-details i {
+    color: var(--purple-primary);
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .activity-details i {
+    color: var(--purple-lightest);
+}
+
+.activity-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color-light);
+    transition: border-color 0.3s ease;
+}
+
+body.dark-theme .activity-footer {
+    border-top: 1px solid var(--border-color-dark);
+}
+
+.activity-notes-status {
+    font-size: 0.8em;
+    font-weight: bold;
+    color: var(--status-aberto-text); /* Cor de sucesso */
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .activity-notes-status {
+    color: var(--status-aberto-text); /* Mantém o verde */
+}
+
+.activity-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-button {
+    background-color: var(--button-secondary-bg-light);
+    color: var(--button-secondary-text-light);
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 0.8em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+body.dark-theme .action-button {
+    background-color: var(--button-secondary-bg-dark);
+    color: var(--button-secondary-text-dark);
+}
+
+.action-button:hover {
+    background-color: var(--border-color-light); /* Um cinza claro */
+    color: var(--text-color-light);
+}
+
+body.dark-theme .action-button:hover {
+    background-color: var(--border-color-dark);
+    color: var(--text-color-dark);
+}
+
+/* Cores específicas para botões de ação */
+.action-button.launch-notes-button {
+    background-color: var(--purple-primary); /* Roxo para "Lançar Notas" */
+    color: white;
+}
+body.dark-theme .action-button.launch-notes-button {
+    background-color: var(--purple-lighter);
+}
+.action-button.launch-notes-button:hover {
+    background-color: var(--purple-darker);
+}
+body.dark-theme .action-button.launch-notes-button:hover {
+    background-color: var(--purple-primary);
+}
+
+.action-button.delete-button {
+    background-color: var(--status-vencida-text); /* Vermelho para "Excluir" */
+    color: white;
+}
+body.dark-theme .action-button.delete-button {
+    background-color: #f56565; /* Vermelho mais claro para dark */
+}
+.action-button.delete-button:hover {
+    background-color: #c53030; /* Vermelho mais escuro para hover */
+}
+body.dark-theme .action-button.delete-button:hover {
+    background-color: #e04a4a;
+}
+
+
+/* --- ESTILOS DAS NOVAS SEÇÕES DINÂMICAS --- */
+.main-section {
+    display: none; /* Todas as seções principais escondidas por padrão */
+    width: 100%;
+    /* Ocupa a altura disponível do .content */
+    min-height: calc(100vh - 120px); /* Ajusta para a altura real do content menos o top-nav e paddings */
+    padding: 0px; /* Removido o padding aqui, o conteúdo interno terá seu próprio padding */
+    box-sizing: border-box;
+    overflow-y: auto; /* Para rolagem se o conteúdo for muito longo */
+    /* Animação */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    position: absolute; /* Permite que se sobreponham e não empurrem o layout */
+    top: 0;
+    left: 0;
+    /* Adicionado para garantir que o scroll funcione dentro da seção */
+    max-height: 100%;
+}
+
+.main-section.show {
+    display: block; /* Apenas a seção com 'show' é visível */
+    opacity: 1;
+    transform: translateY(0);
+    position: relative; /* Volta ao fluxo normal quando visível para ocupar espaço */
+}
+
+/* Estilos para o botão "Voltar" */
+.back-button {
+    background-color: var(--purple-primary); /* Roxo principal */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 0.9em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s ease;
+    text-decoration: none;
+    white-space: nowrap; /* Evita quebra de linha em "Voltar à Lista" */
+}
+
+.back-button:hover {
+    background-color: var(--purple-darker);
+}
+body.dark-theme .back-button {
+    background-color: var(--purple-lighter);
+}
+body.dark-theme .back-button:hover {
+    background-color: var(--purple-primary);
+}
+
+/* --- Cabeçalhos internos das seções (Submissions e Student Details) --- */
+.modal-header { /* Reutilizando o nome para ser o cabeçalho da seção */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color-light);
+    transition: border-color 0.3s ease;
+}
+body.dark-theme .modal-header {
+    border-bottom: 1px solid var(--border-color-dark);
+}
+.modal-header h2 {
+    font-size: 1.5em;
+    color: var(--text-color-light);
+    margin: 0;
+    transition: color 0.3s ease;
+}
+body.dark-theme .modal-header h2 {
+    color: var(--text-color-dark);
+}
+
+/* --- SEÇÃO 2: LISTA DE ENTREGAS DOS ALUNOS (Submissions Section) --- */
+.submissions-content {
+    background-color: var(--card-bg-light);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px var(--shadow-light);
+    padding: 25px; /* Adicionado padding interno */
+    margin-top: 20px; /* Para não colar no top-nav */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+body.dark-theme .submissions-content {
+    background-color: var(--card-bg-dark);
+    box-shadow: 0 5px 15px var(--shadow-dark);
+}
+
+.submissions-summary {
+    display: flex;
+    flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
+    gap: 30px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color-light);
+    transition: border-color 0.3s ease;
+}
+body.dark-theme .submissions-summary {
+    border-bottom: 1px solid var(--border-color-dark);
+}
+.submissions-summary p {
+    margin: 0;
+    font-size: 1em;
+    color: var(--text-color-secondary-light);
+    transition: color 0.3s ease;
+}
+body.dark-theme .submissions-summary p {
+    color: var(--text-color-secondary-dark);
+}
+.submissions-summary strong {
+    color: var(--text-color-light);
+    transition: color 0.3s ease;
+}
+body.dark-theme .submissions-summary strong {
+    color: var(--text-color-dark);
+}
+
+
+/* Lista de Alunos e Entregas */
+.students-submissions-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.submission-list-header {
+    display: grid; /* Usando Grid para controle de colunas */
+    grid-template-columns: 2fr 1fr 1.5fr 0.8fr; /* Ajustado para 4 colunas */
+    gap: 15px; /* Espaçamento entre colunas */
+    background-color: var(--border-color-light);
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.9em;
+    color: var(--text-color-secondary-light);
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+body.dark-theme .submission-list-header {
+    background-color: var(--border-color-dark);
+    color: var(--text-color-dark);
+}
+
+.submission-list-header > div {
+    text-align: left;
+}
+.submission-list-header .col-submission-grade {
+    text-align: right; /* Alinha a nota à direita */
+}
+
+.student-submission-card {
+    display: grid; /* Usando Grid também para os cards */
+    grid-template-columns: 2fr 1fr 1.5fr 0.8fr; /* As mesmas colunas do cabeçalho */
+    gap: 15px;
+    align-items: center;
+    background-color: var(--input-bg-light);
+    border: 1px solid var(--border-color-light);
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer; /* Indica que é clicável */
+}
+body.dark-theme .student-submission-card {
+    background-color: var(--input-bg-dark);
+    border: 1px solid var(--input-border-dark);
+}
+
+.student-submission-card:hover {
+    background-color: var(--hover-bg-light); /* Um tom mais claro no hover */
+    box-shadow: 0 2px 5px var(--shadow-light);
+}
+body.dark-theme .student-submission-card:hover {
+    background-color: var(--border-color-dark);
+    box-shadow: 0 2px 5px var(--shadow-dark);
+}
+
+.student-submission-card > div {
+    color: var(--text-color-light);
+    font-size: 0.9em;
+    transition: color 0.3s ease;
+}
+body.dark-theme .student-submission-card > div {
+    color: var(--text-color-dark);
+}
+
+.student-submission-card .col-submission-status {
+    text-align: center;
+}
+.student-submission-card .col-submission-grade {
+    text-align: right;
+}
+
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.7em;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+}
+
+.status-concluido {
+    background-color: var(--status-concluido-bg); /* Verde */
+}
+
+.status-nao-concluido {
+    background-color: var(--status-nao-concluido-bg); /* Vermelho */
+}
+
+/* Input de nota na lista de alunos */
+.grade-input {
+    width: 60px;
+    padding: 5px 8px;
+    border: 1px solid var(--input-border-light);
+    border-radius: 4px;
+    font-size: 0.9em;
+    text-align: center;
+    background-color: var(--input-bg-light);
+    color: var(--text-color-light);
+    transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+body.dark-theme .grade-input {
+    background-color: var(--input-bg-dark);
+    border-color: var(--input-border-dark);
+    color: var(--text-color-dark);
+}
+.grade-input:focus {
+    border-color: var(--purple-primary);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--focus-shadow-light);
+}
+body.dark-theme .grade-input:focus {
+    box-shadow: 0 0 0 2px var(--focus-shadow-dark);
+}
+
+
+/* --- DETALHES DA ENTREGA DO ALUNO --- */
+.student-details-content {
+    background-color: var(--card-bg-light);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px var(--shadow-light);
+    padding: 25px; /* Adicionado padding interno */
+    margin-top: 20px; /* Para não colar no top-nav */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+body.dark-theme .student-details-content {
+    background-color: var(--card-bg-dark);
+    box-shadow: 0 5px 15px var(--shadow-dark);
+}
+
+.activity-enunciado-section,
+.student-submission-section,
+.grade-and-feedback-section {
+    background-color: var(--input-bg-light);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color-light);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+body.dark-theme .activity-enunciado-section,
+body.dark-theme .student-submission-section,
+body.dark-theme .grade-and-feedback-section {
+    background-color: var(--input-bg-dark);
+    border: 1px solid var(--input-border-dark);
+}
+
+.activity-enunciado-section h3,
+.student-submission-section h3,
+.grade-and-feedback-section h4 {
+    color: var(--text-color-light);
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+body.dark-theme .activity-enunciado-section h3,
+body.dark-theme .student-submission-section h3,
+body.dark-theme .grade-and-feedback-section h4 {
+    color: var(--text-color-dark);
+}
+
+.activity-enunciado-section p,
+.student-submission-section p {
+    color: var(--text-color-secondary-light);
+    line-height: 1.5;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+body.dark-theme .activity-enunciado-section p,
+body.dark-theme .student-submission-section p {
+    color: var(--text-color-secondary-dark);
+}
+
+.activity-enunciado-section a,
+.student-submission-section a {
+    color: var(--purple-primary);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+.activity-enunciado-section a:hover,
+.student-submission-section a:hover {
+    text-decoration: underline;
+    color: var(--purple-darker);
+}
+body.dark-theme .activity-enunciado-section a,
+body.dark-theme .student-submission-section a {
+    color: var(--purple-lightest);
+}
+body.dark-theme .activity-enunciado-section a:hover,
+body.dark-theme .student-submission-section a:hover {
+    color: #ad9ceb;
+}
+
+
+/* Input de nota grande */
+.grade-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+.grade-input-wrapper label {
+    font-weight: bold;
+    color: var(--text-color-light);
+    transition: color 0.3s ease;
+}
+body.dark-theme .grade-input-wrapper label {
+    color: var(--text-color-dark);
+}
+.grade-input.large-grade-input {
+    width: 80px; /* Maior que o da lista */
+    padding: 8px 12px;
+    font-size: 1.1em;
+}
+
+/* Textarea de Feedback */
+/* Textarea de Feedback */
+.feedback-wrapper {
+    margin-bottom: 20px;
+}
+.feedback-wrapper label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: var(--text-color-light);
+    transition: color 0.3s ease;
+}
+body.dark-theme .feedback-wrapper label {
+    color: var(--text-color-dark);
+}
+.feedback-textarea {
+    width: 100%;
+    min-height: 250px; /* A altura da caixa de texto está definida aqui */
+    padding: 10px;
+    border: 1px solid var(--input-border-light);
+    border-radius: 4px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9em;
+    resize: vertical;
+    background-color: var(--input-bg-light);
+    color: var(--text-color-light);
+    transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+body.dark-theme .feedback-textarea {
+    background-color: var(--input-bg-dark);
+    border-color: var(--input-border-dark);
+    color: var(--text-color-dark);
+}
+.feedback-textarea:focus {
+    border-color: var(--purple-primary);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--focus-shadow-light);
+}
+body.dark-theme .feedback-textarea:focus {
+    box-shadow: 0 0 0 2px var(--focus-shadow-dark);
+}
+
+.save-student-grade-button {
+    /* Reutiliza .add-activity-button para o estilo */
+    width: auto;
+    padding: 10px 20px;
+    font-size: 1em;
+}
+
+/* Estilos para a imagem da submissão do aluno */
+#submissionContent img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 15px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+body.dark-theme #submissionContent img {
+    box-shadow: 0 2px 8px var(--shadow-dark);
+}
+
+/* --- Media Queries para Responsividade --- */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 80px; /* Reduz a largura da sidebar */
+        padding: 15px 10px;
+    }
+
+    .sidebar .logo img {
+        max-width: 60px; /* Reduz o logo */
+    }
+
+    .sidebar a {
+        padding: 10px 5px; /* Reduz padding dos links */
+        justify-content: center; /* Centraliza ícones */
+        font-size: 0.8em;
+    }
+
+    .sidebar a span {
+        display: none; /* Esconde texto dos links */
+    }
+
+    .sidebar a i {
+        margin-right: 0;
+    }
+
+    .top-nav .right-items {
+        gap: 15px; /* Reduz o gap no top-nav */
+    }
+
+    .dashboard-header h1 {
+        font-size: 1.5em; /* Reduz o tamanho do título */
+    }
+
+    .section-title-row {
+        flex-direction: column; /* Empilha título e botão */
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .activities-list-container {
+        grid-template-columns: 1fr; /* Um card por linha */
+    }
+
+    .activity-card .activity-actions {
+        flex-direction: column; /* Empilha botões de ação */
+        gap: 5px;
+    }
+
+    .modal-header {
+        flex-direction: column; /* Empilha título do modal e botão voltar */
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .submissions-summary {
+        flex-direction: column; /* Empilha o resumo das entregas */
+        gap: 10px;
+    }
+
+    .submission-list-header,
+    .student-submission-card {
+        grid-template-columns: 1fr 1fr; /* Simplifica para 2 colunas em telas pequenas */
+        font-size: 0.8em;
+        gap: 10px;
+    }
+
+    .submission-list-header .col-submission-date,
+    .student-submission-card .col-submission-date {
+        display: none; /* Esconde a coluna de data para economizar espaço */
+    }
+
+    .student-submission-card .col-submission-status,
+    .student-submission-card .col-submission-grade {
+        text-align: left; /* Ajusta alinhamento */
+    }
+
+    .grade-input {
+        width: 50px; /* Ajusta o input de nota */
+        padding: 3px 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .content {
+        padding: 10px;
+    }
+
+    .top-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .top-nav .right-items {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .theme-button {
+        margin-right: 0;
+    }
+
+    .dashboard-header {
+        text-align: center;
+    }
+    .modal-header h2 {
+        font-size: 1.2em;
+    }
+}
+
+/* --- Estilos para o Modal de Adicionar Nova Atividade --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Garante que fique por cima de tudo */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.show-modal {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content-new-activity {
+    background-color: var(--card-bg-light);
+    padding: 20px; /* Diminuído de 30px */
+    border-radius: 10px;
+    box-shadow: 0 6px 20px var(--shadow-dark); /* Sombra um pouco mais suave */
+    width: 90%;
+    max-width: 450px; /* Diminuído de 600px */
+    max-height: 85vh; /* Diminuído de 90vh */
+    overflow-y: auto; /* Adiciona rolagem se o conteúdo for muito grande */
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-overlay.show-modal .modal-content-new-activity {
+    transform: translateY(0);
+}
+
+body.dark-theme .modal-content-new-activity {
+    background-color: var(--card-bg-dark);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.modal-content-new-activity .modal-header {
+    margin-bottom: 18px; /* Diminuído de 25px */
+    padding-bottom: 10px; /* Diminuído de 15px */
+    border-bottom: 1px solid var(--border-color-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body.dark-theme .modal-content-new-activity .modal-header {
+    border-bottom: 1px solid var(--border-color-dark);
+}
+
+.modal-content-new-activity .modal-header h2 {
+    margin: 0;
+    font-size: 1.5em; /* Diminuído de 1.8em */
+    color: var(--text-color-light);
+}
+body.dark-theme .modal-content-new-activity .modal-header h2 {
+    color: var(--text-color-dark);
+}
+
+.modal-content-new-activity .form-group {
+    margin-bottom: 15px; /* Diminuído de 20px */
+}
+
+.modal-content-new-activity label {
+    display: block;
+    margin-bottom: 6px; /* Diminuído de 8px */
+    font-weight: bold;
+    color: var(--text-color-secondary-light);
+    font-size: 0.85em; /* Adicionado para diminuir o tamanho da label */
+}
+body.dark-theme .modal-content-new-activity label {
+    color: var(--text-color-secondary-dark);
+}
+
+.modal-content-new-activity input[type="text"],
+.modal-content-new-activity input[type="date"],
+.modal-content-new-activity input[type="number"],
+.modal-content-new-activity select,
+.modal-content-new-activity textarea {
+    width: calc(100% - 16px); /* Ajusta para padding, um pouco menor */
+    padding: 8px; /* Diminuído de 10px */
+    border: 1px solid var(--input-border-light);
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9em; /* Diminuído de 1em */
+    background-color: var(--input-bg-light);
+    color: var(--text-color-light);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+body.dark-theme .modal-content-new-activity input,
+body.dark-theme .modal-content-new-activity select,
+body.dark-theme .modal-content-new-activity textarea {
+    background-color: var(--input-bg-dark);
+    border-color: var(--input-border-dark);
+    color: var(--text-color-dark);
+}
+
+.modal-content-new-activity input:focus,
+.modal-content-new-activity select:focus,
+.modal-content-new-activity textarea:focus {
+    border-color: var(--purple-primary);
+    outline: none;
+    box-shadow: 0 0 0 3px var(--focus-shadow-light);
+}
+body.dark-theme .modal-content-new-activity input:focus,
+body.dark-theme .modal-content-new-activity select:focus,
+body.dark-theme .modal-content-new-activity textarea:focus {
+    box-shadow: 0 0 0 3px var(--focus-shadow-dark);
+}
+
+/* Estilos específicos para o grupo de upload de arquivos */
+.file-upload-group {
+    border: 1px dashed var(--border-color-light);
+    padding: 12px; /* Diminuído de 15px */
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 20px; /* Diminuído de 25px */
+    background-color: var(--bg-color-light); /* Um fundo levemente diferente */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+body.dark-theme .file-upload-group {
+    border: 1px dashed var(--border-color-dark);
+    background-color: #4a4a4a; /* Um cinza mais escuro */
+}
+
+/* Esconde o input de arquivo padrão */
+.hidden-file-input {
+    display: none;
+}
+
+/* Estilo para o botão customizado "Escolher Arquivos" */
+.custom-file-input-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Espaço entre o botão e o texto do arquivo */
+    margin-bottom: 10px; /* Espaçamento abaixo */
+}
+
+.custom-file-upload-button {
+    background-color: var(--secondary-color); /* Usando a variável */
+    color: white;
+    padding: 8px 12px; /* Ajustado */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em; /* Ajustado */
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.custom-file-upload-button:hover {
+    background-color: #969cec; /* Mantendo um hover específico, se desejar alterar use uma variável também */
+}
+
+#fileChosenText {
+    font-size: 0.85em; /* Ajustado */
+    color: var(--text-color-secondary-light);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px; /* Limita a largura para não quebrar o layout */
+    text-align: left;
+}
+body.dark-theme #fileChosenText {
+    color: var(--text-color-secondary-dark);
+}
+
+/* Estilos para os ícones de tipo de arquivo */
+.file-type-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Espaçamento entre os ícones */
+    margin-top: 10px; /* Espaçamento acima */
+    margin-bottom: 15px;
+    flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
+}
+
+.file-type-info {
+    font-size: 0.8em; /* Tamanho do texto */
+    color: var(--text-color-tertiary-light);
+    display: flex;
+    align-items: center;
+    gap: 4px; /* Espaço entre ícone e texto */
+}
+
+.file-type-info i {
+    font-size: 0.9em; /* Tamanho do ícone */
+    color: var(--purple-primary); /* Usando a variável para consistência */
+}
+body.dark-theme .file-type-info {
+    color: var(--text-color-tertiary-dark);
+}
+
+
+.file-upload-group .upload-files-button {
+    background-color: var(--purple-primary);
+    color: white;
+    padding: 8px 15px; /* Diminuído de 10px 20px */
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9em; /* Diminuído de 1em */
+    margin-top: 8px; /* Diminuído de 10px */
+    transition: background-color 0.2s ease;
+}
+
+.file-upload-group .upload-files-button:hover {
+    background-color: var(--purple-darker);
+}
+body.dark-theme .file-upload-group .upload-files-button {
+    background-color: var(--purple-lighter);
+}
+body.dark-theme .file-upload-group .upload-files-button:hover {
+    background-color: var(--purple-primary);
+}
+
+.file-upload-info {
+    display: block;
+    font-size: 0.8em; /* Diminuído de 0.85em */
+    color: var(--text-color-tertiary-light);
+    margin-top: 8px; /* Diminuído de 10px */
+}
+body.dark-theme .file-upload-info {
+    color: var(--text-color-tertiary-dark);
+}
+
+.save-new-activity-button {
+    margin-top: 20px; /* Diminuído de 30px */
+    width: 100%; /* Botão salvar ocupa a largura total */
+    padding: 10px 18px; /* Diminuído de 12px 20px */
+    font-size: 1em; /* Diminuído de 1.1em */
+}
+
+/* Media Queries para o Modal (ajustes para telas menores) */
+@media (max-width: 768px) {
+    .modal-content-new-activity {
+        width: 95%;
+        padding: 15px; /* Diminuído de 20px */
+        max-width: 400px; /* Ajustado para telas menores */
+    }
+    .modal-content-new-activity .modal-header h2 {
+        font-size: 1.3em; /* Diminuído de 1.4em */
+    }
+    .modal-content-new-activity input,
+    .modal-content-new-activity select,
+    .modal-content-new-activity textarea {
+        width: calc(100% - 12px); /* Ajusta para padding */
+        padding: 6px; /* Diminuído de 8px */
+        font-size: 0.85em; /* Diminuído de 0.9em */
+    }
+    .modal-content-new-activity label {
+        font-size: 0.8em; /* Ajustado para media query */
+    }
+    .save-new-activity-button {
+        font-size: 0.9em; /* Diminuído de 1em */
+        padding: 8px 12px; /* Diminuído de 10px 15px */
+    }
+    .file-upload-group .upload-files-button {
+        padding: 6px 12px;
+        font-size: 0.8em;
+    }
+    .file-upload-info {
+        font-size: 0.75em;
+    }
+    .custom-file-input-wrapper {
+        flex-direction: column; /* Empilha em telas pequenas */
+        gap: 5px;
+    }
+    #fileChosenText {
+        max-width: 100%; /* Ocupa a largura total */
+        text-align: center;
+    }
+    .file-type-icons {
+        gap: 10px; /* Espaçamento menor entre os ícones */
+    }
+    .file-type-info {
+        font-size: 0.75em;
+    }
+}

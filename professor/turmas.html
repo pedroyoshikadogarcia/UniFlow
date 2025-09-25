@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sidebar com Ícones - Turmas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style_turmas.css" />
+    <link rel="stylesheet" href="global.css" />
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="img/logopreta2.png" alt="Logotipo" />
+            </a>
+        </div>
+        <a href="turmas.html">
+            <i class="fas fa-book"></i> Turmas
+        </a>
+        <a href="alunos.html">
+            <i class="fas fa-graduation-cap"></i> Alunos
+        </a>
+        <a href="atividades.html">
+            <i class="fas fa-tasks"></i> Atividades
+        </a>
+        <a href="notas.html">
+            <i class="fas fa-clipboard-list"></i> Notas
+        </a>
+        <a href="chamada.html">
+            <i class="fas fa-user-check"></i> Chamada
+        </a>
+        <a href="calendario.html">
+            <i class="fas fa-calendar-alt"></i> Calendário
+        </a>
+        <a href="mensagem.html">
+            <i class="fas fa-envelope"></i> Mensagens
+        </a>
+        <a href="config.html">
+            <i class="fas fa-cog"></i> Configurações
+        </a>
+    </div>
+
+    <!-- Principal -->
+    <div class="content" id="turmas-section">
+
+        <!-- Barra superior com icons -->
+        <div class="top-nav">
+            <button id="theme-toggle" class="theme-button">
+                <i class="fas fa-sun"></i>
+            </button>
+            <div class="right-items">
+                <a href="#" class="notification-link">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                </a>
+                <div class="user-info">
+                    <a href="perfil.html" class="user-profile-link"> 
+                        <img src="img/Usuario1.jpg" alt="Foto do Professor" />
+                        <span>Nome do Professor</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cabeçalho-->
+        <div class="dashboard-header" id="turmas-section">
+            <h1>Gerenciamento de Turmas</h1>
+            <p>Data: 30/04/2025</p>
+        </div>
+
+        <!-- resumo da turma -->
+        <a href="turma_detalhes.html" class="turma-card-link">
+            <div class="turma-card">
+                <div class="turma-header">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="turma-text">
+                        <h2>ADS</h2>
+                        <p>Análise e Desenvolvimento de Sistemas • Noite</p>
+                    </div>
+                </div>
+                <div class="turma-stats">
+                    <div>
+                        <strong>30</strong>
+                        <span>ALUNOS</span>
+                    </div>
+                    <div>
+                        <strong>5</strong>
+                        <span>ATIVIDADES</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+    </div>
+
+    <!--link js-->
+    <script src="main.js"></script>
+
+</body>
+</html>
