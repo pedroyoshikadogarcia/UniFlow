@@ -29,8 +29,8 @@ Este projeto foi desenvolvido e apresentado como requisito para a obtenção do 
 
 O projeto foi realizado de forma colaborativa pelos alunos:
 
-* **Júlia Rodrigues da Silva** – Front-End / Design
 * **Gabriel Pereira da Silva** – Front-End
+* **Júlia Rodrigues da Silva** – Front-End / Design
 * **Nicolas Oliveira da Silva** – Banco de Dados / Documentação
 * **Pedro Yoshikado Garcia** – Back-End / Organização e Gestão do Projeto
 
